@@ -42,7 +42,7 @@
               <a class="nav-link js-scroll-trigger" href="#about">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+              <a class="nav-link js-scroll-trigger" href="#event">Event</a>
             </li>
           </ul>
         </div>
@@ -66,7 +66,6 @@
       <div class="container">
         <h2 class="text-center">Club</h2>
         <hr class="dark">
-        <div class="row"><div class="col-lg-12"></div></div>
         <div class="row">
           <div class="col-sm-6 portfolio-item">
             <a class="portfolio-link" href="#portfolioModal1" data-toggle="modal">
@@ -128,43 +127,54 @@
       </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact">
+    <!-- Event Section -->
+    <section id="event">
       <div class="container">
-        <h2 class="text-center">Contact Us</h2>
-        <hr class="small">
+        <h2 class="text-center">Event</h2>
+        <hr class="dark">
         <div class="row">
-          <div class="col-lg-8 mx-auto">
-            <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
-            <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
-            <form name="sentMessage" id="contactForm" novalidate>
-              <div class="control-group">
-                <div class="form-group floating-label-form-group controls">
-                  <label>Nama</label>
-                  <input class="form-control" id="name" type="text" placeholder="Name" required data-validation-required-message="Please enter your name.">
-                  <p class="help-block text-danger"></p>
-                </div>
-              </div>
-              <div class="control-group">
-                <div class="form-group floating-label-form-group controls">
-                  <label>Email</label>
-                  <input class="form-control" id="email" type="email" placeholder="Email Address" required data-validation-required-message="Please enter your email address.">
-                  <p class="help-block text-danger"></p>
-                </div>
-              </div>
-              <div class="control-group">
-                <div class="form-group floating-label-form-group controls">
-                  <label>Pesan</label>
-                  <textarea class="form-control" id="message" rows="5" placeholder="Message" required data-validation-required-message="Please enter a message."></textarea>
-                  <p class="help-block text-danger"></p>
-                </div>
-              </div>
-              <br>
-              <div id="success"></div>
-              <div class="form-group">
-                <button type="submit" class="btn btn-success btn-lg" id="sendMessageButton">Kirim</button>
-              </div>
-            </form>
+          <div class="col-lg-4 event-item">
+            <img class="img-fluid" src="<?= base_url('assets'); ?>/img/portfolio/cake.png" alt="">
+            <h5>Anforcom</h5>
+            
+            <div class="event-info">
+              <p class="event-date"><i class="fa fa-calendar fa-fw"></i> 21 Okt 2017</p>
+              <p class="event-place"><i class="fa fa-map-marker fa-fw"></i> Semarang</p>
+            </div>
+
+            <div class="col-lg-8 mx-auto text-center event-btn">
+              <a href="#" class="btn btn-lg">Lihat Detail</a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 event-item">
+            <img class="img-fluid" src="<?= base_url('assets'); ?>/img/portfolio/game.png" alt="">
+            <h5>Invofest</h5>
+            <div class="event-info">
+              <p class="event-date"><i class="fa fa-calendar fa-fw"></i> 28 Okt 2017</p>
+              <p class="event-place"><i class="fa fa-map-marker fa-fw"></i>Tegal</p>
+            </div>
+
+            <div class="col-lg-8 mx-auto text-center event-btn">
+              <a href="#" class="btn btn-lg">Lihat Detail</a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 event-item">
+            <img class="img-fluid" src="<?= base_url('assets'); ?>/img/portfolio/cabin.png" alt="">
+            <h5>Kihajar Fest</h5>
+            <div class="event-info">
+              <p class="event-date"><i class="fa fa-calendar fa-fw"></i> 21 Nov 2017</p>
+              <p class="event-place"><i class="fa fa-map-marker fa-fw"></i> Banten</p>
+            </div>
+
+            <div class="col-lg-8 mx-auto text-center event-btn">
+              <a href="#" class="btn btn-lg">Lihat Detail</a>
+            </div>
+          </div>
+
+          <div class="col-lg-8 mx-auto text-center">
+            <a href="#" class="btn btn-lg btn-block btn-primary">Lihat Semua</a>
           </div>
         </div>
       </div>
