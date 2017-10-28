@@ -9,6 +9,10 @@ class Home extends CI_Controller {
 	}
 
   public function event(){
-    $this->load->view("home/event");
+    $this->load->view('home/event');
+  }
+
+  public function login(){
+    $this->load->view('home/login');
   }
 }
