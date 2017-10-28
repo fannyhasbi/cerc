@@ -28,7 +28,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">CERC</a>
+        <a class="navbar-brand js-scroll-trigger" href="<?= site_url(); ?>">CERC</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu
           <i class="fa fa-bars"></i>
@@ -36,103 +36,21 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#portfolio">Club</a>
+              <a class="nav-link js-scroll-trigger" href="#">Club</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#about">About</a>
+              <a class="nav-link js-scroll-trigger" href="#">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#event">Event</a>
+              <a class="nav-link js-scroll-trigger" href="#">Event</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?= site_url('login'); ?>">Masuk <i class="fa fa-sign-in"></i></a>
+              <a class="nav-link js-scroll-trigger" href="<?= site_url('login'); ?>">Login</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
-
-    <!-- Header -->
-    <header class="masthead">
-      <div class="container">
-        <img class="img-fluid" src="<?= base_url('assets'); ?>/img/cerc.jpg" width="256" height="256" alt="Computer Engineering Research Club">
-        <div class="intro-text">
-          <span class="name">Computer Engineering Research Club</span>
-          <hr class="small">
-          <span class="skills">Kembangkan Potensi, Raihlah Mimpi</span>
-        </div>
-      </div>
-    </header>
-
-    <!-- Portfolio Grid Section -->
-    <section id="portfolio">
-      <div class="container">
-        <h2 class="text-center">Club</h2>
-        <hr class="dark">
-        <div class="row">
-          <div class="col-sm-6 portfolio-item text-center">
-            <a class="portfolio-link" href="#portfolioModal1" data-toggle="modal" style="margin-bottom: 10px">
-              <div class="caption">
-                <div class="caption-content">
-                  <i class="fa fa-search-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="<?= base_url('assets'); ?>/img/portfolio/submarine.png" alt="">
-            </a>
-            <h4>Embedded</h4>
-          </div>
-          <div class="col-sm-6 portfolio-item text-center">
-            <a class="portfolio-link" href="#portfolioModal1" data-toggle="modal" style="margin-bottom: 10px">
-              <div class="caption">
-                <div class="caption-content">
-                  <i class="fa fa-search-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="<?= base_url('assets'); ?>/img/portfolio/game.png" alt="">
-            </a>
-            <h4>Software</h4>
-          </div>
-          <div class="col-sm-6 portfolio-item text-center">
-            <a class="portfolio-link" href="#portfolioModal1" data-toggle="modal" style="margin-bottom: 10px">
-              <div class="caption">
-                <div class="caption-content">
-                  <i class="fa fa-search-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="<?= base_url('assets'); ?>/img/portfolio/gene.png" alt="">
-            </a>
-            <h4>Multimedia</h4>
-          </div>
-          <div class="col-sm-6 portfolio-item text-center">
-            <a class="portfolio-link" href="#portfolioModal1" data-toggle="modal" style="margin-bottom: 10px">
-              <div class="caption">
-                <div class="caption-content">
-                  <i class="fa fa-search-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="<?= base_url('assets'); ?>/img/portfolio/rocket.png" alt="">
-            </a>
-            <h4>Jaringan</h4>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="success" id="about">
-      <div class="container">
-        <h2 class="text-center">About</h2>
-        <hr class="small">
-        <div class="row">
-          <div class="col-lg-4 ml-auto">
-            <p>Computer Engineering Research adalah sebuah Kelompok Studi Departemen di S1 Sistem Komputer Universitas Diponegoro. Blblablablablablablal bls alsbalbsal sbalbsal sbalbslabsl absalbslabsla bs</p>
-          </div>
-          <div class="col-lg-4 mr-auto">
-            <p>Blabalb balbalba blabalbala ablalaba balabls dlbaldbadb abdlkabs pengertian belakangan hehehe dlabsdl asbdl asbdlas dlsakbdlasbdlas dlasb dlasb dla dlkasbdl sabld asd</p>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- Event Section -->
     <section id="event">
@@ -180,9 +98,6 @@
             </div>
           </div>
 
-          <div class="col-lg-8 mx-auto text-center">
-            <a href="<?= site_url('event');?>" class="btn btn-lg btn-block btn-primary">Lihat Semua</a>
-          </div>
         </div>
       </div>
     </section>

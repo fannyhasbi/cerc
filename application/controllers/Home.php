@@ -7,4 +7,8 @@ class Home extends CI_Controller {
 	{
 		$this->load->view('home/index');
 	}
+
+  public function event(){
+    $this->load->view("home/event");
+  }
 }
