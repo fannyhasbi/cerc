@@ -16,7 +16,7 @@
           <?= $msg; ?>
           <div class="form-group">
             <label for="username">Username</label>
-            <input type="text" name="username" class="form-control">
+            <input type="text" name="username" class="form-control" autofocus>
           </div>
 
           <div class="form-group">

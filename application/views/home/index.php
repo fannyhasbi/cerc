@@ -141,8 +141,8 @@
         <hr class="dark">
         <div class="row">
           <div class="col-lg-4 event-item">
-            <img class="img-fluid" src="<?= base_url('assets'); ?>/img/portfolio/cake.png" alt="">
-            <h5>Anforcom</h5>
+            <img class="img-fluid" src="<?= base_url('assets'); ?>/img/portfolio/submarine.png" alt="">
+            <h5>CITEUP</h5>
             
             <div class="event-info">
               <p class="event-date"><i class="fa fa-calendar fa-fw"></i> 21 Okt 2017</p>
@@ -155,8 +155,8 @@
           </div>
 
           <div class="col-lg-4 event-item">
-            <img class="img-fluid" src="<?= base_url('assets'); ?>/img/portfolio/game.png" alt="">
-            <h5>Invofest</h5>
+            <img class="img-fluid" src="<?= base_url('assets'); ?>/img/portfolio/gene.png" alt="">
+            <h5>IT - VENTURE X</h5>
             <div class="event-info">
               <p class="event-date"><i class="fa fa-calendar fa-fw"></i> 28 Okt 2017</p>
               <p class="event-place"><i class="fa fa-map-marker fa-fw"></i>Tegal</p>
@@ -168,8 +168,8 @@
           </div>
 
           <div class="col-lg-4 event-item">
-            <img class="img-fluid" src="<?= base_url('assets'); ?>/img/portfolio/cabin.png" alt="">
-            <h5>Kihajar Fest</h5>
+            <img class="img-fluid" src="<?= base_url('assets'); ?>/img/portfolio/rocket.png" alt="">
+            <h5>Hackathon Banyumas</h5>
             <div class="event-info">
               <p class="event-date"><i class="fa fa-calendar fa-fw"></i> 21 Nov 2017</p>
               <p class="event-place"><i class="fa fa-map-marker fa-fw"></i> Banten</p>
