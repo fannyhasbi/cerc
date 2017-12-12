@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $route['event'] = 'home/event';
 $route['login'] = 'home/login';
-$route['dashboard'] = 'user';
+$route['u'] = 'user';
 
 $route['default_controller'] = 'home';
 $route['404_override'] = '';

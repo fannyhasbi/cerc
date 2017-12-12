@@ -100,58 +100,58 @@
                               <tr>
                                 <td>Sign contract for "What are conference organizers afraid of?"</td>
                                 <td class="td-actions text-right">
-                                  <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-simple btn-xs">
-                                    <i class="material-icons">edit</i>
-                                  </button>
-                                  <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                    <i class="material-icons">close</i>
-                                  </button>
-                                  <button type="button" rel="tooltip" title="Remove" class="btn btn-success btn-simple btn-xs">
+                                  <a href="#" rel="tooltip" title="Lihat" class="btn btn-success btn-simple btn-xs">
                                     <i class="material-icons">remove_red_eye</i>
-                                  </button>
+                                  </a>
+                                  <a href="#" rel="tooltip" title="Edit Event" class="btn btn-primary btn-simple btn-xs">
+                                    <i class="material-icons">edit</i>
+                                  </a>
+                                  <a href="#" rel="tooltip" title="Hapus" class="btn btn-danger btn-simple btn-xs">
+                                    <i class="material-icons">close</i>
+                                  </a>
                                 </td>
                               </tr>
                               <tr>
                                 <td>Lines From Great Russian Literature? Or E-mails From My Boss?</td>
                                 <td class="td-actions text-right">
-                                  <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-simple btn-xs">
-                                    <i class="material-icons">edit</i>
-                                  </button>
-                                  <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                    <i class="material-icons">close</i>
-                                  </button>
-                                  <button type="button" rel="tooltip" title="Remove" class="btn btn-success btn-simple btn-xs">
+                                  <a href="#" rel="tooltip" title="Lihat" class="btn btn-success btn-simple btn-xs">
                                     <i class="material-icons">remove_red_eye</i>
-                                  </button>
+                                  </a>
+                                  <a href="#" rel="tooltip" title="Edit Event" class="btn btn-primary btn-simple btn-xs">
+                                    <i class="material-icons">edit</i>
+                                  </a>
+                                  <a href="#" rel="tooltip" title="Hapus" class="btn btn-danger btn-simple btn-xs">
+                                    <i class="material-icons">close</i>
+                                  </a>
                                 </td>
                               </tr>
                               <tr>
                                 <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
                                 </td>
                                 <td class="td-actions text-right">
-                                  <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-simple btn-xs">
-                                      <i class="material-icons">edit</i>
-                                  </button>
-                                  <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                      <i class="material-icons">close</i>
-                                  </button>
-                                  <button type="button" rel="tooltip" title="Remove" class="btn btn-success btn-simple btn-xs">
+                                  <a href="#" rel="tooltip" title="Lihat" class="btn btn-success btn-simple btn-xs">
                                     <i class="material-icons">remove_red_eye</i>
-                                  </button>
+                                  </a>
+                                  <a href="#" rel="tooltip" title="Edit Event" class="btn btn-primary btn-simple btn-xs">
+                                    <i class="material-icons">edit</i>
+                                  </a>
+                                  <a href="#" rel="tooltip" title="Hapus" class="btn btn-danger btn-simple btn-xs">
+                                    <i class="material-icons">close</i>
+                                  </a>
                                 </td>
                               </tr>
                               <tr>
                                 <td>Create 4 Invisible User Experiences you Never Knew About</td>
                                 <td class="td-actions text-right">
-                                  <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-simple btn-xs">
-                                    <i class="material-icons">edit</i>
-                                  </button>
-                                  <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                    <i class="material-icons">close</i>
-                                  </button>
-                                  <button type="button" rel="tooltip" title="Remove" class="btn btn-success btn-simple btn-xs">
+                                  <a href="#" rel="tooltip" title="Lihat" class="btn btn-success btn-simple btn-xs">
                                     <i class="material-icons">remove_red_eye</i>
-                                  </button>
+                                  </a>
+                                  <a href="#" rel="tooltip" title="Edit Event" class="btn btn-primary btn-simple btn-xs">
+                                    <i class="material-icons">edit</i>
+                                  </a>
+                                  <a href="#" rel="tooltip" title="Hapus" class="btn btn-danger btn-simple btn-xs">
+                                    <i class="material-icons">close</i>
+                                  </a>
                                 </td>
                               </tr>
                             </tbody>
@@ -188,8 +188,6 @@
 <script src="<?= base_url('assets');?>/vendor/jquery/jquery.min.js" type="text/javascript"></script>
 <script src="<?= base_url('assets');?>/vendor/bootstrap/js/bootstrap_pure.min.js" type="text/javascript"></script>
 <script src="<?= base_url('assets');?>/vendor/material/js/material.min.js" type="text/javascript"></script>
-<!--  Charts Plugin -->
-<script src="<?= base_url('assets');?>/vendor/material/js/chartist.min.js"></script>
 <!--  Dynamic Elements plugin -->
 <script src="<?= base_url('assets');?>/vendor/material/js/arrive.min.js"></script>
 <!--  Sharrre Plugin -->
@@ -202,7 +200,4 @@
 <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSaSxv01RBLnlu5EyBHLs57s-IquPaows"></script> -->
 <!-- Material Dashboard javascript methods -->
 <script src="<?= base_url('assets');?>/vendor/material/js/material-dashboard.js?v=1.2.0"></script>
-<!-- Material Dashboard DEMO methods, don't include it in your project! -->
-<script src="<?= base_url('assets');?>/vendor/material/js/demo.js"></script>
-
 </html>
