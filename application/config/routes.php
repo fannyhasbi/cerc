@@ -6,6 +6,12 @@ $route['login'] = 'home/login';
 $route['event'] = 'home/event';
 $route['event/(:num)/(:any)'] = 'home/event_detail/$1/$2';
 
+// Club
+$route['software'] = 'club';
+$route['jaringan'] = 'club';
+$route['embedded'] = 'club';
+$route['multimedia'] = 'club';
+
 // Admin
 $route['u'] = 'user';
 $route['u/add'] = 'user/add_event';

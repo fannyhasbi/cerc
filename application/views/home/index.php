@@ -73,7 +73,7 @@
         <hr class="dark">
         <div class="row">
           <div class="col-sm-6 portfolio-item text-center">
-            <a class="portfolio-link" href="#portfolioModal1" data-toggle="modal" style="margin-bottom: 10px">
+            <a class="portfolio-link" href="<?= site_url('embedded'); ?>" style="margin-bottom: 10px">
               <div class="caption">
                 <div class="caption-content">
                   <i class="fa fa-search-plus fa-3x"></i>
@@ -84,7 +84,7 @@
             <h4>Embedded</h4>
           </div>
           <div class="col-sm-6 portfolio-item text-center">
-            <a class="portfolio-link" href="#portfolioModal1" data-toggle="modal" style="margin-bottom: 10px">
+            <a class="portfolio-link" href="<?= site_url('software'); ?>" style="margin-bottom: 10px">
               <div class="caption">
                 <div class="caption-content">
                   <i class="fa fa-search-plus fa-3x"></i>
@@ -95,7 +95,7 @@
             <h4>Software</h4>
           </div>
           <div class="col-sm-6 portfolio-item text-center">
-            <a class="portfolio-link" href="#portfolioModal1" data-toggle="modal" style="margin-bottom: 10px">
+            <a class="portfolio-link" href="<?= site_url('multimedia'); ?>" style="margin-bottom: 10px">
               <div class="caption">
                 <div class="caption-content">
                   <i class="fa fa-search-plus fa-3x"></i>
@@ -106,7 +106,7 @@
             <h4>Multimedia</h4>
           </div>
           <div class="col-sm-6 portfolio-item text-center">
-            <a class="portfolio-link" href="#portfolioModal1" data-toggle="modal" style="margin-bottom: 10px">
+            <a class="portfolio-link" href="<?= site_url('jaringan');?>" style="margin-bottom: 10px">
               <div class="caption">
                 <div class="caption-content">
                   <i class="fa fa-search-plus fa-3x"></i>
@@ -144,7 +144,7 @@
         <div class="row">
           <?php foreach($events as $event): ?>
           <div class="col-lg-4 event-item">
-            <img class="img-fluid" src="<?= base_url('assets'); ?>/img/portfolio/submarine.png" alt="">
+            <img class="img-fluid" src="<?= $event->img; ?>" alt="">
             <h5><?= $event->nama ?></h5>
             
             <div class="event-info">

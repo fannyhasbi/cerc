@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,7 +55,7 @@
   <!-- Event Section -->
   <section id="detail">
     <div class="container">
-      <?php $this->load->view('home/'.$view_name); ?>
+      <?php $this->load->view('club/'.$view_name); ?>
     </div>
   </section>
 
