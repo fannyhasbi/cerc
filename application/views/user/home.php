@@ -20,7 +20,7 @@
                 <td><?= $event->nama; ?></td>
                 <td><?= $event->tgl; ?>
                 <td class="td-actions text-right">
-                  <a href="#" rel="tooltip" title="Lihat" class="btn btn-success btn-simple btn-xs">
+                  <a href="<?= site_url('event/'.$event->id."/".$event->slug);?>" rel="tooltip" title="Lihat" class="btn btn-success btn-simple btn-xs">
                     <i class="material-icons">remove_red_eye</i>
                   </a>
                   <a href="#" rel="tooltip" title="Edit Event" class="btn btn-primary btn-simple btn-xs">
@@ -43,6 +43,8 @@
 <script>
 $(document).ready(function(){
   var msg = '<?= $msg; ?>';
+  var type = '<?= $type; ?>';
+  type = type.length == 0 ? 'success' : type;
 
   if(msg.length !== 0){
     color = Math.floor((Math.random() * 4) + 1);
@@ -50,7 +52,7 @@ $(document).ready(function(){
       icon: "notifications",
       message: msg
     }, {
-      type: 'success',
+      type: type,
       timer: 3000,
       placement: {
         from: 'top',
