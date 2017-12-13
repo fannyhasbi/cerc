@@ -3,7 +3,7 @@
 <div class="row">
   <?php foreach($events as $event): ?>
   <div class="col-lg-4" style="margin-bottom: 25px">
-    <img class="img-fluid" src="<?= base_url('assets'); ?>/img/portfolio/submarine.png" alt="">
+    <img class="img-fluid" src="<?= $event->img ?>" alt="">
     <h5><?= $event->nama ?></h5>
     
     <div class="event-info">

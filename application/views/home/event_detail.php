@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-8">
     <div class="text-center">
-      <img class="img-fluid" src="<?= base_url('assets'); ?>/img/portfolio/submarine.png" style="max-height: 500px; margin-bottom: 20px">
+      <img class="img-fluid" src="<?= $event->img; ?>" style="max-height: 500px; margin-bottom: 20px">
       <h2><?= $event->nama; ?></h2>
     </div>
     

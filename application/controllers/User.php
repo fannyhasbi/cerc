@@ -16,6 +16,8 @@ class User extends CI_Controller {
   }
 
   public function index(){
+    $this->cekLogin();
+    
     $this->load->model('event_model');
     $data['events'] = $this->event_model->getEvent();
 

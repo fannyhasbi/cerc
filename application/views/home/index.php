@@ -44,6 +44,11 @@
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#event">Event</a>
             </li>
+            <?php if($this->session->userdata('login')){ ?>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="<?= site_url('u'); ?>">Dashboard</a>
+            </li>
+            <?php } ?>
           </ul>
         </div>
       </div>
