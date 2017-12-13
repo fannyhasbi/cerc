@@ -140,45 +140,21 @@
         <h2 class="text-center">Event</h2>
         <hr class="dark">
         <div class="row">
+          <?php foreach($events as $event): ?>
           <div class="col-lg-4 event-item">
             <img class="img-fluid" src="<?= base_url('assets'); ?>/img/portfolio/submarine.png" alt="">
-            <h5>CITEUP</h5>
+            <h5><?= $event->nama ?></h5>
             
             <div class="event-info">
-              <p class="event-date"><i class="fa fa-calendar fa-fw"></i> 21 Okt 2017</p>
-              <p class="event-place"><i class="fa fa-map-marker fa-fw"></i> Semarang</p>
+              <p class="event-date"><i class="fa fa-calendar fa-fw"></i> <?= $event->tgl ?></p>
+              <p class="event-place"><i class="fa fa-map-marker fa-fw"></i> <?= $event->tempat ?></p>
             </div>
 
             <div class="col-lg-8 mx-auto text-center event-btn">
               <a href="#" class="btn btn-lg">Lihat Detail</a>
             </div>
           </div>
-
-          <div class="col-lg-4 event-item">
-            <img class="img-fluid" src="<?= base_url('assets'); ?>/img/portfolio/gene.png" alt="">
-            <h5>IT - VENTURE X</h5>
-            <div class="event-info">
-              <p class="event-date"><i class="fa fa-calendar fa-fw"></i> 28 Okt 2017</p>
-              <p class="event-place"><i class="fa fa-map-marker fa-fw"></i>Tegal</p>
-            </div>
-
-            <div class="col-lg-8 mx-auto text-center event-btn">
-              <a href="#" class="btn btn-lg">Lihat Detail</a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 event-item">
-            <img class="img-fluid" src="<?= base_url('assets'); ?>/img/portfolio/rocket.png" alt="">
-            <h5>Hackathon Banyumas</h5>
-            <div class="event-info">
-              <p class="event-date"><i class="fa fa-calendar fa-fw"></i> 21 Nov 2017</p>
-              <p class="event-place"><i class="fa fa-map-marker fa-fw"></i> Banten</p>
-            </div>
-
-            <div class="col-lg-8 mx-auto text-center event-btn">
-              <a href="#" class="btn btn-lg">Lihat Detail</a>
-            </div>
-          </div>
+          <?php endforeach; ?>
 
           <div class="col-lg-8 mx-auto text-center">
             <a href="<?= site_url('event');?>" class="btn btn-lg btn-block btn-primary">Lihat Semua</a>
