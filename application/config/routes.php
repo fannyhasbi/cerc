@@ -5,6 +5,7 @@ $route['event'] = 'home/event';
 $route['login'] = 'home/login';
 $route['u'] = 'user';
 $route['u/add'] = 'user/add_event';
+$route['u/logout'] = 'home/logout';
 
 $route['default_controller'] = 'home';
 $route['404_override'] = '';

@@ -43,6 +43,11 @@
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
+
+    <!--   Core JS Files   -->
+    <script src="<?= base_url('assets');?>/vendor/jquery/jquery.min.js" type="text/javascript"></script>
+    <script src="<?= base_url('assets');?>/vendor/bootstrap/js/bootstrap_pure.min.js" type="text/javascript"></script>
+    <script src="<?= base_url('assets');?>/vendor/material/js/material.min.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -54,7 +59,7 @@
           <div class="sidebar-wrapper">
             <ul class="nav">
               <li class="active">
-                <a href="dashboard.html">
+                <a href="<?= site_url('u'); ?>">
                   <i class="material-icons">dashboard</i><p>Dashboard</p>
                 </a>
               </li>
@@ -71,12 +76,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                   </button>
-                  <a class="navbar-brand" href="#"> Event </a>
+                  <a class="navbar-brand" href="<?= site_url('u'); ?>"> CERC </a>
                 </div>
                 <div class="collapse navbar-collapse">
                   <ul class="nav navbar-nav navbar-right">
                     <li>
-                      <a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
+                      <a href="<?= site_url('u/logout'); ?>">
                         <i class="material-icons">exit_to_app</i>
                         <p class="hidden-lg hidden-md">Logout</p>
                       </a>
@@ -112,10 +117,7 @@
         </div>
     </div>
 </body>
-<!--   Core JS Files   -->
-<script src="<?= base_url('assets');?>/vendor/jquery/jquery.min.js" type="text/javascript"></script>
-<script src="<?= base_url('assets');?>/vendor/bootstrap/js/bootstrap_pure.min.js" type="text/javascript"></script>
-<script src="<?= base_url('assets');?>/vendor/material/js/material.min.js" type="text/javascript"></script>
+
 <!--  Dynamic Elements plugin -->
 <script src="<?= base_url('assets');?>/vendor/material/js/arrive.min.js"></script>
 <!--  Sharrre Plugin -->

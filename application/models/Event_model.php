@@ -15,6 +15,23 @@ class Event_model extends CI_Model {
     $q = $this->db->get('event');
     return $q->result();
   }
+
+  public function add(){
+    $slug = "abc";
+
+    $data = array(
+      'nama' => $this->input->post('nama'),
+      'tgl' => $this->input->post('tgl'),
+      'tempat' => $this->input->post('tempat'),
+      'ket' => $this->input->post('keterangan'),
+      'slug' => $slug
+    );
+
+    if($this->db->insert('event', $data)){
+      return true;
+    }
+    return false;
+  }
 }
 
 /* End of file Event_model.php */
