@@ -33,7 +33,13 @@ class Home extends CI_Controller {
         $data_user = $this->user_model->getData();
 
         if(password_verify($pass, $data_user->password)){
-          redirect(site_url());
+          $sess_data = array(
+            'login' => true,
+            'username' => $user
+          );
+
+          $this->session->set_userdata($sess_data);
+          redirect(site_url('u'));
         }
         else {
           $this->session->set_flashdata('msg', '<div class="alert alert-danger">Username atau password salah</div>');

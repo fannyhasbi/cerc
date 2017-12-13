@@ -5,11 +5,13 @@ class Event_model extends CI_Model {
 
   public function getEventHome(){
     $this->db->limit(3);
+    $this->db->order_by('id', 'DESC');
     $q = $this->db->get('event');
     return $q->result();
   }
 
   public function getEvent(){
+    $this->db->order_by('id', 'DESC');
     $q = $this->db->get('event');
     return $q->result();
   }
