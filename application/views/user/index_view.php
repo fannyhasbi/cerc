@@ -90,6 +90,7 @@
                 </div>
               </div>
             </nav>
+            
             <div class="content">
               <div class="container-fluid">
                 <?php $this->load->view('user/'. $view_name); ?>
@@ -100,9 +101,9 @@
               <div class="container-fluid">
                 <nav class="pull-left">
                   <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Event</a></li>
-                    <li><a href="#">Club</a></li>
+                    <li><a href="<?= site_url(); ?>">Home</a></li>
+                    <li><a href="<?= site_url('event'); ?>">Event</a></li>
+                    <li><a href="<?= site_url('club'); ?>">Club</a></li>
                   </ul>
                 </nav>
                 <p class="copyright pull-right">

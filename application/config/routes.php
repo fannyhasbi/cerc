@@ -1,8 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-$route['event'] = 'home/event';
 $route['login'] = 'home/login';
+
+$route['event'] = 'home/event';
+$route['event/(:num)/(:any)'] = 'home/event_detail/$1/$2';
+
+// Admin
 $route['u'] = 'user';
 $route['u/add'] = 'user/add_event';
 $route['u/logout'] = 'home/logout';

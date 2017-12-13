@@ -20,13 +20,13 @@
             <div class="col-md-6">
               <div class="form-group label-floating">
                 <label class="control-label">* Tanggal</label>
-                <input type="email" class="form-control" name="tanggal" required>
+                <input type="text" class="form-control" name="tanggal" required>
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group label-floating">
                 <label class="control-label">* Tempat</label>
-                <input type="email" class="form-control" name="tempat" required>
+                <input type="text" class="form-control" name="tempat" required>
               </div>
             </div>
           </div>

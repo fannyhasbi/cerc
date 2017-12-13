@@ -44,9 +44,6 @@
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#event">Event</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="<?= site_url('login'); ?>">Masuk <i class="fa fa-sign-in"></i></a>
-            </li>
           </ul>
         </div>
       </div>

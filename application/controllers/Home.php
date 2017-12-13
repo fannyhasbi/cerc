@@ -5,7 +5,6 @@ class Home extends CI_Controller {
 
   public function __construct(){
     parent::__construct();
-    $this->load->model('user_model');
   }
 
 	public function index(){
@@ -15,14 +14,11 @@ class Home extends CI_Controller {
 		$this->load->view('home/index', $data);
 	}
 
-  public function event(){
-    $this->load->model('event_model');
-    $data['events'] = $this->event_model->getEvent();
-
-    $this->load->view('home/event', $data);
-  }
-
   public function login(){
+    if($this->session->userdata('login'))
+      redirect(site_url('u'));
+
+    $this->load->model('user_model');
     if($this->input->post('login')){
       $user = $this->input->post('username');
       $pass = $this->input->post('password');
@@ -61,4 +57,33 @@ class Home extends CI_Controller {
     $this->session->sess_destroy();
     redirect(site_url());
   }
+
+  public function event(){
+    $this->load->model('event_model');
+    $data['events'] = $this->event_model->getEvent();
+
+    $data['view_name'] = 'event';
+    $this->load->view('home/index_view', $data);
+  }
+
+  public function event_detail($id, $slug){
+    $this->load->model('event_model');
+
+    if($this->event_model->checkId($id)->num_rows() > 0){
+      $event_data = $this->event_model->getEventById($id);
+      if($slug == $event_data->slug){
+         $data['event'] = $event_data;
+
+         $data['view_name'] = 'event_detail';
+         $this->load->view('home/index_view', $data);
+      }
+      else {
+        echo 'not found';
+      }
+    }
+    else {
+      echo 'not found';
+    }
+  }
+
 }

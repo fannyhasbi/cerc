@@ -20,6 +20,7 @@ class User extends CI_Controller {
     $data['events'] = $this->event_model->getEvent();
 
     $data['msg'] = $this->session->flashdata('msg');
+    $data['type']= $this->session->flashdata('type');
     $data['view_name'] = 'home';
     $this->load->view('user/index_view', $data);
   }
@@ -28,10 +29,14 @@ class User extends CI_Controller {
     if($this->input->post('tambah')){
       $this->load->model('event_model');
 
-      if($this->event_model->add())
-        $this->session->set_flashdata('msg', '<div class="alert alert-success"><span>Event berhasil dimasukkan</span></div>');
-      else
-        $this->session->set_flashdata('msg', '<div class="alert alert-danger"><span>Event gagal dimasukkan</span></div>');
+      if($this->event_model->add()){
+        $this->session->set_flashdata('msg', 'Event berhasil dimasukkan');
+        $this->session->set_flashdata('type', 'success');
+      }
+      else{
+        $this->session->set_flashdata('msg', 'Event gagal dimasukkan');
+        $this->session->set_flashdata('type', 'danger');
+      }
 
       redirect(site_url('u'));
     }
