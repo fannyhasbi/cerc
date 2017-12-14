@@ -24,6 +24,14 @@ class Event_model extends CI_Model {
     return $r;
   }
 
+  public function checkId($id){
+    return $this->db->get_where('event', ['id' => $id]);
+  }
+
+  public function checkSlug($slug){
+    return $this->db->get_where('event', ['slug' => $slug]);
+  }
+
   public function getEventHome(){
     $this->db->limit(3);
     $this->db->order_by('id', 'DESC');
@@ -35,6 +43,11 @@ class Event_model extends CI_Model {
     $this->db->order_by('id', 'DESC');
     $q = $this->db->get('event');
     return $q->result();
+  }
+
+  public function getEventById($id){
+    $q = $this->db->get_where('event', ['id' => $id]);
+    return $q->row();
   }
 
   public function add(){
@@ -62,17 +75,41 @@ class Event_model extends CI_Model {
     return false;
   }
 
-  public function checkId($id){
-    return $this->db->get_where('event', ['id' => $id]);
+  public function update($id){
+    $foto = $this->input->post('foto');
+    $foto = (strlen($foto) < 1) ? base_url('assets') .'/img/portfolio/submarine.png' : $this->purify($foto);
+
+    $nums = '1234567890';
+    $x = ""; // untuk unique slug
+    for($i = 0; $i < 4; $i++)
+      $x .= $nums[rand(0, strlen($nums) - 1)];
+
+    $data = array(
+      'nama'    => $this->purify($this->input->post('nama')),
+      'tgl'     => $this->purify($this->input->post('tanggal')),
+      'tempat'  => $this->purify($this->input->post('tempat')),
+      'ket'     => $this->input->post('keterangan'),
+      'slug'    => $this->purify_slug($this->input->post('nama')) ."-". $x,
+      'img'     => $foto
+    );    
+
+    $this->db->where('id', $id);
+
+    if($this->db->update('event', $data)){
+      return true;
+    }
+    return false;
   }
 
-  public function checkSlug($slug){
-    return $this->db->get_where('event', ['slug' => $slug]);
+  public function delete($id){
+    $this->db->where('id', $id);
+    if($this->db->delete('event')){
+      return true;
+    }
+    else {
+      return false;
+    }
   }
 
-  public function getEventById($id){
-    $q = $this->db->get_where('event', ['id' => $id]);
-    return $q->row();
-  }
 
 }

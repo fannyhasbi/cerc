@@ -78,11 +78,11 @@ class Home extends CI_Controller {
          $this->load->view('home/index_view', $data);
       }
       else {
-        echo 'not found';
+        show_404();
       }
     }
     else {
-      echo 'not found';
+      show_404();
     }
   }
 
