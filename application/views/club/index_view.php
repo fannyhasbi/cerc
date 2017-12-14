@@ -19,6 +19,11 @@
 
   <!-- Custom styles for this template -->
   <link href="<?= base_url('assets'); ?>/css/freelancer.css" rel="stylesheet">
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="<?= base_url('assets'); ?>/vendor/jquery/jquery.min.js"></script>
+  <script src="<?= base_url('assets'); ?>/vendor/popper/popper.min.js"></script>
+  <script src="<?= base_url('assets'); ?>/vendor/bootstrap/js/bootstrap.min.js"></script>
 </head>
 
 <body id="page-top">
@@ -53,11 +58,7 @@
   </nav>
 
   <!-- Event Section -->
-  <section id="detail">
-    <div class="container">
-      <?php $this->load->view('club/'.$view_name); ?>
-    </div>
-  </section>
+  <?php $this->load->view('club/'.$view_name); ?>
 
   <!-- Footer -->
   <footer class="text-center">
@@ -112,11 +113,6 @@
       <i class="fa fa-chevron-up"></i>
     </a>
   </div>
-
-  <!-- Bootstrap core JavaScript -->
-  <script src="<?= base_url('assets'); ?>/vendor/jquery/jquery.min.js"></script>
-  <script src="<?= base_url('assets'); ?>/vendor/popper/popper.min.js"></script>
-  <script src="<?= base_url('assets'); ?>/vendor/bootstrap/js/bootstrap.min.js"></script>
 
   <!-- Plugin JavaScript -->
   <script src="<?= base_url('assets'); ?>/vendor/jquery-easing/jquery.easing.min.js"></script>
