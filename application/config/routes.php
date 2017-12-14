@@ -15,6 +15,8 @@ $route['multimedia'] = 'club';
 // Admin
 $route['u'] = 'user';
 $route['u/add'] = 'user/add_event';
+$route['u/edit/(:num)'] = 'user/edit_event/$1';
+$route['u/hapus/(:num)']= 'user/hapus_event/$1';
 $route['u/logout'] = 'home/logout';
 
 $route['default_controller'] = 'home';

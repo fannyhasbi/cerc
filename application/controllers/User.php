@@ -46,7 +46,60 @@ class User extends CI_Controller {
       $data['view_name'] = 'add_event';
       $this->load->view('user/index_view', $data);
     }
+  }
 
+  public function edit_event($id){
+    $this->load->model('event_model');
+    
+    if($this->input->post('update')){
+      if($this->event_model->update($id)){
+        $this->session->set_flashdata('msg', 'Event berhasil diupdate');
+        $this->session->set_flashdata('type', 'success');
+      }
+      else{
+        $this->session->set_flashdata('msg', 'Event gagal diupdate');
+        $this->session->set_flashdata('type', 'danger');
+      }
+
+      redirect(site_url('u'));
+    }
+    else {
+      if($this->event_model->checkId($id)->num_rows() > 0){
+        $data['event'] = $this->event_model->getEventById($id);
+
+        $data['view_name'] = 'edit_event';
+        $this->load->view('user/index_view', $data);
+      }
+      else {
+        // tidak ada id tersebut
+        show_404();
+      }
+    }
+  }
+
+  public function hapus_event($id = null){
+    if($id === null){
+      show_404();
+    }
+    else {
+      $this->load->model('event_model');
+
+      if($this->event_model->checkId($id)->num_rows() > 0){
+        if($this->event_model->delete($id)){
+          $this->session->set_flashdata('msg', 'Event berhasil dihapus');
+          $this->session->set_flashdata('type', 'success');
+        }
+        else {
+          $this->session->set_flashdata('msg', 'Event gagal dihapus');
+          $this->session->set_flashdata('type', 'danger');
+        }
+      }
+      else {
+        show_404();
+      }
+
+      redirect(site_url('u'));
+    }
   }
 
 }

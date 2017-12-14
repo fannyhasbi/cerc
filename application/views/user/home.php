@@ -20,15 +20,15 @@
                 <td><?= $event->nama; ?></td>
                 <td><?= $event->tgl; ?>
                 <td class="td-actions text-right">
-                  <a href="<?= site_url('event/'.$event->id."/".$event->slug);?>" rel="tooltip" title="Lihat" class="btn btn-success btn-simple btn-xs">
+                  <a href="<?= site_url('event/'.$event->id."/".$event->slug);?>" rel="tooltip" title="Lihat" class="btn btn-success btn-simple btn-xs" target="_blank">
                     <i class="material-icons">remove_red_eye</i>
                   </a>
-                  <a href="#" rel="tooltip" title="Edit Event" class="btn btn-primary btn-simple btn-xs">
+                  <a href="<?= site_url('u/edit/'.$event->id); ?>" rel="tooltip" title="Edit Event" class="btn btn-primary btn-simple btn-xs">
                     <i class="material-icons">edit</i>
                   </a>
-                  <a href="#" rel="tooltip" title="Hapus" class="btn btn-danger btn-simple btn-xs">
+                  <button rel="tooltip" title="Hapus" class="btn btn-danger btn-simple btn-xs" onclick="hapus(<?= $event->id; ?>)">
                     <i class="material-icons">close</i>
-                  </a>
+                  </button>
                 </td>
               </tr>
             <?php endforeach; ?>
@@ -61,4 +61,11 @@ $(document).ready(function(){
     });
   }
 });
+
+function hapus(id){
+  var j = confirm("Yakin ingin menghapus?");
+  if(j){
+    window.location = "<?= site_url('u/hapus/'); ?>"+ id;
+  }
+}
 </script>

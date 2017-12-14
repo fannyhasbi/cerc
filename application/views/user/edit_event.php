@@ -11,7 +11,7 @@
             <div class="col-md-12">
               <div class="form-group label-floating">
                 <label class="control-label">* Nama Event</label>
-                <input type="text" class="form-control" name="nama" required autofocus>
+                <input type="text" class="form-control" name="nama" required autofocus value="<?= $event->nama; ?>">
               </div>
             </div>
           </div>
@@ -20,13 +20,13 @@
             <div class="col-md-6">
               <div class="form-group label-floating">
                 <label class="control-label">* Tanggal</label>
-                <input type="text" class="form-control" name="tanggal" pattern="([0-9]{4})+-+([0-1]{1})+([0-9]{1})+-+([0-3]{1})+([0-9]{1})" required>
+                <input type="text" class="form-control" name="tanggal"  pattern="([0-9]{4})+-+([0-1]{1})+([0-9]{1})+-+([0-3]{1})+([0-9]{1})" required value="<?= $event->tgl; ?>">
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group label-floating">
                 <label class="control-label">* Tempat</label>
-                <input type="text" class="form-control" name="tempat" required>
+                <input type="text" class="form-control" name="tempat" required value="<?= $event->tempat; ?>">
               </div>
             </div>
           </div>
@@ -36,7 +36,7 @@
               <div class="form-group">
                 <label>* Keterangan</label>
                 <div class="form-group label-floating">
-                  <textarea class="form-control" name="keterangan" rows="10" placeholder="Keterangan lengkap (pendaftaran, penyelenggara, biaya, dll)" required></textarea>
+                  <textarea class="form-control" name="keterangan" rows="10" placeholder="Keterangan lengkap (pendaftaran, penyelenggara, biaya, dll)" required><?= $event->ket; ?></textarea>
                 </div>
               </div>
             </div>
@@ -46,12 +46,14 @@
             <div class="col-md-6">
               <div class="form-group label-floating">
                 <label class="control-label">Foto <small><a href="https://imgbb.com">imgbb.com</a></small></label>
-                <input type="url" class="form-control" name="foto">
+                <input type="url" class="form-control" name="foto" value="<?= $event->img; ?>">
               </div>
             </div>
           </div>
 
-          <input type="submit" class="btn btn-primary pull-right" name="tambah" value="Tambah">
+          <input type="hidden" name="id" value="<?= $event->id; ?>">
+
+          <input type="submit" class="btn btn-primary pull-right" name="update" value="Update">
           <div class="clearfix"></div>
         </form>
       </div>
