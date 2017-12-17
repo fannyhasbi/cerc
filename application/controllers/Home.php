@@ -31,7 +31,9 @@ class Home extends CI_Controller {
         if(password_verify($pass, $data_user->password)){
           $sess_data = array(
             'login' => true,
-            'username' => $user
+            'username' => $user,
+            'id' => $data_user->id,
+            'level' => $data_user->level
           );
 
           $this->session->set_userdata($sess_data);
