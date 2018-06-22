@@ -22,6 +22,10 @@ class User_model extends CI_Model {
     return $this->db->get_where('user', ['username' => $username]);
   }
 
+  public function checkUserById($id_user){
+    return $this->db->get_where('user', ['id' => $id_user]);
+  }
+
   public function getUser(){
     $this->db->order_by('level', 'ASC');
     $q = $this->db->get('user');
@@ -61,6 +65,10 @@ class User_model extends CI_Model {
     );
 
     $this->db->update('user', $data);
+  }
+
+  public function delete($id_user){
+    $this->db->delete('user', ['id' => $id_user]);
   }
   
 
