@@ -190,4 +190,25 @@ class User extends CI_Controller {
     redirect(site_url('u/user'));
   }
 
+  public function reset_pass_user($id_user){
+    $this->cekLogin();
+    $this->load->model('user_model');
+
+    $cek_user = $this->user_model->checkUserById($id_user);
+
+    if($cek_user->num_rows() == 0){
+      $this->session->set_flashdata('msg', 'User tidak ditemukan');
+      $this->session->set_flashdata('type', 'danger');
+    }
+    else {
+      $user = $this->user_model->getUserById($id_user);
+
+      $this->user_model->updateUserPass($id_user);
+      $this->session->set_flashdata('msg', 'Password '. $user->nama .' berhasil direset : 12345678');
+      $this->session->set_flashdata('type', 'success');
+    }
+
+    redirect(site_url('u/user'));
+  }
+
 }

@@ -67,6 +67,16 @@ class User_model extends CI_Model {
     $this->db->update('user', $data);
   }
 
+  public function updateUserPass($id_user){
+    $this->db->where('id', $id_user);
+
+    $data = array(
+      'password' => password_hash('12345678', PASSWORD_BCRYPT)
+    );
+
+    $this->db->update('user', $data);
+  }
+
   public function delete($id_user){
     $this->db->delete('user', ['id' => $id_user]);
   }

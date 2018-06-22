@@ -23,6 +23,7 @@ $route['u/user'] = 'user/user_home';
 $route['u/add_user'] = 'user/add_user';
 $route['u/edit_user/(:num)'] = 'user/edit_user/$1';
 $route['u/hapus_user/(:num)']= 'user/hapus_user/$1';
+$route['u/user_reset/(:num)']= 'user/reset_pass_user/$1';
 
 $route['default_controller'] = 'home';
 $route['404_override'] = '';

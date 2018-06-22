@@ -40,7 +40,7 @@
           </div>
 
           <input type="submit" class="btn btn-primary pull-right" name="simpan" value="Simpan">
-          <a href="<?= site_url('u/user/reset/'.$user->id); ?>" class="btn btn-warning pull-right">Reset Password</a>
+          <a href="<?= site_url('u/user_reset/'.$user->id); ?>" class="btn btn-warning pull-right">Reset Password</a>
           <div class="clearfix"></div>
         </form>
       </div>
