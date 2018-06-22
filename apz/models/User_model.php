@@ -16,6 +16,12 @@ class User_model extends CI_Model {
     $q = $this->db->get_where('user', $where);
     return $q->row();
   }
+
+  public function add(){
+    // $data = array(
+    //   'username' 
+    // );
+  }
   
 
 }

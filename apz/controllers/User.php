@@ -102,4 +102,27 @@ class User extends CI_Controller {
     }
   }
 
+  public function add_user(){
+    // if($this->input->post('tambah')){
+    //   $this->load->model('event_model');
+
+    //   if($this->event_model->add()){
+    //     $this->session->set_flashdata('msg', 'Event berhasil dimasukkan');
+    //     $this->session->set_flashdata('type', 'success');
+    //   }
+    //   else{
+    //     $this->session->set_flashdata('msg', 'Event gagal dimasukkan');
+    //     $this->session->set_flashdata('type', 'danger');
+    //   }
+
+    //   redirect(site_url('u'));
+    // }
+    // else {
+    //   $data['view_name'] = 'add_event';
+    //   $this->load->view('user/index_view', $data);
+    // }
+    $data['view_name'] = 'add_user';
+    $this->load->view('user/index_view', $data);
+  }
+
 }
