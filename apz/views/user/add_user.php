@@ -53,10 +53,51 @@
             </div>
           </div>
 
-          <input type="submit" class="btn btn-primary pull-right" name="tambah" value="Tambah">
+          <input type="submit" id="btn" class="btn btn-primary pull-right" name="tambah" value="Tambah">
           <div class="clearfix"></div>
         </form>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+$(function () {
+  $("#btn").click(function(e) {
+    var password  = $("#pass1").val();
+    var password2 = $("#pass2").val();
+
+    if(password.length < 6){
+      $.notify({
+        icon: "error_outline",
+        message: "Password terlalu pendek"
+      }, {
+        type: "danger",
+        timer: 2000,
+        placement: {
+          from: 'top',
+          align: 'center'
+        }
+      });
+      return false;
+    }
+
+    if (password != password2) {
+      $.notify({
+        icon: "error_outline",
+        message: "Password tidak cocok"
+      }, {
+        type: "danger",
+        timer: 2000,
+        placement: {
+          from: 'top',
+          align: 'center'
+        }
+      });
+      return false;
+    }
+
+    return true;
+  });
+});
+</script>

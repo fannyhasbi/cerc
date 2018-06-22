@@ -115,26 +115,30 @@ class User extends CI_Controller {
   }
 
   public function add_user(){
-    // if($this->input->post('tambah')){
-    //   $this->load->model('event_model');
+    if($this->input->post('tambah')){
+      $this->load->model('user_model');
 
-    //   if($this->event_model->add()){
-    //     $this->session->set_flashdata('msg', 'Event berhasil dimasukkan');
-    //     $this->session->set_flashdata('type', 'success');
-    //   }
-    //   else{
-    //     $this->session->set_flashdata('msg', 'Event gagal dimasukkan');
-    //     $this->session->set_flashdata('type', 'danger');
-    //   }
+      $cek_user = $this->user_model->checkUserByUsername($this->input->post('username'));
 
-    //   redirect(site_url('u'));
-    // }
-    // else {
-    //   $data['view_name'] = 'add_event';
-    //   $this->load->view('user/index_view', $data);
-    // }
-    $data['view_name'] = 'add_user';
-    $this->load->view('user/index_view', $data);
+      if($cek_user->num_rows() > 0){
+        $this->session->set_flashdata('msg', 'Username sudah terpakai');
+        $this->session->set_flashdata('type', 'warning');
+
+        redirect(site_url('u/user'));
+      }
+      else {
+        $this->user_model->add();
+        $this->session->set_flashdata('msg', 'User berhasil ditambah');
+        $this->session->set_flashdata('type', 'success');
+
+        redirect(site_url('u/user'));
+      }
+
+    }
+    else {
+      $data['view_name'] = 'add_user';
+      $this->load->view('user/index_view', $data);
+    }
   }
 
 }
