@@ -102,6 +102,18 @@ class User extends CI_Controller {
     }
   }
 
+  public function user_home(){
+    $this->cekLogin();
+    
+    $this->load->model('user_model');
+    $data['users'] = $this->user_model->getUser();
+
+    $data['msg'] = $this->session->flashdata('msg');
+    $data['type']= $this->session->flashdata('type');
+    $data['view_name'] = 'user_home';
+    $this->load->view('user/index_view', $data);
+  }
+
   public function add_user(){
     // if($this->input->post('tambah')){
     //   $this->load->model('event_model');

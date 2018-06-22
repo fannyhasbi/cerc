@@ -12,11 +12,14 @@ $route['jaringan'] = 'club';
 $route['embedded'] = 'club';
 $route['multimedia'] = 'club';
 
-// Admin
+// Admin event
 $route['u'] = 'user';
 $route['u/add'] = 'user/add_event';
 $route['u/edit/(:num)'] = 'user/edit_event/$1';
 $route['u/hapus/(:num)']= 'user/hapus_event/$1';
+
+// Admin user
+$route['u/user'] = 'user/user_home';
 $route['u/add_user'] = 'user/add_user';
 
 $route['default_controller'] = 'home';

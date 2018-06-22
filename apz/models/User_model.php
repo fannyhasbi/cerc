@@ -9,6 +9,11 @@ class User_model extends CI_Model {
     return $this->db->get_where('user', $where);
   }
 
+  public function getUser(){
+    $q = $this->db->get('user');
+    return $q->result();
+  }
+
   public function getData(){
     $where = array(
       'username' => $this->input->post('username')
