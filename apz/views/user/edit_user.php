@@ -2,7 +2,7 @@
   <div class="col-md-12">
     <div class="card">
       <div class="card-header" data-background-color="purple">
-        <h4 class="title">Tambah User</h4>
+        <h4 class="title">Edit User</h4>
         <p class="category">Isikan detail user</p>
       </div>
       <div class="card-content">
@@ -12,35 +12,20 @@
             <div class="col-md-6">
               <div class="form-group label-floating">
                 <label class="control-label">* Username</label>
-                <input type="text" class="form-control" name="username" required autofocus>
+                <input type="text" class="form-control" name="username" value="<?= $user->username; ?>" readonly disabled>
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group label-floating">
                 <label class="control-label">* Level</label>
                 <select class="form-control" name="level" required>
-                  <option value="1" selected>Admin</option>
-                  <option value="2">Software</option>
-                  <option value="3">Jaringan</option>
-                  <option value="4">Embedded</option>
-                  <option value="5">Multimedia</option>
-                  <option value="6">Unit</option>
+                  <option <?= $user->level == 1 ? 'selected' : '' ?> value="1" selected>Admin</option>
+                  <option <?= $user->level == 2 ? 'selected' : '' ?> value="2">Software</option>
+                  <option <?= $user->level == 3 ? 'selected' : '' ?> value="3">Jaringan</option>
+                  <option <?= $user->level == 4 ? 'selected' : '' ?> value="4">Embedded</option>
+                  <option <?= $user->level == 5 ? 'selected' : '' ?> value="5">Multimedia</option>
+                  <option <?= $user->level == 6 ? 'selected' : '' ?> value="6">Unit</option>
                 </select>
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group label-floating">
-                <label class="control-label">* Password</label>
-                <input type="password" id="pass1" class="form-control" name="password" required>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group label-floating">
-                <label class="control-label">* Ulangi Password</label>
-                <input type="password" id="pass2" class="form-control" name="password2" required>
               </div>
             </div>
           </div>
@@ -49,12 +34,13 @@
             <div class="col-md-12">
               <div class="form-group label-floating">
                 <label class="control-label">* Nama</label>
-                <input type="text" class="form-control" name="nama" required>
+                <input type="text" class="form-control" name="nama" value="<?= $user->nama; ?>" required>
               </div>
             </div>
           </div>
 
-          <input type="submit" id="btn" class="btn btn-primary pull-right" name="tambah" value="Tambah">
+          <input type="submit" class="btn btn-primary pull-right" name="simpan" value="Simpan">
+          <a href="<?= site_url('u/user/reset/'.$user->id); ?>" class="btn btn-warning pull-right">Reset Password</a>
           <div class="clearfix"></div>
         </form>
       </div>

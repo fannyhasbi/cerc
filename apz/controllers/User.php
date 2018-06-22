@@ -28,6 +28,8 @@ class User extends CI_Controller {
   }
 
   public function add_event(){
+    $this->cekLogin();
+
     if($this->input->post('tambah')){
       $this->load->model('event_model');
 
@@ -49,6 +51,8 @@ class User extends CI_Controller {
   }
 
   public function edit_event($id){
+    $this->cekLogin();
+
     $this->load->model('event_model');
     
     if($this->input->post('update')){
@@ -78,6 +82,8 @@ class User extends CI_Controller {
   }
 
   public function hapus_event($id = null){
+    $this->cekLogin();
+
     if($id === null){
       show_404();
     }
@@ -115,6 +121,8 @@ class User extends CI_Controller {
   }
 
   public function add_user(){
+    $this->cekLogin();
+
     if($this->input->post('tambah')){
       $this->load->model('user_model');
 
@@ -123,22 +131,42 @@ class User extends CI_Controller {
       if($cek_user->num_rows() > 0){
         $this->session->set_flashdata('msg', 'Username sudah terpakai');
         $this->session->set_flashdata('type', 'warning');
-
-        redirect(site_url('u/user'));
       }
       else {
         $this->user_model->add();
         $this->session->set_flashdata('msg', 'User berhasil ditambah');
         $this->session->set_flashdata('type', 'success');
-
-        redirect(site_url('u/user'));
       }
-
+      
+      redirect(site_url('u/user'));
     }
     else {
       $data['view_name'] = 'add_user';
       $this->load->view('user/index_view', $data);
     }
+  }
+
+  public function edit_user($id_user){
+    $this->cekLogin();
+    
+    $this->load->model('user_model');
+
+    if($this->input->post('simpan')){
+      $cek_user = $this->user_model->checkUserByUsername($this->input->post('username'));
+
+      $this->user_model->update($id_user);
+      $this->session->set_flashdata('msg', 'User '. $this->input->post('username') .' berhasil di-update');
+      $this->session->set_flashdata('type', 'success');
+
+      redirect(site_url('u/user'));
+    }
+    else {
+      $data['user'] = $this->user_model->getUserById($id_user);
+
+      $data['view_name'] = 'edit_user';
+      $this->load->view('user/index_view', $data);
+    }
+
   }
 
 }

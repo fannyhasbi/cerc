@@ -23,8 +23,14 @@ class User_model extends CI_Model {
   }
 
   public function getUser(){
+    $this->db->order_by('level', 'ASC');
     $q = $this->db->get('user');
     return $q->result();
+  }
+
+  public function getUserById($id_user){
+    $q = $this->db->get_where('user', ['id' => $id_user]);
+    return $q->row();
   }
 
   public function getData(){
@@ -44,6 +50,17 @@ class User_model extends CI_Model {
     );
 
     $this->db->insert('user', $data);
+  }
+
+  public function update($id_user){
+    $this->db->where('id', $id_user);
+
+    $data = array(
+      'level'    => $this->input->post('level'),
+      'nama'     => $this->purify($this->input->post('nama'))
+    );
+
+    $this->db->update('user', $data);
   }
   
 
