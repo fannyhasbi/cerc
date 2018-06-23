@@ -32,18 +32,23 @@
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="active">
+          <li>
             <a href="<?= site_url('u'); ?>">
               <i class="material-icons">dashboard</i><p>Dashboard</p>
             </a>
           </li>
           <?php if($this->session->userdata('level') == 1){ ?>
-          <li class="active">
+          <li>
             <a href="<?= site_url('u/user'); ?>">
               <i class="material-icons">account_circle</i><p>User</p>
             </a>
           </li>
           <?php } ?>
+          <li>
+            <a href="<?= site_url('u/project'); ?>">
+              <i class="material-icons">ballot</i><p>Project</p>
+            </a>
+          </li>
         </ul>
       </div>
     </div>

@@ -30,6 +30,9 @@ $route['u/edit_user/(:num)'] = 'user/edit_user/$1';
 $route['u/hapus_user/(:num)']= 'user/hapus_user/$1';
 $route['u/user_reset/(:num)']= 'user/reset_pass_user/$1';
 
+// Admin project
+$route['u/project'] = 'user/project_home';
+
 $route['default_controller'] = 'home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

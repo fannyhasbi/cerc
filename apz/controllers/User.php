@@ -211,4 +211,16 @@ class User extends CI_Controller {
     redirect(site_url('u/user'));
   }
 
+  public function project_home(){
+    $this->cekLogin();
+    
+    $this->load->model('project_model');
+    $data['projects'] = $this->project_model->getProject();
+
+    $data['msg'] = $this->session->flashdata('msg');
+    $data['type']= $this->session->flashdata('type');
+    $data['view_name'] = 'project_home';
+    $this->load->view('user/index_view', $data);
+  }
+
 }
