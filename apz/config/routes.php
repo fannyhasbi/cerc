@@ -1,10 +1,15 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-$route['event'] = 'home/event';
-$route['event/(:num)/(:any)'] = 'home/event_detail/$1/$2';
 $route['login'] = 'home/login';
 $route['u/logout'] = 'home/logout';
+
+// Event
+$route['event'] = 'home/event';
+$route['event/(:num)/(:any)'] = 'home/event_detail/$1/$2';
+
+// Project
+$route['project'] = 'home/project';
 
 // Club
 $route['software'] = 'club';

@@ -187,7 +187,7 @@
           <?php endforeach; ?>
 
           <div class="col-lg-8 mx-auto text-center">
-            <a href="<?= site_url('event');?>" class="btn btn-lg btn-block btn-primary">Lihat Semua</a>
+            <a href="<?= site_url('project');?>" class="btn btn-lg btn-block btn-primary">Lihat Semua</a>
           </div>
         </div>
       </div>

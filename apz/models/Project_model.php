@@ -8,6 +8,12 @@ class Project_model extends CI_Model {
     $q = $this->db->get('project');
     return $q->result();
   }
+
+  public function getProject(){
+    $this->db->order_by('selesai', 'DESC');
+    $q = $this->db->get('project');
+    return $q->result();
+  }
   
 
 }

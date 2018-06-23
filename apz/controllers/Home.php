@@ -90,4 +90,12 @@ class Home extends CI_Controller {
     }
   }
 
+  public function project(){
+    $this->load->model('project_model');
+    $data['projects'] = $this->project_model->getProject();
+
+    $data['view_name'] = 'project';
+    $this->load->view('home/index_view', $data);
+  }
+
 }
