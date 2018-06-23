@@ -44,6 +44,9 @@
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#event">Event</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#project">Project</a>
+            </li>
             <?php if($this->session->userdata('login')){ ?>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="<?= site_url('u'); ?>">Dashboard</a>
@@ -154,6 +157,31 @@
 
             <div class="col-lg-8 mx-auto text-center event-btn">
               <a href="#" class="btn btn-lg">Lihat Detail</a>
+            </div>
+          </div>
+          <?php endforeach; ?>
+
+          <div class="col-lg-8 mx-auto text-center">
+            <a href="<?= site_url('event');?>" class="btn btn-lg btn-block btn-primary">Lihat Semua</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project Section -->
+    <section id="project" class="success">
+      <div class="container">
+        <h2 class="text-center">Project</h2>
+        <hr class="dark">
+        <div class="row">
+          <?php foreach($projects as $project): ?>
+          <div class="col-lg-4 project-item">
+            <img class="img-fluid" src="<?= $project->foto; ?>" alt="">
+            <h5><?= $project->nama ?></h5>
+
+            <div class="project-info">
+              <p class="project-date"><i class="fa fa-calendar fa-fw"></i> <?= $project->selesai ?></p>
+              <p class="project-place"><i class="fa fa-user fa-fw"></i> <?= $project->pemohon ?></p>
             </div>
           </div>
           <?php endforeach; ?>

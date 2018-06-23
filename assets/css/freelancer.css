@@ -440,3 +440,18 @@ footer {
 .btn:active,
 .btn:focus {
   outline: none; }
+
+#project .project-item {
+  text-align: center;}
+  #project h5 {
+    margin-bottom: 10px;
+  }
+  #project img {
+    margin-bottom: 20px;}
+  #project p {
+    text-align: left;
+    margin-bottom: 0 0 10px;
+    font-size: 14px;
+    line-height: 1;}
+  #project .btn-block {
+    margin-top: 20px;}
