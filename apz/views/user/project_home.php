@@ -3,6 +3,10 @@
     <a href="<?= site_url('u/add_project'); ?>" class="btn btn-primary">
       <i class="material-icons">note_add</i> Tambah
     </a>
+
+    <a href="<?= site_url('u/kategori_project'); ?>" class="btn btn-default">
+      <i class="material-icons">list</i> Kategori
+    </a>
   </div>
 
   <div class="col-md-12">

@@ -111,7 +111,6 @@ class User extends CI_Controller {
   public function user_home(){
     $this->cekLogin();
     
-    $this->load->model('user_model');
     $data['users'] = $this->user_model->getUser();
 
     $data['msg'] = $this->session->flashdata('msg');
@@ -124,8 +123,6 @@ class User extends CI_Controller {
     $this->cekLogin();
 
     if($this->input->post('tambah')){
-      $this->load->model('user_model');
-
       $cek_user = $this->user_model->checkUserByUsername($this->input->post('username'));
 
       if($cek_user->num_rows() > 0){
@@ -148,8 +145,6 @@ class User extends CI_Controller {
 
   public function edit_user($id_user){
     $this->cekLogin();
-    
-    $this->load->model('user_model');
 
     if($this->input->post('simpan')){
       $cek_user = $this->user_model->checkUserByUsername($this->input->post('username'));
@@ -171,7 +166,6 @@ class User extends CI_Controller {
 
   public function hapus_user($id_user){
     $this->cekLogin();
-    $this->load->model('user_model');
 
     $cek_user = $this->user_model->checkUserById($id_user);
     
@@ -192,7 +186,6 @@ class User extends CI_Controller {
 
   public function reset_pass_user($id_user){
     $this->cekLogin();
-    $this->load->model('user_model');
 
     $cek_user = $this->user_model->checkUserById($id_user);
 
@@ -256,7 +249,9 @@ class User extends CI_Controller {
       if($this->input->post('simpan')){
         $this->project_model->update($id_project);
 
-        $this->session->set_flashdata('msg', 'Proyek berhasil disimpan');
+        $project = $this->project_model->getProjectById($id_project);
+
+        $this->session->set_flashdata('msg', 'Proyek '. $project->nama .' berhasil disimpan');
         $this->session->set_flashdata('type', 'success');
 
         redirect(site_url('u/project'));
@@ -267,8 +262,28 @@ class User extends CI_Controller {
         $data['kategori']  = $this->project_model->getKategori();
         $this->load->view('user/index_view', $data);
       }
-
     }
+  }
+
+  public function hapus_project($id_project){
+    $this->cekLogin();
+    $this->load->model('project_model');
+
+    $cek_project = $this->project_model->checkProject($id_project);
+    if($cek_project->num_rows() == 0){
+      $this->session->set_flashdata('msg', 'Proyek tidak ditemukan');
+      $this->session->set_flashdata('type', 'danger');
+    }
+    else {
+      $project = $this->project_model->getProjectById($id_project);
+      
+      $this->project_model->delete($id_project);
+
+      $this->session->set_flashdata('msg', 'Proyek '. $project->nama .' berhasil dihapus');
+      $this->session->set_flashdata('type', 'success');
+    }
+
+    redirect(site_url('u/project'));
   }
 
 
