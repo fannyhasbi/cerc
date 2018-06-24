@@ -100,7 +100,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
-            Copyright &copy; Computer Engineering Research Club 2017
+            Copyright &copy; Computer Engineering Research Club 2018
           </div>
         </div>
       </div>

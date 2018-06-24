@@ -39,6 +39,9 @@
             <a class="nav-link js-scroll-trigger" href="<?= site_url(); ?>">About</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="<?= site_url('project'); ?>">Project</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="<?= site_url('event'); ?>">Event</a>
           </li>
           <?php if($this->session->userdata('login')){ ?>
@@ -51,7 +54,7 @@
     </div>
   </nav>
 
-  <!-- Event Section -->
+  <!-- Content Section -->
   <section id="detail">
     <div class="container">
       <?php $this->load->view('home/'.$view_name); ?>
@@ -98,7 +101,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
-            Copyright &copy; Computer Engineering Research Club 2017
+            Copyright &copy; Computer Engineering Research Club 2018
           </div>
         </div>
       </div>

@@ -9,7 +9,9 @@ class Home extends CI_Controller {
 
 	public function index(){
     $this->load->model('event_model');
-    $data['events'] = $this->event_model->getEventHome();
+    $this->load->model('project_model');
+    $data['events']   = $this->event_model->getEventHome();
+    $data['projects'] = $this->project_model->getProjectHome();
 
 		$this->load->view('home/index', $data);
 	}
@@ -86,6 +88,14 @@ class Home extends CI_Controller {
     else {
       show_404();
     }
+  }
+
+  public function project(){
+    $this->load->model('project_model');
+    $data['projects'] = $this->project_model->getProject();
+
+    $data['view_name'] = 'project';
+    $this->load->view('home/index_view', $data);
   }
 
 }

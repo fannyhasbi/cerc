@@ -26,24 +26,29 @@
 </head>
 <body>
   <div class="wrapper">
-    <div class="sidebar" data-color="purple" data-image="<?= base_url('assets');?>/vendor/material/img/sidebar-1.jpg">
+    <div class="sidebar" data-color="purple">
       <div class="logo">
         <a href="<?= site_url(); ?>" class="simple-text">CERC</a>
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="active">
+          <li>
             <a href="<?= site_url('u'); ?>">
               <i class="material-icons">dashboard</i><p>Dashboard</p>
             </a>
           </li>
           <?php if($this->session->userdata('level') == 1){ ?>
-          <li class="active">
+          <li>
             <a href="<?= site_url('u/user'); ?>">
               <i class="material-icons">account_circle</i><p>User</p>
             </a>
           </li>
           <?php } ?>
+          <li>
+            <a href="<?= site_url('u/project'); ?>">
+              <i class="material-icons">ballot</i><p>Project</p>
+            </a>
+          </li>
         </ul>
       </div>
     </div>

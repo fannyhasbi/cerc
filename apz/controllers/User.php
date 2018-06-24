@@ -111,7 +111,6 @@ class User extends CI_Controller {
   public function user_home(){
     $this->cekLogin();
     
-    $this->load->model('user_model');
     $data['users'] = $this->user_model->getUser();
 
     $data['msg'] = $this->session->flashdata('msg');
@@ -124,8 +123,6 @@ class User extends CI_Controller {
     $this->cekLogin();
 
     if($this->input->post('tambah')){
-      $this->load->model('user_model');
-
       $cek_user = $this->user_model->checkUserByUsername($this->input->post('username'));
 
       if($cek_user->num_rows() > 0){
@@ -148,8 +145,6 @@ class User extends CI_Controller {
 
   public function edit_user($id_user){
     $this->cekLogin();
-    
-    $this->load->model('user_model');
 
     if($this->input->post('simpan')){
       $cek_user = $this->user_model->checkUserByUsername($this->input->post('username'));
@@ -171,7 +166,6 @@ class User extends CI_Controller {
 
   public function hapus_user($id_user){
     $this->cekLogin();
-    $this->load->model('user_model');
 
     $cek_user = $this->user_model->checkUserById($id_user);
     
@@ -192,7 +186,6 @@ class User extends CI_Controller {
 
   public function reset_pass_user($id_user){
     $this->cekLogin();
-    $this->load->model('user_model');
 
     $cek_user = $this->user_model->checkUserById($id_user);
 
@@ -209,6 +202,147 @@ class User extends CI_Controller {
     }
 
     redirect(site_url('u/user'));
+  }
+
+  public function project_home(){
+    $this->cekLogin();
+    
+    $this->load->model('project_model');
+    $data['projects'] = $this->project_model->getProject();
+
+    $data['msg'] = $this->session->flashdata('msg');
+    $data['type']= $this->session->flashdata('type');
+    $data['view_name'] = 'project_home';
+    $this->load->view('user/index_view', $data);
+  }
+
+  public function add_project(){
+    $this->cekLogin();
+    $this->load->model('project_model');
+
+    if($this->input->post('tambah')){
+      $this->project_model->add();
+      $this->session->set_flashdata('msg', 'Proyek berhasil diupload');
+      $this->session->set_flashdata('type', 'success');
+      
+      redirect(site_url('u/project'));
+    }
+    else {
+      $data['view_name'] = 'add_project';
+      $data['kategori']  = $this->project_model->getKategori();
+      $this->load->view('user/index_view', $data);
+    }
+  }
+
+  public function edit_project($id_project){
+    $this->cekLogin();
+    $this->load->model('project_model');
+
+    $cek_project = $this->project_model->checkProject($id_project);
+    if($cek_project->num_rows() == 0){
+      $this->session->set_flashdata('msg', 'Proyek tidak ditemukan');
+      $this->session->set_flashdata('type', 'danger');
+
+      redirect(site_url('u/project'));
+    }
+    else {
+      if($this->input->post('simpan')){
+        $this->project_model->update($id_project);
+
+        $project = $this->project_model->getProjectById($id_project);
+
+        $this->session->set_flashdata('msg', 'Proyek '. $project->nama .' berhasil disimpan');
+        $this->session->set_flashdata('type', 'success');
+
+        redirect(site_url('u/project'));
+      }
+      else {
+        $data['view_name'] = 'edit_project';
+        $data['project']   = $this->project_model->getProjectById($id_project);
+        $data['kategori']  = $this->project_model->getKategori();
+        $this->load->view('user/index_view', $data);
+      }
+    }
+  }
+
+  public function hapus_project($id_project){
+    $this->cekLogin();
+    $this->load->model('project_model');
+
+    $cek_project = $this->project_model->checkProject($id_project);
+    if($cek_project->num_rows() == 0){
+      $this->session->set_flashdata('msg', 'Proyek tidak ditemukan');
+      $this->session->set_flashdata('type', 'danger');
+    }
+    else {
+      $project = $this->project_model->getProjectById($id_project);
+      
+      $this->project_model->delete($id_project);
+
+      $this->session->set_flashdata('msg', 'Proyek '. $project->nama .' berhasil dihapus');
+      $this->session->set_flashdata('type', 'success');
+    }
+
+    redirect(site_url('u/project'));
+  }
+
+  public function kategori_project(){
+    $this->cekLogin();
+    
+    $this->load->model('project_model');
+    $data['kategori'] = $this->project_model->getKategori();
+
+    $data['msg'] = $this->session->flashdata('msg');
+    $data['type']= $this->session->flashdata('type');
+    $data['view_name'] = 'kategori_project_home';
+    $this->load->view('user/index_view', $data);
+  }
+
+  public function add_kategori(){
+    $this->cekLogin();
+    $this->load->model('project_model');
+
+    if($this->input->post('tambah')){
+      $this->project_model->addKategori();
+      $this->session->set_flashdata('msg', 'Kategori berhasil ditambahkan');
+      $this->session->set_flashdata('type', 'success');
+      
+      redirect(site_url('u/kategori_project'));
+    }
+    else {
+      $data['view_name'] = 'add_kategori';
+      $this->load->view('user/index_view', $data);
+    }
+  }
+
+  public function edit_kategori($id_kategori){
+    $this->cekLogin();
+    $this->load->model('project_model');
+
+    $cek_kategori = $this->project_model->checkKategori($id_kategori);
+    if($cek_kategori->num_rows() == 0){
+      $this->session->set_flashdata('msg', 'Kategori tidak ditemukan');
+      $this->session->set_flashdata('type', 'danger');
+
+      redirect(site_url('u/kategori_project'));
+    }
+    else {
+      if($this->input->post('simpan')){
+        $this->project_model->updateKategori($id_kategori);
+
+        $kategori = $this->project_model->getKategoriById($id_kategori);
+
+        $this->session->set_flashdata('msg', 'Kategori '. $kategori->nama .' berhasil disimpan');
+        $this->session->set_flashdata('type', 'success');
+
+        redirect(site_url('u/kategori_project'));
+      }
+      else {
+        $data['view_name'] = 'edit_kategori';
+        $data['kategori']  = $this->project_model->getKategoriById($id_kategori);
+        $this->load->view('user/index_view', $data);
+      }
+    }
   }
 
 }
