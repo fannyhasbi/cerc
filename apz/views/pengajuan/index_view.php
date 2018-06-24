@@ -5,7 +5,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png" />
   <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <title>CERC - Dashboard</title>
+  <title>CERC - Pengajuan Proyek</title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
   <meta name="viewport" content="width=device-width" />
 
@@ -15,6 +15,8 @@
   <link href="<?= base_url('assets'); ?>/vendor/material/css/material-dashboard.css?v=1.2.0" rel="stylesheet" />
   <!--  CSS for Demo Purpose, don't include it in your project     -->
   <link href="<?= base_url('assets'); ?>/vendor/material/css/demo.css" rel="stylesheet" />
+  <!-- Datepicker -->
+  <link rel="stylesheet" href="<?= base_url('assets'); ?>/vendor/bootstrap/css/bootstrap-datepicker.min.css">
   <!--     Fonts and icons     -->
   <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
   <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
@@ -22,31 +24,26 @@
   <!--   Core JS Files   -->
   <script src="<?= base_url('assets');?>/vendor/jquery/jquery.min.js" type="text/javascript"></script>
   <script src="<?= base_url('assets');?>/vendor/bootstrap/js/bootstrap_pure.min.js" type="text/javascript"></script>
+  <!-- Bootstrap Date picker -->
+  <script src="<?= base_url('assets'); ?>/vendor/bootstrap/js/bootstrap-datepicker.min.js"></script>
   <script src="<?= base_url('assets');?>/vendor/material/js/material.min.js" type="text/javascript"></script>
 </head>
 <body>
   <div class="wrapper">
-    <div class="sidebar" data-color="purple">
+    <div class="sidebar" data-color="orange">
       <div class="logo">
         <a href="<?= site_url(); ?>" class="simple-text">CERC</a>
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li>
-            <a href="<?= site_url('u'); ?>">
-              <i class="material-icons">dashboard</i><p>Dashboard</p>
+            <a href="<?= site_url('pengajuan'); ?>">
+              <i class="material-icons">create</i><p>Pengajuan</p>
             </a>
           </li>
-          <?php if($this->session->userdata('level') == 1){ ?>
           <li>
-            <a href="<?= site_url('u/user'); ?>">
-              <i class="material-icons">account_circle</i><p>User</p>
-            </a>
-          </li>
-          <?php } ?>
-          <li>
-            <a href="<?= site_url('u/project'); ?>">
-              <i class="material-icons">ballot</i><p>Project</p>
+            <a href="<?= site_url('pengajuan/cek'); ?>">
+              <i class="material-icons">check_circle_outline</i><p>Cek Proyek <small class="text-danger">Alpha ver.</small></p>
             </a>
           </li>
         </ul>
@@ -62,24 +59,14 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="<?= site_url('u'); ?>"> CERC </a>
-          </div>
-          <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav navbar-right">
-              <li>
-                <a href="<?= site_url('u/logout'); ?>">
-                  <i class="material-icons">exit_to_app</i>
-                  <p class="hidden-lg hidden-md">Logout</p>
-                </a>
-              </li>
-            </ul>
+            <!-- <a class="navbar-brand" href="<?= site_url('u'); ?>"> CERC </a> -->
           </div>
         </div>
       </nav>
         
       <div class="content">
         <div class="container-fluid">
-          <?php $this->load->view('user/'. $view_name); ?>
+          <?php $this->load->view('pengajuan/'. $view_name); ?>
         </div>
       </div>
 
@@ -88,6 +75,7 @@
           <nav class="pull-left">
             <ul>
               <li><a href="<?= site_url(); ?>">Home</a></li>
+              <li><a href="<?= site_url('project'); ?>">Project</a></li>
               <li><a href="<?= site_url('event'); ?>">Event</a></li>
               <li><a href="<?= site_url('club'); ?>">Club</a></li>
             </ul>
@@ -104,6 +92,15 @@
     </div>
   </div>
 </body>
+
+<script>
+$(function () {
+  $('#datepicker').datepicker({
+    autoclose: true,
+    format: "yyyy-mm-dd"
+  });
+});
+</script>
 
 <!--  Dynamic Elements plugin -->
 <script src="<?= base_url('assets');?>/vendor/material/js/arrive.min.js"></script>

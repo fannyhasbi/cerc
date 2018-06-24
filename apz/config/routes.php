@@ -17,6 +17,9 @@ $route['jaringan'] = 'club';
 $route['embedded'] = 'club';
 $route['multimedia'] = 'club';
 
+// Propose Project
+$route['pengajuan'] = 'pengajuan';
+
 // Admin event
 $route['u'] = 'user';
 $route['u/add'] = 'user/add_event';
