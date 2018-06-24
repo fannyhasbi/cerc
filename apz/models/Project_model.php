@@ -50,6 +50,22 @@ class Project_model extends CI_Model {
 
     $this->db->insert('project', $data);
   }
+
+  public function update($id_project){
+    $this->db->where('id', $id_project);
+
+    $data = array(
+      'nama'    => $this->purify($this->input->post('nama_proyek')),
+      'pemohon' => $this->purify($this->input->post('pemohon')),
+      'selesai' => $this->input->post('selesai'),
+      'pj'      => $this->purify($this->input->post('pj')),
+      'id_user' => $this->session->userdata('id'),
+      'id_kategori' => $this->input->post('kategori'),
+      'foto'    => $this->purify($this->input->post('foto'))
+    );
+
+    $this->db->update('project', $data);
+  }
   
 
 }

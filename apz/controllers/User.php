@@ -253,10 +253,21 @@ class User extends CI_Controller {
       redirect(site_url('u/project'));
     }
     else {
-      $data['view_name'] = 'edit_project';
-      $data['project']   = $this->project_model->getProjectById($id_project);
-      $data['kategori']  = $this->project_model->getKategori();
-      $this->load->view('user/index_view', $data);
+      if($this->input->post('simpan')){
+        $this->project_model->update($id_project);
+
+        $this->session->set_flashdata('msg', 'Proyek berhasil disimpan');
+        $this->session->set_flashdata('type', 'success');
+
+        redirect(site_url('u/project'));
+      }
+      else {
+        $data['view_name'] = 'edit_project';
+        $data['project']   = $this->project_model->getProjectById($id_project);
+        $data['kategori']  = $this->project_model->getKategori();
+        $this->load->view('user/index_view', $data);
+      }
+
     }
   }
 
