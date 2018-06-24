@@ -8,13 +8,13 @@
       <div class="card-content">
         <form action="" method="post">
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-8">
               <div class="form-group label-floating">
                 <label class="control-label">* Nama Proyek</label>
-                <input type="text" class="form-control" name="nama" required autofocus>
+                <input type="text" class="form-control" name="nama_proyek" required autofocus>
               </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
               <div class="form-group label-floating">
                 <label class="control-label">Kategori</label>
                 <select class="form-control" name="kategori">
@@ -27,16 +27,16 @@
           </div>
 
           <div class="row">
-            <div class="col-md-4">
-              <div class="form-group label-floating">
-                <label class="control-label">* Tanggal Selesai (YYYY-MM-DD)</label>
-                <input type="text" class="form-control" name="tanggal" pattern="([0-9]{4})+-+([0-1]{1})+([0-9]{1})+-+([0-3]{1})+([0-9]{1})" required>
-              </div>
-            </div>
             <div class="col-md-8">
               <div class="form-group label-floating">
                 <label class="control-label">* Penanggung jawab</label>
                 <input type="text" class="form-control" name="pj" required>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group label-floating">
+                <label class="control-label">* Tanggal Selesai (YYYY-MM-DD)</label>
+                <input type="text" class="form-control" name="selesai" pattern="([0-9]{4})+-+([0-1]{1})+([0-9]{1})+-+([0-3]{1})+([0-9]{1})" required>
               </div>
             </div>
           </div>

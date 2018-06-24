@@ -229,7 +229,7 @@ class User extends CI_Controller {
 
     if($this->input->post('tambah')){
       $this->project_model->add();
-      $this->session->set_flashdata('msg', 'Project berhasil diupload');
+      $this->session->set_flashdata('msg', 'Proyek berhasil diupload');
       $this->session->set_flashdata('type', 'success');
       
       redirect(site_url('u/project'));
