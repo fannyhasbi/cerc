@@ -36,7 +36,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#portfolio">Club</a>
+              <a class="nav-link js-scroll-trigger" href="#club">Club</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#about">About</a>
@@ -69,55 +69,27 @@
       </div>
     </header>
 
-    <!-- Portfolio Grid Section -->
-    <section id="portfolio">
+    <!-- Club Section -->
+    <section id="club">
       <div class="container">
         <h2 class="text-center">Club</h2>
         <hr class="dark">
         <div class="row">
-          <div class="col-sm-6 portfolio-item text-center">
-            <a class="portfolio-link" href="<?= site_url('embedded'); ?>" style="margin-bottom: 10px">
-              <div class="caption">
-                <div class="caption-content">
-                  <i class="fa fa-search-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="<?= base_url('assets'); ?>/img/portfolio/submarine.png" alt="">
-            </a>
-            <h4>Embedded</h4>
+          <div class="col-sm-6 text-center">
+            <img class="img-fluid" src="<?= base_url('assets'); ?>/img/portfolio/submarine.png" alt="">
+            <h4><a href="<?= site_url('embedded'); ?>">Embedded</a></h4>
           </div>
-          <div class="col-sm-6 portfolio-item text-center">
-            <a class="portfolio-link" href="<?= site_url('software'); ?>" style="margin-bottom: 10px">
-              <div class="caption">
-                <div class="caption-content">
-                  <i class="fa fa-search-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="<?= base_url('assets'); ?>/img/portfolio/game.png" alt="">
-            </a>
-            <h4>Software</h4>
+          <div class="col-sm-6 text-center">
+            <img class="img-fluid" src="<?= base_url('assets'); ?>/img/portfolio/game.png" alt="">
+            <h4><a href="<?= site_url('software'); ?>">Software</a></h4>
           </div>
-          <div class="col-sm-6 portfolio-item text-center">
-            <a class="portfolio-link" href="<?= site_url('multimedia'); ?>" style="margin-bottom: 10px">
-              <div class="caption">
-                <div class="caption-content">
-                  <i class="fa fa-search-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="<?= base_url('assets'); ?>/img/portfolio/gene.png" alt="">
-            </a>
-            <h4>Multimedia</h4>
+          <div class="col-sm-6 text-center">
+            <img class="img-fluid" src="<?= base_url('assets'); ?>/img/portfolio/gene.png" alt="">
+            <h4><a href="<?= site_url('multimedia'); ?>">Multimedia</a></h4>
           </div>
-          <div class="col-sm-6 portfolio-item text-center">
-            <a class="portfolio-link" href="<?= site_url('jaringan');?>" style="margin-bottom: 10px">
-              <div class="caption">
-                <div class="caption-content">
-                  <i class="fa fa-search-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="<?= base_url('assets'); ?>/img/portfolio/rocket.png" alt="">
-            </a>
-            <h4>Jaringan</h4>
+          <div class="col-sm-6 text-center">
+            <img class="img-fluid" src="<?= base_url('assets'); ?>/img/portfolio/rocket.png" alt="">
+            <h4><a href="<?= site_url('software'); ?>">Jaringan</a></h4>
           </div>
         </div>
       </div>
@@ -135,6 +107,32 @@
           <div class="col-lg-4 mr-auto">
             <p>Blabalb balbalba blabalbala ablalaba balabls dlbaldbadb abdlkabs pengertian belakangan hehehe dlabsdl asbdl asbdlas dlsakbdlasbdlas dlasb dlasb dla dlkasbdl sabld asd</p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project Section -->
+    <section id="project">
+      <div class="container">
+        <h2 class="text-center">Project</h2>
+        <hr class="dark">
+        <div class="row">
+          <?php foreach($projects as $project): ?>
+          <div class="col-sm-4 project-item">
+            <a class="project-link" href="#projectModal-<?= $project->id; ?>" data-toggle="modal">
+              <div class="caption">
+                <div class="caption-content">
+                  <?= $project->nama; ?>
+                </div>
+              </div>
+              <img class="img-fluid" src="<?= $project->foto; ?>" alt="">
+            </a>
+          </div>
+          <?php endforeach; ?>
+        </div>
+
+        <div class="col-lg-8 mx-auto text-center">
+          <a href="<?= site_url('project');?>" class="btn btn-lg btn-block btn-primary">Lihat Semua</a>
         </div>
       </div>
     </section>
@@ -160,35 +158,10 @@
             </div>
           </div>
           <?php endforeach; ?>
-
-          <div class="col-lg-8 mx-auto text-center">
-            <a href="<?= site_url('event');?>" class="btn btn-lg btn-block btn-primary">Lihat Semua</a>
-          </div>
         </div>
-      </div>
-    </section>
-
-    <!-- Project Section -->
-    <section id="project" class="success">
-      <div class="container">
-        <h2 class="text-center">Project</h2>
-        <hr class="dark">
-        <div class="row">
-          <?php foreach($projects as $project): ?>
-          <div class="col-lg-4 project-item">
-            <img class="img-fluid" src="<?= $project->foto; ?>" alt="">
-            <h5><?= $project->nama ?></h5>
-
-            <div class="project-info">
-              <p class="project-date"><i class="fa fa-calendar fa-fw"></i> <?= $project->selesai ?></p>
-              <p class="project-place"><i class="fa fa-user fa-fw"></i> <?= $project->pemohon ?></p>
-            </div>
-          </div>
-          <?php endforeach; ?>
-
-          <div class="col-lg-8 mx-auto text-center">
-            <a href="<?= site_url('project');?>" class="btn btn-lg btn-block btn-primary">Lihat Semua</a>
-          </div>
+        
+        <div class="col-lg-8 mx-auto text-center">
+          <a href="<?= site_url('event');?>" class="btn btn-lg btn-block btn-primary">Lihat Semua</a>
         </div>
       </div>
     </section>
@@ -247,183 +220,47 @@
       </a>
     </div>
 
-    <!-- Portfolio Modals -->
-    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="close-modal" data-dismiss="modal">
-            <div class="lr">
-              <div class="rl"></div>
+    <!-- Project Modals -->
+    <?php foreach($projects as $project): ?>
+      <div class="project-modal modal fade" id="projectModal-<?= $project->id; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+              <div class="lr">
+                <div class="rl"></div>
+              </div>
             </div>
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-8 mx-auto">
-                <div class="modal-body">
-                  <h2>Project Title</h2>
-                  <hr class="small">
-                  <img class="img-fluid img-centered" src="<?= base_url('assets'); ?>/img/portfolio/cabin.png" alt="">
-                  <p>Use this area of the page to describe your project. The icon above is part of a free icon set by
-                    <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
-                  <ul class="list-inline item-details">
-                    <li>Client:
-                      <strong>
-                        <a href="http://startbootstrap.com">Start Bootstrap</a>
-                      </strong>
-                    </li>
-                    <li>Date:
-                      <strong>
-                        <a href="http://startbootstrap.com">April 2014</a>
-                      </strong>
-                    </li>
-                    <li>Service:
-                      <strong>
-                        <a href="http://startbootstrap.com">Web Development</a>
-                      </strong>
-                    </li>
-                  </ul>
-                  <button class="btn btn-success" type="button" data-dismiss="modal">
-                    <i class="fa fa-times"></i>
-                    Close</button>
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-8 mx-auto">
+                  <div class="modal-body">
+                    <h2><?= $project->nama; ?></h2>
+                    <hr class="small">
+                    <img class="img-fluid img-centered" src="<?= $project->foto; ?>" alt="">
+                    <p>Ini penjelasan tentang proyek blablabalba. Tapi sampai saat ini belum dibuat fitur untuk keterangan tambahan proyek.</p>
+                    <ul class="list-inline item-details">
+                      <li>Client:
+                        <strong><?= $project->pemohon; ?></strong>
+                      </li>
+                      <li>Tanggal:
+                        <strong><?= $project->selesai; ?></strong>
+                      </li>
+                      <li>Kategori:
+                        <strong><?= $project->nama_kategori; ?></strong>
+                      </li>
+                    </ul>
+                    <button type="button" class="btn btn-success" data-dismiss="modal">
+                      <i class="fa fa-times"></i>
+                      Close
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="close-modal" data-dismiss="modal">
-            <div class="lr">
-              <div class="rl"></div>
-            </div>
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-8 mx-auto">
-                <div class="modal-body">
-                  <h2>Project Title</h2>
-                  <hr class="small">
-                  <img class="img-fluid img-centered" src="<?= base_url('assets'); ?>/img/portfolio/cake.png" alt="">
-                  <p>Use this area of the page to describe your project. The icon above is part of a free icon set by
-                    <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
-                  <ul class="list-inline item-details">
-                    <li>Client:
-                      <strong>
-                        <a href="http://startbootstrap.com">Start Bootstrap</a>
-                      </strong>
-                    </li>
-                    <li>Date:
-                      <strong>
-                        <a href="http://startbootstrap.com">April 2014</a>
-                      </strong>
-                    </li>
-                    <li>Service:
-                      <strong>
-                        <a href="http://startbootstrap.com">Web Development</a>
-                      </strong>
-                    </li>
-                  </ul>
-                  <button class="btn btn-success" type="button" data-dismiss="modal">
-                    <i class="fa fa-times"></i>
-                    Close</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="close-modal" data-dismiss="modal">
-            <div class="lr">
-              <div class="rl"></div>
-            </div>
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-8 mx-auto">
-                <div class="modal-body">
-                  <h2>Project Title</h2>
-                  <hr class="small">
-                  <img class="img-fluid img-centered" src="<?= base_url('assets'); ?>/img/portfolio/circus.png" alt="">
-                  <p>Use this area of the page to describe your project. The icon above is part of a free icon set by
-                    <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
-                  <ul class="list-inline item-details">
-                    <li>Client:
-                      <strong>
-                        <a href="http://startbootstrap.com">Start Bootstrap</a>
-                      </strong>
-                    </li>
-                    <li>Date:
-                      <strong>
-                        <a href="http://startbootstrap.com">April 2014</a>
-                      </strong>
-                    </li>
-                    <li>Service:
-                      <strong>
-                        <a href="http://startbootstrap.com">Web Development</a>
-                      </strong>
-                    </li>
-                  </ul>
-                  <button class="btn btn-success" type="button" data-dismiss="modal">
-                    <i class="fa fa-times"></i>
-                    Close</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="close-modal" data-dismiss="modal">
-            <div class="lr">
-              <div class="rl"></div>
-            </div>
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-8 mx-auto">
-                <div class="modal-body">
-                  <h2>Project Title</h2>
-                  <hr class="small">
-                  <img class="img-fluid img-centered" src="<?= base_url('assets'); ?>/img/portfolio/game.png" alt="">
-                  <p>Use this area of the page to describe your project. The icon above is part of a free icon set by
-                    <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
-                  <ul class="list-inline item-details">
-                    <li>Client:
-                      <strong>
-                        <a href="http://startbootstrap.com">Start Bootstrap</a>
-                      </strong>
-                    </li>
-                    <li>Date:
-                      <strong>
-                        <a href="http://startbootstrap.com">April 2014</a>
-                      </strong>
-                    </li>
-                    <li>Service:
-                      <strong>
-                        <a href="http://startbootstrap.com">Web Development</a>
-                      </strong>
-                    </li>
-                  </ul>
-                  <button class="btn btn-success" type="button" data-dismiss="modal">
-                    <i class="fa fa-times"></i>
-                    Close</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <?php endforeach; ?>
 
     <!-- Bootstrap core JavaScript -->
     <script src="<?= base_url('assets'); ?>/vendor/jquery/jquery.min.js"></script>

@@ -163,16 +163,16 @@ header.masthead {
     header.masthead .intro-text .skills {
       font-size: 1.75em; } }
 
-#portfolio .portfolio-item {
+#project .project-item {
   right: 0;
   margin: 0 0 15px; }
-  #portfolio .portfolio-item .portfolio-link {
+  #project .project-item .project-link {
     position: relative;
     display: block;
     max-width: 400px;
     margin: 0 auto;
     cursor: pointer; }
-    #portfolio .portfolio-item .portfolio-link .caption {
+    #project .project-item .project-link .caption {
       position: absolute;
       width: 100%;
       height: 100%;
@@ -181,9 +181,9 @@ header.masthead {
       transition: all ease 0.5s;
       opacity: 0;
       background: rgba(24, 188, 156, 0.9); }
-      #portfolio .portfolio-item .portfolio-link .caption:hover {
+      #project .project-item .project-link .caption:hover {
         opacity: 1; }
-      #portfolio .portfolio-item .portfolio-link .caption .caption-content {
+      #project .project-item .project-link .caption .caption-content {
         font-size: 20px;
         position: absolute;
         top: 50%;
@@ -192,20 +192,20 @@ header.masthead {
         margin-top: -12px;
         text-align: center;
         color: white; }
-        #portfolio .portfolio-item .portfolio-link .caption .caption-content i {
+        #project .project-item .project-link .caption .caption-content i {
           margin-top: -12px; }
-        #portfolio .portfolio-item .portfolio-link .caption .caption-content h3,
-        #portfolio .portfolio-item .portfolio-link .caption .caption-content h4 {
+        #project .project-item .project-link .caption .caption-content h3,
+        #project .project-item .project-link .caption .caption-content h4 {
           margin: 0; }
 
-#portfolio * {
+#project * {
   z-index: 2; }
 
 @media (min-width: 767px) {
-  #portfolio .portfolio-item {
+  #project .project-item {
     margin: 0 0 30px; } }
 
-.portfolio-modal .modal-dialog {
+.project-modal .modal-dialog {
   max-width: 100%;
   min-height: 100%;
   margin: 0;
@@ -216,19 +216,19 @@ header.masthead {
   background-clip: border-box;
   -webkit-box-shadow: none;
   box-shadow: none; }
-  .portfolio-modal .modal-dialog .modal-content {
+  .project-modal .modal-dialog .modal-content {
     padding: 100px 0;
     border: 0;
     border-radius: 0; }
-    .portfolio-modal .modal-dialog .modal-content h2 {
+    .project-modal .modal-dialog .modal-content h2 {
       font-size: 3em;
       margin: 0; }
-    .portfolio-modal .modal-dialog .modal-content img {
+    .project-modal .modal-dialog .modal-content img {
       margin-bottom: 30px; }
-    .portfolio-modal .modal-dialog .modal-content .item-details {
+    .project-modal .modal-dialog .modal-content .item-details {
       margin: 30px 0; }
 
-.portfolio-modal .close-modal {
+.project-modal .close-modal {
   position: absolute;
   top: 25px;
   right: 25px;
@@ -236,9 +236,9 @@ header.masthead {
   height: 75px;
   cursor: pointer;
   background-color: transparent; }
-  .portfolio-modal .close-modal:hover {
+  .project-modal .close-modal:hover {
     opacity: 0.3; }
-  .portfolio-modal .close-modal .lr {
+  .project-modal .close-modal .lr {
     /* Safari and Chrome */
     z-index: 1051;
     width: 1px;
@@ -249,7 +249,7 @@ header.masthead {
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
     background-color: #2C3E50; }
-    .portfolio-modal .close-modal .lr .rl {
+    .project-modal .close-modal .lr .rl {
       /* Safari and Chrome */
       z-index: 1052;
       width: 1px;
@@ -260,7 +260,7 @@ header.masthead {
       transform: rotate(90deg);
       background-color: #2C3E50; }
 
-.portfolio-modal .modal-backdrop {
+.project-modal .modal-backdrop {
   display: none;
   opacity: 0; }
 
@@ -441,17 +441,9 @@ footer {
 .btn:focus {
   outline: none; }
 
-#project .project-item {
-  text-align: center;}
-  #project h5 {
-    margin-bottom: 10px;
-  }
-  #project img {
-    margin-bottom: 20px;}
-  #project p {
-    text-align: left;
-    margin-bottom: 0 0 10px;
-    font-size: 14px;
-    line-height: 1;}
-  #project .btn-block {
-    margin-top: 20px;}
+/* Yoyoy */
+#club img {
+  max-width: 80%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

@@ -19,9 +19,15 @@ class Project_model extends CI_Model {
   }
 
   public function getProjectHome(){
-    $this->db->limit(3);
-    $this->db->order_by('selesai', 'DESC');
-    $q = $this->db->get('project');
+    $q = $this->db->query("
+      SELECT p.*, k.nama AS nama_kategori
+      FROM project p
+      LEFT JOIN kategori k
+        ON p.id_kategori = k.id
+      ORDER BY selesai DESC
+      LIMIT 6"
+    );
+
     return $q->result();
   }
 
