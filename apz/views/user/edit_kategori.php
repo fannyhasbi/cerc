@@ -17,15 +17,28 @@
             <div class="col-md-9">
               <div class="form-group label-floating">
                 <label class="control-label">* Nama Kategori</label>
-                <input type="text" class="form-control" name="nama_kategori" value="<?= $kategori->nama; ?>" required autofocus>
+                <input type="text" id="nama_kategori" class="form-control" name="nama_kategori" value="<?= $kategori->nama; ?>" required autofocus>
               </div>
             </div>
           </div>
 
-          <input type="submit" class="btn btn-primary pull-right" name="simpan" value="Simpan">
+          <input type="submit" id="simpan" class="btn btn-primary pull-right" name="simpan" value="Simpan">
           <div class="clearfix"></div>
         </form>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+document.getElementById("simpan").addEventListener("click", function(event){
+  var nama = document.getElementById("nama_kategori").value;
+  if(nama === "<?= $kategori->nama; ?>"){
+    event.preventDefault();
+    alert("Tidak ada perubahan");
+  }
+  else {
+    return true;
+  }
+});
+</script>

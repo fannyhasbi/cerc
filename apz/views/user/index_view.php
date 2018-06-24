@@ -26,7 +26,7 @@
 </head>
 <body>
   <div class="wrapper">
-    <div class="sidebar" data-color="purple" data-image="<?= base_url('assets');?>/vendor/material/img/sidebar-1.jpg">
+    <div class="sidebar" data-color="purple">
       <div class="logo">
         <a href="<?= site_url(); ?>" class="simple-text">CERC</a>
       </div>

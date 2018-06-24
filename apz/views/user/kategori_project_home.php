@@ -24,7 +24,7 @@
                 <td>#<?= $item->id; ?></td>
                 <td><?= $item->nama; ?></td>
                 <td class="td-actions text-right">
-                  <a href="<?= site_url('u/edit_kategori/'.$item->id); ?>" rel="tooltip" title="Edit project" class="btn btn-primary btn-simple btn-xs">
+                  <a href="<?= site_url('u/edit_kategori/'.$item->id); ?>" rel="tooltip" title="Edit kategori" class="btn btn-primary btn-simple btn-xs">
                     <i class="material-icons">edit</i>
                   </a>
                 </td>
