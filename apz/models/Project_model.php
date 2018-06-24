@@ -10,6 +10,10 @@ class Project_model extends CI_Model {
     return $r;
   }
 
+  public function checkProject($id_project){
+    return $this->db->get_where('project', ['id' => $id_project]);
+  }
+
   public function getProjectHome(){
     $this->db->limit(3);
     $this->db->order_by('selesai', 'DESC');
@@ -21,6 +25,11 @@ class Project_model extends CI_Model {
     $this->db->order_by('selesai', 'DESC');
     $q = $this->db->get('project');
     return $q->result();
+  }
+
+  public function getProjectById($id_project){
+    $q = $this->db->get_where('project', ['id' => $id_project]);
+    return $q->row();
   }
 
   public function getKategori(){

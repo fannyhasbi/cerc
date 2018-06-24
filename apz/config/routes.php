@@ -33,6 +33,7 @@ $route['u/user_reset/(:num)']= 'user/reset_pass_user/$1';
 // Admin project
 $route['u/project'] = 'user/project_home';
 $route['u/add_project'] = 'user/add_project';
+$route['u/edit_project/(:num)'] = 'user/edit_project/$1';
 
 $route['default_controller'] = 'home';
 $route['404_override'] = '';

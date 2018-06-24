@@ -241,4 +241,25 @@ class User extends CI_Controller {
     }
   }
 
+  public function edit_project($id_project){
+    $this->cekLogin();
+    $this->load->model('project_model');
+
+    $cek_project = $this->project_model->checkProject($id_project);
+    if($cek_project->num_rows() == 0){
+      $this->session->set_flashdata('msg', 'Proyek tidak ditemukan');
+      $this->session->set_flashdata('type', 'danger');
+
+      redirect(site_url('u/project'));
+    }
+    else {
+      $data['view_name'] = 'edit_project';
+      $data['project']   = $this->project_model->getProjectById($id_project);
+      $data['kategori']  = $this->project_model->getKategori();
+      $this->load->view('user/index_view', $data);
+    }
+  }
+
+
+
 }
