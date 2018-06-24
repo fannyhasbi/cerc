@@ -51,6 +51,14 @@ class Project_model extends CI_Model {
     $this->db->insert('project', $data);
   }
 
+  public function addKategori(){
+    $data = array(
+      'nama' => $this->purify($this->input->post('nama_kategori'))
+    );
+
+    $this->db->insert('kategori', $data);
+  }
+
   public function update($id_project){
     $this->db->where('id', $id_project);
 

@@ -298,4 +298,21 @@ class User extends CI_Controller {
     $this->load->view('user/index_view', $data);
   }
 
+  public function add_kategori(){
+    $this->cekLogin();
+    $this->load->model('project_model');
+
+    if($this->input->post('tambah')){
+      $this->project_model->addKategori();
+      $this->session->set_flashdata('msg', 'Kategori berhasil ditambahkan');
+      $this->session->set_flashdata('type', 'success');
+      
+      redirect(site_url('u/kategori_project'));
+    }
+    else {
+      $data['view_name'] = 'add_kategori';
+      $this->load->view('user/index_view', $data);
+    }
+  }
+
 }

@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-12">
-    <a href="<?= site_url('u/add_project'); ?>" class="btn btn-primary">
+    <a href="<?= site_url('u/add_kategori'); ?>" class="btn btn-primary">
       <i class="material-icons">note_add</i> Tambah
     </a>
 
