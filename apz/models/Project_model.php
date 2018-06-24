@@ -14,6 +14,10 @@ class Project_model extends CI_Model {
     return $this->db->get_where('project', ['id' => $id_project]);
   }
 
+  public function checkKategori($id_kategori){
+    return $this->db->get_where('kategori', ['id' => $id_kategori]);
+  }
+
   public function getProjectHome(){
     $this->db->limit(3);
     $this->db->order_by('selesai', 'DESC');
@@ -35,6 +39,11 @@ class Project_model extends CI_Model {
   public function getKategori(){
     $q = $this->db->get('kategori');
     return $q->result();
+  }
+
+  public function getKategoriById($id_kategori){
+    $q = $this->db->get_where('kategori', ['id' => $id_kategori]);
+    return $q->row();
   }
 
   public function add(){
@@ -73,6 +82,16 @@ class Project_model extends CI_Model {
     );
 
     $this->db->update('project', $data);
+  }
+
+  public function updateKategori($id_kategori){
+    $this->db->where('id', $id_kategori);
+    
+    $data = array(
+      'nama' => $this->purify($this->input->post('nama_kategori'))
+    );
+
+    $this->db->update('kategori', $data);
   }
 
   public function delete($id_project){

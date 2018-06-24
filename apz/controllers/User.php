@@ -315,4 +315,34 @@ class User extends CI_Controller {
     }
   }
 
+  public function edit_kategori($id_kategori){
+    $this->cekLogin();
+    $this->load->model('project_model');
+
+    $cek_kategori = $this->project_model->checkKategori($id_kategori);
+    if($cek_kategori->num_rows() == 0){
+      $this->session->set_flashdata('msg', 'Kategori tidak ditemukan');
+      $this->session->set_flashdata('type', 'danger');
+
+      redirect(site_url('u/kategori_project'));
+    }
+    else {
+      if($this->input->post('simpan')){
+        $this->project_model->updateKategori($id_kategori);
+
+        $kategori = $this->project_model->getKategoriById($id_kategori);
+
+        $this->session->set_flashdata('msg', 'Kategori '. $kategori->nama .' berhasil disimpan');
+        $this->session->set_flashdata('type', 'success');
+
+        redirect(site_url('u/kategori_project'));
+      }
+      else {
+        $data['view_name'] = 'edit_kategori';
+        $data['kategori']  = $this->project_model->getKategoriById($id_kategori);
+        $this->load->view('user/index_view', $data);
+      }
+    }
+  }
+
 }

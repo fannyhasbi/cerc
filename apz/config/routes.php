@@ -37,6 +37,7 @@ $route['u/edit_project/(:num)'] = 'user/edit_project/$1';
 $route['u/hapus_project/(:num)']= 'user/hapus_project/$1';
 $route['u/kategori_project'] = 'user/kategori_project';
 $route['u/add_kategori'] = 'user/add_kategori';
+$route['u/edit_kategori/(:num)'] = 'user/edit_kategori/$1';
 
 $route['default_controller'] = 'home';
 $route['404_override'] = '';
