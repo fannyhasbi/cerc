@@ -39,10 +39,10 @@
             <a class="nav-link js-scroll-trigger" href="<?= site_url(); ?>">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="<?= site_url('event'); ?>">Event</a>
+            <a class="nav-link js-scroll-trigger" href="<?= site_url('project'); ?>">Project</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="<?= site_url('project'); ?>">Project</a>
+            <a class="nav-link js-scroll-trigger" href="<?= site_url('event'); ?>">Event</a>
           </li>
           <?php if($this->session->userdata('login')){ ?>
           <li class="nav-item">

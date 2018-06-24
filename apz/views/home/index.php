@@ -60,10 +60,10 @@ function bulan_definer($bulan){
               <a class="nav-link js-scroll-trigger" href="#about">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#event">Event</a>
+              <a class="nav-link js-scroll-trigger" href="#project">Project</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#project">Project</a>
+              <a class="nav-link js-scroll-trigger" href="#event">Event</a>
             </li>
             <?php if($this->session->userdata('login')){ ?>
             <li class="nav-item">
