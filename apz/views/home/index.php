@@ -1,3 +1,21 @@
+<?php
+function bulan_definer($bulan){
+  switch($bulan){
+    case 1: return "Januari"; break;
+    case 2: return "Februari"; break;
+    case 3: return "Maret"; break;
+    case 4: return "April"; break;
+    case 5: return "Mei"; break;
+    case 6: return "Juni"; break;
+    case 7: return "Juli"; break;
+    case 8: return "Agustus"; break;
+    case 9: return "September"; break;
+    case 10: return "Oktober"; break;
+    case 11: return "November"; break;
+    case 12: return "Desember"; break;
+  }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -237,13 +255,23 @@
                     <h2><?= $project->nama; ?></h2>
                     <hr class="small">
                     <img class="img-fluid img-centered" src="<?= $project->foto; ?>" alt="">
-                    <p>Ini penjelasan tentang proyek blablabalba. Tapi sampai saat ini belum dibuat fitur untuk keterangan tambahan proyek.</p>
+                    <p><?= $project->ket == '' ? 'Keterangan belum disediakan.' : $project->ket ?></p>
                     <ul class="list-inline item-details">
                       <li>Client:
                         <strong><?= $project->pemohon; ?></strong>
                       </li>
                       <li>Tanggal:
-                        <strong><?= $project->selesai; ?></strong>
+                        <strong>
+                          <?php
+                          $r = explode("-", $project->selesai);
+                          $r = array_slice($r, 0, 2);
+                          $r = array_reverse($r);
+                          $r[0] = bulan_definer($r[0]);
+
+                          $r = implode(" ", $r);
+                          echo $r;
+                          ?>
+                        </strong>
                       </li>
                       <li>Kategori:
                         <strong><?= $project->nama_kategori; ?></strong>
