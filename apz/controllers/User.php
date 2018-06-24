@@ -286,6 +286,16 @@ class User extends CI_Controller {
     redirect(site_url('u/project'));
   }
 
+  public function kategori_project(){
+    $this->cekLogin();
+    
+    $this->load->model('project_model');
+    $data['kategori'] = $this->project_model->getKategori();
 
+    $data['msg'] = $this->session->flashdata('msg');
+    $data['type']= $this->session->flashdata('type');
+    $data['view_name'] = 'kategori_project_home';
+    $this->load->view('user/index_view', $data);
+  }
 
 }
