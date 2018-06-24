@@ -52,6 +52,17 @@
 
           <div class="row">
             <div class="col-md-12">
+              <div class="form-group">
+                <label>* Keterangan</label>
+                <div class="form-group label-floating">
+                  <textarea class="form-control" name="keterangan" rows="6" placeholder="Keterangan singkat tentang proyek yang dibuat" required><?= $project->ket; ?></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
               <div class="form-group label-floating">
                 <label class="control-label">Foto <small><a href="https://imgbb.com">imgbb.com</a></small></label>
                 <input type="url" class="form-control" name="foto" value="<?= $project->foto; ?>" required>

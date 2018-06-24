@@ -65,6 +65,7 @@ class Project_model extends CI_Model {
       'pj'      => $this->purify($this->input->post('pj')),
       'id_user' => $this->session->userdata('id'),
       'id_kategori' => $this->input->post('kategori'),
+      'ket'     => htmlspecialchars($this->input->post('keterangan')),
       'foto'    => $this->purify($this->input->post('foto'))
     );
 
@@ -89,6 +90,7 @@ class Project_model extends CI_Model {
       'pj'      => $this->purify($this->input->post('pj')),
       'id_user' => $this->session->userdata('id'),
       'id_kategori' => $this->input->post('kategori'),
+      'ket'     => htmlspecialchars($this->input->post('keterangan')),
       'foto'    => $this->purify($this->input->post('foto'))
     );
 
