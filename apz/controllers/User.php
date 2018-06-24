@@ -223,4 +223,22 @@ class User extends CI_Controller {
     $this->load->view('user/index_view', $data);
   }
 
+  public function add_project(){
+    $this->cekLogin();
+    $this->load->model('project_model');
+
+    if($this->input->post('tambah')){
+      $this->project_model->add();
+      $this->session->set_flashdata('msg', 'Project berhasil diupload');
+      $this->session->set_flashdata('type', 'success');
+      
+      redirect(site_url('u/project'));
+    }
+    else {
+      $data['view_name'] = 'add_project';
+      $data['kategori']  = $this->project_model->getKategori();
+      $this->load->view('user/index_view', $data);
+    }
+  }
+
 }

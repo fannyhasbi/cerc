@@ -14,6 +14,11 @@ class Project_model extends CI_Model {
     $q = $this->db->get('project');
     return $q->result();
   }
+
+  public function getKategori(){
+    $q = $this->db->get('kategori');
+    return $q->result();
+  }
   
 
 }
