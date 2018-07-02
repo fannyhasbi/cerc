@@ -161,7 +161,7 @@ function bulan_definer($bulan){
         <div class="row">
           <div class="col-md-8">
             <h3 class="propose-title">Ajukan Proyek</h3>
-            <p class="propose-text">Ajukan sebuah proyek aplikasi anda kami.</p>
+            <p class="propose-text">Ajukan sebuah proyek aplikasi anda ke kami.</p>
           </div>
           <div class="col-md-4 propose-btn-container">
             <a class="btn btn-primary btn-lg" href="<?= site_url('pengajuan'); ?>">AJUKAN SEKARANG</a>

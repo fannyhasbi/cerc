@@ -345,4 +345,14 @@ class User extends CI_Controller {
     }
   }
 
+  public function request(){
+    $this->cekLogin();
+    $this->load->model('pengajuan_model');
+    
+    $data['requests'] = $this->pengajuan_model->getPengajuan();
+
+    $data['view_name'] = 'pengajuan_home';
+    $this->load->view('user/index_view', $data);
+  }
+
 }

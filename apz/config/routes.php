@@ -42,6 +42,9 @@ $route['u/kategori_project'] = 'user/kategori_project';
 $route['u/add_kategori'] = 'user/add_kategori';
 $route['u/edit_kategori/(:num)'] = 'user/edit_kategori/$1';
 
+// Admin pengajuan
+$route['u/request'] = 'user/request';
+
 $route['default_controller'] = 'home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

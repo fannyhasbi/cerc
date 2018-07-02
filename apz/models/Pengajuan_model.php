@@ -26,6 +26,24 @@ class Pengajuan_model extends CI_Model {
     return $q->row();
   }
 
+  public function getPengajuan(){
+    $q = $this->db->query("
+      SELECT
+        p.id,
+        p.nama,
+        p.tgl_pengajuan,
+        p.est_selesai,
+        p.status,
+        h.nama AS nama_pemohon,
+        h.instansi
+      FROM pengajuan p
+      INNER JOIN pemohon h
+        ON p.id_pemohon = h.id"
+    );
+
+    return $q->result();
+  }
+
   public function addPengajuan($id_pemohon){
     $data = array(
       'nama' => $this->purify($this->input->post('nama_proyek')),

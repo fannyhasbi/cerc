@@ -49,6 +49,11 @@
               <i class="material-icons">ballot</i><p>Project</p>
             </a>
           </li>
+          <li>
+            <a href="<?= site_url('u/request'); ?>">
+              <i class="material-icons">shopping_basket</i><p>Request &nbsp;<span class="label label-success">2</span></p>
+            </a>
+          </li>
         </ul>
       </div>
     </div>

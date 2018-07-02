@@ -42,7 +42,7 @@
             </a>
           </li>
           <li>
-            <a href="<?= site_url('pengajuan/cek'); ?>">
+            <a href="#">
               <i class="material-icons">check_circle_outline</i><p>Cek Proyek <small class="text-danger">Alpha ver.</small></p>
             </a>
           </li>
