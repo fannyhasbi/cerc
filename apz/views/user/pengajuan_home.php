@@ -17,7 +17,7 @@ function statusDefiner($status){
       </div>
       <div class="card-content table-responsive">
         <table class="table table-responsive table-hover">
-          <thead class="text-primary">
+          <thead>
             <th>Proyek</th>
             <th>Deadline</th>
             <th>Status</th>
@@ -28,22 +28,7 @@ function statusDefiner($status){
 
             <?php foreach($requests as $request): ?>
               <tr class="">
-                <td><?= $request->nama; ?></td>
-                <td>
-                  <?
-                  $d1 = date_create($request->tgl_pengajuan);
-                  $d1 = date_format($d1, 'd/m/y');
-                  $d2 = date_create($request->est_selesai);
-                  $d2 = date_format($d2, 'd/m/y');
-                  echo $d1 .' - <strong>'. $d2 .'</strong>';
-                  ?>
-                </td>
-                <td><?= statusDefiner($request->status); ?></td>
-                <td><?= $request->nama_pemohon; ?></td>
-                <td><?= $request->instansi; ?></td>
-              </tr>
-              <tr class="">
-                <td><?= $request->nama; ?></td>
+                <td><a href="<?= site_url('u/request/'.$request->id); ?>"><?= $request->nama; ?></a></td>
                 <td>
                   <?
                   $d1 = date_create($request->tgl_pengajuan);

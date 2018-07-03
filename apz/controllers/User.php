@@ -355,4 +355,24 @@ class User extends CI_Controller {
     $this->load->view('user/index_view', $data);
   }
 
+  public function request_detail($id_pengajuan){
+    $this->cekLogin();
+    $this->load->model('pengajuan_model');
+
+    $cek_pengajuan = $this->pengajuan_model->check($id_pengajuan);
+    if($cek_pengajuan->num_rows() == 0){
+      $this->session->set_flashdata('msg', 'Request tidak ditemukan');
+      $this->session->set_flashdata('type', 'danger');
+
+      redirect(site_url('u/request'));
+    }
+    else {
+      $data['request'] = $this->pengajuan_model->getPengajuanById($id_pengajuan);
+
+      $data['view_name'] = 'detail_pengajuan';
+      $this->load->view('user/index_view', $data);
+    }
+
+  }
+
 }

@@ -14,13 +14,19 @@ class Pengajuan_model extends CI_Model {
     return $r;
   }
 
+  public function check($id_pengajuan){
+    return $this->db->get_where('pengajuan', ['id' => $id_pengajuan]);
+  }
+
   public function getLastInsertedPemohon(){
     $where = array(
       'nama' => $this->purify($this->input->post('nama')),
       'email'=> $this->purify($this->input->post('email')),
       'instansi' => $this->purify($this->input->post('instansi')),
-      'kontak' => $this->purify($this->input->post('kotnak'))
+      'kontak' => $this->purify($this->input->post('kontak'))
     );
+
+    $this->db->order_by('id', 'DESC');
 
     $q = $this->db->get_where('pemohon', $where);
     return $q->row();
@@ -38,10 +44,27 @@ class Pengajuan_model extends CI_Model {
         h.instansi
       FROM pengajuan p
       INNER JOIN pemohon h
-        ON p.id_pemohon = h.id"
-    );
+        ON p.id_pemohon = h.id
+      ORDER BY p.tgl_pengajuan DESC
+    ");
 
     return $q->result();
+  }
+
+  public function getPengajuanById($id_pengajuan){
+    $q = $this->db->query("
+      SELECT p.*,
+        h.nama AS nama_pemohon,
+        h.email,
+        h.instansi,
+        h.kontak
+      FROM pengajuan p
+      INNER JOIN pemohon h
+        ON p.id_pemohon = h.id
+      WHERE p.id = ". $this->db->escape($id_pengajuan)
+    );
+
+    return $q->row();
   }
 
   public function addPengajuan($id_pemohon){
@@ -62,7 +85,7 @@ class Pengajuan_model extends CI_Model {
       'nama' => $this->purify($this->input->post('nama')),
       'email'=> $this->purify($this->input->post('email')),
       'instansi' => $this->purify($this->input->post('instansi')),
-      'kontak' => $this->purify($this->input->post('kotnak'))
+      'kontak' => $this->purify($this->input->post('kontak'))
     );
 
     $this->db->insert('pemohon', $data);

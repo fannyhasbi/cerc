@@ -44,6 +44,7 @@ $route['u/edit_kategori/(:num)'] = 'user/edit_kategori/$1';
 
 // Admin pengajuan
 $route['u/request'] = 'user/request';
+$route['u/request/(:num)'] = 'user/request_detail/$1';
 
 $route['default_controller'] = 'home';
 $route['404_override'] = '';
