@@ -1,13 +1,3 @@
-<?php
-date_default_timezone_set('Asia/Jakarta');
-function statusDefiner($status){
-  switch($status){
-    case 'N': return 'Belum'; break;
-    default: 'Unknown'; break;
-  }
-}
-?>
-
 <div class="row">
   <div class="col-md-12">
     <div class="card">
@@ -38,7 +28,7 @@ function statusDefiner($status){
                   echo $d1 .' - <strong>'. $d2 .'</strong>';
                   ?>
                 </td>
-                <td><?= statusDefiner($request->status); ?></td>
+                <td><?= status_definer($request->status); ?></td>
                 <td><?= $request->nama_pemohon; ?></td>
                 <td><?= $request->instansi; ?></td>
               </tr>

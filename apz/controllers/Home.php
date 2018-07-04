@@ -10,6 +10,7 @@ class Home extends CI_Controller {
 	public function index(){
     $this->load->model('event_model');
     $this->load->model('project_model');
+
     $data['events']   = $this->event_model->getEventHome();
     $data['projects'] = $this->project_model->getProjectHome();
 
