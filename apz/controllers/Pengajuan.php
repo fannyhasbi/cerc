@@ -47,8 +47,6 @@ class Pengajuan extends CI_Controller {
       redirect(site_url('pengajuan'));
     }
     else {
-      $data['msg'] = $this->session->flashdata('msg');
-      $data['type']= $this->session->flashdata('type');
       $data['view_name'] = 'home';
       $this->load->view('pengajuan/index_view', $data);
     }
