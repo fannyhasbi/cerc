@@ -2,14 +2,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Project_model extends CI_Model {
-  private function purify($r){
-    $r = htmlspecialchars($r);
-    $r = stripslashes($r);
-    $r = trim($r);
-
-    return $r;
-  }
-
   public function checkProject($id_project){
     return $this->db->get_where('project', ['id' => $id_project]);
   }
@@ -58,23 +50,25 @@ class Project_model extends CI_Model {
   }
 
   public function add(){
+    $this->load->helper('haz_helper');
     $data = array(
-      'nama'    => $this->purify($this->input->post('nama_proyek')),
-      'pemohon' => $this->purify($this->input->post('pemohon')),
+      'nama'    => purify($this->input->post('nama_proyek')),
+      'pemohon' => purify($this->input->post('pemohon')),
       'selesai' => $this->input->post('selesai'),
-      'pj'      => $this->purify($this->input->post('pj')),
+      'pj'      => purify($this->input->post('pj')),
       'id_user' => $this->session->userdata('id'),
       'id_kategori' => $this->input->post('kategori'),
       'ket'     => htmlspecialchars($this->input->post('keterangan')),
-      'foto'    => $this->purify($this->input->post('foto'))
+      'foto'    => purify($this->input->post('foto'))
     );
 
     $this->db->insert('project', $data);
   }
 
   public function addKategori(){
+    $this->load->helper('haz_helper');
     $data = array(
-      'nama' => $this->purify($this->input->post('nama_kategori'))
+      'nama' => purify($this->input->post('nama_kategori'))
     );
 
     $this->db->insert('kategori', $data);
@@ -84,14 +78,14 @@ class Project_model extends CI_Model {
     $this->db->where('id', $id_project);
 
     $data = array(
-      'nama'    => $this->purify($this->input->post('nama_proyek')),
-      'pemohon' => $this->purify($this->input->post('pemohon')),
+      'nama'    => purify($this->input->post('nama_proyek')),
+      'pemohon' => purify($this->input->post('pemohon')),
       'selesai' => $this->input->post('selesai'),
-      'pj'      => $this->purify($this->input->post('pj')),
+      'pj'      => purify($this->input->post('pj')),
       'id_user' => $this->session->userdata('id'),
       'id_kategori' => $this->input->post('kategori'),
       'ket'     => htmlspecialchars($this->input->post('keterangan')),
-      'foto'    => $this->purify($this->input->post('foto'))
+      'foto'    => purify($this->input->post('foto'))
     );
 
     $this->db->update('project', $data);
@@ -101,7 +95,7 @@ class Project_model extends CI_Model {
     $this->db->where('id', $id_kategori);
     
     $data = array(
-      'nama' => $this->purify($this->input->post('nama_kategori'))
+      'nama' => purify($this->input->post('nama_kategori'))
     );
 
     $this->db->update('kategori', $data);

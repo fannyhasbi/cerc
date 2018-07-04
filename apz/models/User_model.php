@@ -2,15 +2,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User_model extends CI_Model {
-  
-  private function purify($r){
-    $r = htmlspecialchars($r);
-    $r = stripslashes($r);
-    $r = trim($r);
-
-    return $r;
-  }
-
   public function checkUser(){
     $where = array(
       'username' => $this->input->post('username')
@@ -47,9 +38,9 @@ class User_model extends CI_Model {
 
   public function add(){
     $data = array(
-      'username' => $this->purify($this->input->post('username')),
+      'username' => purify($this->input->post('username')),
       'password' => password_hash($this->input->post('password'), PASSWORD_BCRYPT),
-      'nama'     => $this->purify($this->input->post('nama')),
+      'nama'     => purify($this->input->post('nama')),
       'level'    => $this->input->post('level')
     );
 
@@ -61,7 +52,7 @@ class User_model extends CI_Model {
 
     $data = array(
       'level'    => $this->input->post('level'),
-      'nama'     => $this->purify($this->input->post('nama'))
+      'nama'     => purify($this->input->post('nama'))
     );
 
     $this->db->update('user', $data);

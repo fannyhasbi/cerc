@@ -6,24 +6,17 @@ class Pengajuan_model extends CI_Model {
     date_default_timezone_set('Asia/Jakarta');
   }
 
-  private function purify($r){
-    $r = htmlspecialchars($r);
-    $r = stripslashes($r);
-    $r = trim($r);
-
-    return $r;
-  }
-
   public function check($id_pengajuan){
     return $this->db->get_where('pengajuan', ['id' => $id_pengajuan]);
   }
 
   public function getLastInsertedPemohon(){
+    $this->load->helper('haz_helper');
     $where = array(
-      'nama' => $this->purify($this->input->post('nama')),
-      'email'=> $this->purify($this->input->post('email')),
-      'instansi' => $this->purify($this->input->post('instansi')),
-      'kontak' => $this->purify($this->input->post('kontak'))
+      'nama' => purify($this->input->post('nama')),
+      'email'=> purify($this->input->post('email')),
+      'instansi' => purify($this->input->post('instansi')),
+      'kontak'   => purify($this->input->post('kontak'))
     );
 
     $this->db->order_by('id', 'DESC');
@@ -68,11 +61,12 @@ class Pengajuan_model extends CI_Model {
   }
 
   public function addPengajuan($id_pemohon, $alamat_file){
+    $this->load->helper('haz_helper');
     $data = array(
-      'nama' => $this->purify($this->input->post('nama_proyek')),
+      'nama' => purify($this->input->post('nama_proyek')),
       'tgl_pengajuan' => date('Y-m-d H:i:s'),
-      'est_selesai' => $this->purify($this->input->post('selesai')),
-      'ket' => $this->purify($this->input->post('keterangan')),
+      'est_selesai' => purify($this->input->post('selesai')),
+      'ket' => purify($this->input->post('keterangan')),
       'file' => $alamat_file,
       'id_pemohon' => $id_pemohon
     );
@@ -81,11 +75,12 @@ class Pengajuan_model extends CI_Model {
   }
 
   public function addPemohon(){
+    $this->load->helper('haz_helper');
     $data = array(
-      'nama' => $this->purify($this->input->post('nama')),
-      'email'=> $this->purify($this->input->post('email')),
-      'instansi' => $this->purify($this->input->post('instansi')),
-      'kontak' => $this->purify($this->input->post('kontak'))
+      'nama' => purify($this->input->post('nama')),
+      'email'=> purify($this->input->post('email')),
+      'instansi' => purify($this->input->post('instansi')),
+      'kontak'   => purify($this->input->post('kontak'))
     );
 
     $this->db->insert('pemohon', $data);
