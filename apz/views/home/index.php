@@ -187,7 +187,7 @@ function bulan_definer($bulan){
             </div>
 
             <div class="col-lg-8 mx-auto text-center event-btn">
-              <a href="#" class="btn btn-lg">Lihat Detail</a>
+              <a href="<?= site_url('event/'.$event->id.'/'.$event->slug); ?>" class="btn btn-lg">Lihat Detail</a>
             </div>
           </div>
           <?php endforeach; ?>
