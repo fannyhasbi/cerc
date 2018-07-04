@@ -32,6 +32,7 @@ class Pengajuan extends CI_Controller {
       if ( ! $this->upload->do_upload('file')){
         $message = '<p>'. $this->upload->display_errors() .'</p>';
         $this->session->set_flashdata('msg', $message);
+        $this->session->set_flashdata('type', 'danger');
       }
       else {
         $data = $this->upload->data();
