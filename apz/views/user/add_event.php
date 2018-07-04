@@ -10,7 +10,7 @@
           <div class="row">
             <div class="col-md-12">
               <div class="form-group label-floating">
-                <label class="control-label">* Nama Event</label>
+                <label class="control-label">Nama Event</label>
                 <input type="text" class="form-control" name="nama" required autofocus>
               </div>
             </div>
@@ -19,13 +19,13 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group label-floating">
-                <label class="control-label">* Tanggal</label>
+                <label class="control-label">Tanggal</label>
                 <input type="text" class="form-control" name="tanggal" pattern="([0-9]{4})+-+([0-1]{1})+([0-9]{1})+-+([0-3]{1})+([0-9]{1})" required>
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group label-floating">
-                <label class="control-label">* Tempat</label>
+                <label class="control-label">Tempat</label>
                 <input type="text" class="form-control" name="tempat" required>
               </div>
             </div>
@@ -34,7 +34,7 @@
           <div class="row">
             <div class="col-md-12">
               <div class="form-group">
-                <label>* Keterangan</label>
+                <label>Keterangan</label>
                 <div class="form-group label-floating">
                   <textarea class="form-control" name="keterangan" rows="10" placeholder="Keterangan lengkap (pendaftaran, penyelenggara, biaya, dll)" required></textarea>
                 </div>

@@ -11,13 +11,13 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group label-floating">
-                <label class="control-label">* Username</label>
+                <label class="control-label">Username</label>
                 <input type="text" class="form-control" name="username" required autofocus>
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group label-floating">
-                <label class="control-label">* Level</label>
+                <label class="control-label">Level</label>
                 <select class="form-control" name="level" required>
                   <option value="1" selected>Admin</option>
                   <option value="2">Software</option>
@@ -33,13 +33,13 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group label-floating">
-                <label class="control-label">* Password</label>
+                <label class="control-label">Password</label>
                 <input type="password" id="pass1" class="form-control" name="password" required>
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group label-floating">
-                <label class="control-label">* Ulangi Password</label>
+                <label class="control-label">Ulangi Password</label>
                 <input type="password" id="pass2" class="form-control" name="password2" required>
               </div>
             </div>
@@ -48,7 +48,7 @@
           <div class="row">
             <div class="col-md-12">
               <div class="form-group label-floating">
-                <label class="control-label">* Nama</label>
+                <label class="control-label">Nama</label>
                 <input type="text" class="form-control" name="nama" required>
               </div>
             </div>

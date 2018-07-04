@@ -9,7 +9,7 @@
           <div class="row">
             <div class="col-md-12">
               <div class="form-group label-floating">
-                <label class="control-label">* Nama Kategori</label>
+                <label class="control-label">Nama Kategori</label>
                 <input type="text" class="form-control" name="nama_kategori" required autofocus>
               </div>
             </div>
