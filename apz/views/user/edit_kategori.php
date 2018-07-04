@@ -16,7 +16,7 @@
 
             <div class="col-md-9">
               <div class="form-group label-floating">
-                <label class="control-label">* Nama Kategori</label>
+                <label class="control-label">Nama Kategori</label>
                 <input type="text" id="nama_kategori" class="form-control" name="nama_kategori" value="<?= $kategori->nama; ?>" required autofocus>
               </div>
             </div>

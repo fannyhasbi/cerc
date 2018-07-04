@@ -2,28 +2,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Event_model extends CI_Model {
-
-  private function purify_slug($r){
-    $tags = ['.',',','/','\'','"','?','!','\\','=','+','*','&','^','%','$','@'];
-    
-    $r = str_replace($tags, '', $r);
-    $r = str_replace(' ', '-', $r);
-    $r = htmlspecialchars($r);
-    $r = stripslashes($r);
-    $r = trim($r);
-    $r = strtolower($r);
-
-    return $r;
-  }
-
-  private function purify($r){
-    $r = htmlspecialchars($r);
-    $r = stripslashes($r);
-    $r = trim($r);
-
-    return $r;
-  }
-
   public function checkId($id){
     return $this->db->get_where('event', ['id' => $id]);
   }
@@ -51,8 +29,10 @@ class Event_model extends CI_Model {
   }
 
   public function add(){
+    $this->load->helper('haz_helper');
+
     $foto = $this->input->post('foto');
-    $foto = (strlen($foto) < 1) ? base_url('assets') .'/img/portfolio/submarine.png' : $this->purify($foto);
+    $foto = (strlen($foto) < 1) ? base_url('assets') .'/img/portfolio/submarine.png' : purify($foto);
 
     $nums = '1234567890';
     $x = ""; // untuk unique slug
@@ -61,11 +41,11 @@ class Event_model extends CI_Model {
 
 
     $data = array(
-      'nama'    => $this->purify($this->input->post('nama')),
-      'tgl'     => $this->purify($this->input->post('tanggal')),
-      'tempat'  => $this->purify($this->input->post('tempat')),
-      'ket'     => $this->input->post('keterangan'),
-      'slug'    => $this->purify_slug($this->input->post('nama')) ."-". $x,
+      'nama'    => purify($this->input->post('nama')),
+      'tgl'     => purify($this->input->post('tanggal')),
+      'tempat'  => purify($this->input->post('tempat')),
+      'ket'     => htmlspecialchars($this->input->post('keterangan')),
+      'slug'    => purify_slug($this->input->post('nama')) ."-". $x,
       'img'     => $foto
     );    
 
@@ -76,8 +56,10 @@ class Event_model extends CI_Model {
   }
 
   public function update($id){
+    $this->load->helper('haz_helper');
+    
     $foto = $this->input->post('foto');
-    $foto = (strlen($foto) < 1) ? base_url('assets') .'/img/portfolio/submarine.png' : $this->purify($foto);
+    $foto = (strlen($foto) < 1) ? base_url('assets') .'/img/portfolio/submarine.png' : purify($foto);
 
     $nums = '1234567890';
     $x = ""; // untuk unique slug
@@ -85,11 +67,11 @@ class Event_model extends CI_Model {
       $x .= $nums[rand(0, strlen($nums) - 1)];
 
     $data = array(
-      'nama'    => $this->purify($this->input->post('nama')),
-      'tgl'     => $this->purify($this->input->post('tanggal')),
-      'tempat'  => $this->purify($this->input->post('tempat')),
-      'ket'     => $this->input->post('keterangan'),
-      'slug'    => $this->purify_slug($this->input->post('nama')) ."-". $x,
+      'nama'    => purify($this->input->post('nama')),
+      'tgl'     => purify($this->input->post('tanggal')),
+      'tempat'  => purify($this->input->post('tempat')),
+      'ket'     => htmlspecialchars($this->input->post('keterangan')),
+      'slug'    => purify_slug($this->input->post('nama')) ."-". $x,
       'img'     => $foto
     );    
 

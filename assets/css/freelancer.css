@@ -447,3 +447,32 @@ footer {
   margin-top: 10px;
   margin-bottom: 10px;
 }
+
+/* Proposal Section
+--------------------------------*/
+#propose {
+  /*background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../img/blue-bouquet.jpg) fixed center center;
+  background-size: cover;*/
+  background-color: #18BC9C;
+  padding: 80px 0;
+}
+
+#propose .propose-title {
+  color: #fff;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+/*#propose .propose-text {
+  color: #fff;
+}
+
+#propose .propose-btn-container {
+  text-align: center;
+  padding-top: 20px;
+}
+
+#propose .propose-btn:hover {
+  background: #03C4EB;
+  border: 2px solid #03C4EB;
+}*/

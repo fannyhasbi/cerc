@@ -21,8 +21,6 @@ class User extends CI_Controller {
     $this->load->model('event_model');
     $data['events'] = $this->event_model->getEvent();
 
-    $data['msg'] = $this->session->flashdata('msg');
-    $data['type']= $this->session->flashdata('type');
     $data['view_name'] = 'home';
     $this->load->view('user/index_view', $data);
   }
@@ -113,8 +111,6 @@ class User extends CI_Controller {
     
     $data['users'] = $this->user_model->getUser();
 
-    $data['msg'] = $this->session->flashdata('msg');
-    $data['type']= $this->session->flashdata('type');
     $data['view_name'] = 'user_home';
     $this->load->view('user/index_view', $data);
   }
@@ -210,8 +206,6 @@ class User extends CI_Controller {
     $this->load->model('project_model');
     $data['projects'] = $this->project_model->getProject();
 
-    $data['msg'] = $this->session->flashdata('msg');
-    $data['type']= $this->session->flashdata('type');
     $data['view_name'] = 'project_home';
     $this->load->view('user/index_view', $data);
   }
@@ -292,8 +286,6 @@ class User extends CI_Controller {
     $this->load->model('project_model');
     $data['kategori'] = $this->project_model->getKategori();
 
-    $data['msg'] = $this->session->flashdata('msg');
-    $data['type']= $this->session->flashdata('type');
     $data['view_name'] = 'kategori_project_home';
     $this->load->view('user/index_view', $data);
   }
@@ -343,6 +335,36 @@ class User extends CI_Controller {
         $this->load->view('user/index_view', $data);
       }
     }
+  }
+
+  public function request(){
+    $this->cekLogin();
+    $this->load->model('pengajuan_model');
+    
+    $data['requests'] = $this->pengajuan_model->getPengajuan();
+
+    $data['view_name'] = 'pengajuan_home';
+    $this->load->view('user/index_view', $data);
+  }
+
+  public function request_detail($id_pengajuan){
+    $this->cekLogin();
+    $this->load->model('pengajuan_model');
+
+    $cek_pengajuan = $this->pengajuan_model->check($id_pengajuan);
+    if($cek_pengajuan->num_rows() == 0){
+      $this->session->set_flashdata('msg', 'Request tidak ditemukan');
+      $this->session->set_flashdata('type', 'danger');
+
+      redirect(site_url('u/request'));
+    }
+    else {
+      $data['request'] = $this->pengajuan_model->getPengajuanById($id_pengajuan);
+
+      $data['view_name'] = 'detail_pengajuan';
+      $this->load->view('user/index_view', $data);
+    }
+
   }
 
 }

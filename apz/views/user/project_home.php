@@ -44,27 +44,6 @@
 </div>
 
 <script>
-$(document).ready(function(){
-  var msg = '<?= $msg; ?>';
-  var type = '<?= $type; ?>';
-  type = type.length == 0 ? 'success' : type;
-
-  if(msg.length !== 0){
-    color = Math.floor((Math.random() * 4) + 1);
-    $.notify({
-      icon: "notifications",
-      message: msg
-    }, {
-      type: type,
-      timer: 3000,
-      placement: {
-        from: 'top',
-        align: 'center'
-      }
-    });
-  }
-});
-
 function hapus(id){
   var j = confirm("Yakin ingin menghapus?");
   if(j){

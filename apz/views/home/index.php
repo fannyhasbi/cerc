@@ -1,21 +1,3 @@
-<?php
-function bulan_definer($bulan){
-  switch($bulan){
-    case 1: return "Januari"; break;
-    case 2: return "Februari"; break;
-    case 3: return "Maret"; break;
-    case 4: return "April"; break;
-    case 5: return "Mei"; break;
-    case 6: return "Juni"; break;
-    case 7: return "Juli"; break;
-    case 8: return "Agustus"; break;
-    case 9: return "September"; break;
-    case 10: return "Oktober"; break;
-    case 11: return "November"; break;
-    case 12: return "Desember"; break;
-  }
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -155,6 +137,21 @@ function bulan_definer($bulan){
       </div>
     </section>
 
+    <!-- Propose Section -->
+    <section id="propose" class="success">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8">
+            <h3 class="propose-title">Ajukan Proyek</h3>
+            <p class="propose-text">Ajukan sebuah proyek aplikasi anda ke kami.</p>
+          </div>
+          <div class="col-md-4 propose-btn-container">
+            <a class="btn btn-primary btn-lg" href="<?= site_url('pengajuan'); ?>">AJUKAN SEKARANG</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Event Section -->
     <section id="event">
       <div class="container">
@@ -172,7 +169,7 @@ function bulan_definer($bulan){
             </div>
 
             <div class="col-lg-8 mx-auto text-center event-btn">
-              <a href="#" class="btn btn-lg">Lihat Detail</a>
+              <a href="<?= site_url('event/'.$event->id.'/'.$event->slug); ?>" class="btn btn-lg">Lihat Detail</a>
             </div>
           </div>
           <?php endforeach; ?>

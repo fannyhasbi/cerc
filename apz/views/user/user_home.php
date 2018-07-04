@@ -1,18 +1,3 @@
-<?php
-// Level definition
-function level_definer($lvl){
-  switch($lvl){
-    case 1: return 'Admin'; break;
-    case 2: return 'Software'; break;
-    case 3: return 'Jaringan'; break;
-    case 4: return 'Embedded'; break;
-    case 5: return 'Multimedia'; break;
-    case 6: return 'Unit'; break;
-    default: return 'Not Defined'; break;
-  }
-}
-?>
-
 <div class="row">
   <div class="col-md-12">
     <a href="<?= site_url('u/add_user'); ?>" class="btn btn-primary">
@@ -53,27 +38,6 @@ function level_definer($lvl){
 </div>
 
 <script>
-$(document).ready(function(){
-  var msg = '<?= $msg; ?>';
-  var type = '<?= $type; ?>';
-  type = type.length == 0 ? 'success' : type;
-
-  if(msg.length !== 0){
-    color = Math.floor((Math.random() * 4) + 1);
-    $.notify({
-      icon: "notifications",
-      message: msg
-    }, {
-      type: type,
-      timer: 3000,
-      placement: {
-        from: 'top',
-        align: 'center'
-      }
-    });
-  }
-});
-
 function hapus(id){
   var j = confirm("Yakin ingin menghapus?");
   if(j){

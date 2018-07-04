@@ -17,6 +17,9 @@ $route['jaringan'] = 'club';
 $route['embedded'] = 'club';
 $route['multimedia'] = 'club';
 
+// Propose Project
+$route['pengajuan'] = 'pengajuan';
+
 // Admin event
 $route['u'] = 'user';
 $route['u/add'] = 'user/add_event';
@@ -38,6 +41,10 @@ $route['u/hapus_project/(:num)']= 'user/hapus_project/$1';
 $route['u/kategori_project'] = 'user/kategori_project';
 $route['u/add_kategori'] = 'user/add_kategori';
 $route['u/edit_kategori/(:num)'] = 'user/edit_kategori/$1';
+
+// Admin pengajuan
+$route['u/request'] = 'user/request';
+$route['u/request/(:num)'] = 'user/request_detail/$1';
 
 $route['default_controller'] = 'home';
 $route['404_override'] = '';

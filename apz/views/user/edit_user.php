@@ -11,13 +11,13 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group label-floating">
-                <label class="control-label">* Username</label>
+                <label class="control-label">Username</label>
                 <input type="text" class="form-control" name="username" value="<?= $user->username; ?>" readonly disabled>
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group label-floating">
-                <label class="control-label">* Level</label>
+                <label class="control-label">Level</label>
                 <select class="form-control" name="level" required>
                   <option <?= $user->level == 1 ? 'selected' : '' ?> value="1" selected>Admin</option>
                   <option <?= $user->level == 2 ? 'selected' : '' ?> value="2">Software</option>
@@ -33,7 +33,7 @@
           <div class="row">
             <div class="col-md-12">
               <div class="form-group label-floating">
-                <label class="control-label">* Nama</label>
+                <label class="control-label">Nama</label>
                 <input type="text" class="form-control" name="nama" value="<?= $user->nama; ?>" required>
               </div>
             </div>
