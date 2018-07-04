@@ -44,7 +44,7 @@ class Event_model extends CI_Model {
       'nama'    => purify($this->input->post('nama')),
       'tgl'     => purify($this->input->post('tanggal')),
       'tempat'  => purify($this->input->post('tempat')),
-      'ket'     => $this->input->post('keterangan'),
+      'ket'     => htmlspecialchars($this->input->post('keterangan')),
       'slug'    => purify_slug($this->input->post('nama')) ."-". $x,
       'img'     => $foto
     );    
@@ -70,7 +70,7 @@ class Event_model extends CI_Model {
       'nama'    => purify($this->input->post('nama')),
       'tgl'     => purify($this->input->post('tanggal')),
       'tempat'  => purify($this->input->post('tempat')),
-      'ket'     => $this->input->post('keterangan'),
+      'ket'     => htmlspecialchars($this->input->post('keterangan')),
       'slug'    => purify_slug($this->input->post('nama')) ."-". $x,
       'img'     => $foto
     );    
