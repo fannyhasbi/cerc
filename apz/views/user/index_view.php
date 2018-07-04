@@ -49,7 +49,7 @@ $label = $load->row()->total;
             </a>
           </li>
           <?php } ?>
-          <li <?= uri_string() == 'u/project' || uri_string() == 'u/kategori_project' ? 'class="active"' : '' ?>>
+          <li <?= uri_string() == 'u/project' || uri_string() == 'u/kategori-project' ? 'class="active"' : '' ?>>
             <a href="<?= site_url('u/project'); ?>">
               <i class="material-icons">ballot</i><p>Project</p>
             </a>

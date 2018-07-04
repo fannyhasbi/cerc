@@ -1,10 +1,10 @@
 <div class="row">
   <div class="col-md-12">
-    <a href="<?= site_url('u/add_project'); ?>" class="btn btn-primary">
+    <a href="<?= site_url('u/add-project'); ?>" class="btn btn-primary">
       <i class="material-icons">note_add</i> Tambah
     </a>
 
-    <a href="<?= site_url('u/kategori_project'); ?>" class="btn btn-default">
+    <a href="<?= site_url('u/kategori-project'); ?>" class="btn btn-default">
       <i class="material-icons">list</i> Kategori
     </a>
   </div>
@@ -26,7 +26,7 @@
                 <td><?= $project->selesai; ?></td>
                 <td><?= $project->pj; ?></td>
                 <td class="td-actions text-right">
-                  <a href="<?= site_url('u/edit_project/'.$project->id); ?>" rel="tooltip" title="Edit project" class="btn btn-primary btn-simple btn-xs">
+                  <a href="<?= site_url('u/edit-project/'.$project->id); ?>" rel="tooltip" title="Edit project" class="btn btn-primary btn-simple btn-xs">
                     <i class="material-icons">edit</i>
                   </a>
                   <button rel="tooltip" title="Hapus" class="btn btn-danger btn-simple btn-xs" onclick="hapus(<?= $project->id; ?>)">
@@ -47,7 +47,7 @@
 function hapus(id){
   var j = confirm("Yakin ingin menghapus?");
   if(j){
-    window.location = "<?= site_url('u/hapus_project/'); ?>"+ id;
+    window.location = "<?= site_url('u/hapus-project/'); ?>"+ id;
   }
 }
 </script>
