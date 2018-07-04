@@ -18,9 +18,9 @@ function bulan_definer($bulan){
 function status_definer($status){
   switch($status){
     case 'N': return "Belum ditanggapi"; break;
-    case 'Y': return "Sudah diterima"; break;
+    case 'Y': return "Proses"; break;
     case 'D': return "Selesai"; break;
-    default: return "Status belum diketahui"; break;
+    default: return "Status tidak diketahui"; break;
   }
 }
 ?>

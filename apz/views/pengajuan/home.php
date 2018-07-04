@@ -37,14 +37,14 @@
             </div>
           </div>
 
-          <!-- <div class="row">
+          <div class="row">
             <div class="col-md-12">
               <div class="form-group">
-                <label class="control-label">File Tambahan</label>
+                <label class="control-label">File Tambahan <span class="text-info">(.zip, .rar)</span></label>
                 <input type="file" class="form-control" name="file" style="opacity: 1; position: inherit;">
               </div>
             </div>
-          </div> -->
+          </div>
 
           <div class="clearfix"></div>
           <hr>

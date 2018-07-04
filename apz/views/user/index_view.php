@@ -1,3 +1,8 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+$load = $this->db->query("SELECT COUNT(id) AS total FROM pengajuan WHERE status = 'N'");
+$label = $load->row()->total;
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -26,32 +31,32 @@
 </head>
 <body>
   <div class="wrapper">
-    <div class="sidebar" data-color="purple">
+    <div class="sidebar" data-color="blue">
       <div class="logo">
         <a href="<?= site_url(); ?>" class="simple-text">CERC</a>
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li>
+          <li <?= uri_string() == 'u' ? 'class="active"' : '' ?>>
             <a href="<?= site_url('u'); ?>">
               <i class="material-icons">dashboard</i><p>Dashboard</p>
             </a>
           </li>
           <?php if($this->session->userdata('level') == 1){ ?>
-          <li>
+          <li <?= uri_string() == 'u/user' ? 'class="active"' : '' ?>>
             <a href="<?= site_url('u/user'); ?>">
               <i class="material-icons">account_circle</i><p>User</p>
             </a>
           </li>
           <?php } ?>
-          <li>
+          <li <?= uri_string() == 'u/project' ? 'class="active"' : '' ?>>
             <a href="<?= site_url('u/project'); ?>">
               <i class="material-icons">ballot</i><p>Project</p>
             </a>
           </li>
-          <li>
+          <li <?= uri_string() == 'u/request' ? 'class="active"' : '' ?>>
             <a href="<?= site_url('u/request'); ?>">
-              <i class="material-icons">shopping_basket</i><p>Request &nbsp;<span class="label label-success">2</span></p>
+              <i class="material-icons">shopping_basket</i><p>Request <?= $label != 0 ? '<span class="label label-success">'. $label .'</span>' : '' ?></p>
             </a>
           </li>
         </ul>

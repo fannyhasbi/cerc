@@ -67,13 +67,13 @@ class Pengajuan_model extends CI_Model {
     return $q->row();
   }
 
-  public function addPengajuan($id_pemohon){
+  public function addPengajuan($id_pemohon, $alamat_file){
     $data = array(
       'nama' => $this->purify($this->input->post('nama_proyek')),
       'tgl_pengajuan' => date('Y-m-d H:i:s'),
       'est_selesai' => $this->purify($this->input->post('selesai')),
       'ket' => $this->purify($this->input->post('keterangan')),
-      'file' => 'yoyoy.docx',
+      'file' => $alamat_file,
       'id_pemohon' => $id_pemohon
     );
 
