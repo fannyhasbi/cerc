@@ -94,6 +94,26 @@
 </body>
 
 <script>
+$(document).ready(function(){
+  var msg = '<?= $this->session->flashdata('msg'); ?>';
+  var type = '<?= $this->session->flashdata('type'); ?>';
+  type = type.length == 0 ? 'success' : type;
+
+  if(msg.length !== 0){
+    $.notify({
+      icon: "notifications",
+      message: msg
+    }, {
+      type: type,
+      timer: 3000,
+      placement: {
+        from: 'top',
+        align: 'center'
+      }
+    });
+  }
+});
+
 $(function () {
   $('#datepicker').datepicker({
     autoclose: true,

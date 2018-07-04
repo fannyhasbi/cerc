@@ -50,33 +50,3 @@ function statusDefiner($status){
     </div>
   </div>
 </div>
-
-<script>
-$(document).ready(function(){
-  var msg = '<?= $this->session->flashdata('msg') ?>';
-  var type = '<?= $this->session->flashdata('type'); ?>';
-  type = type.length == 0 ? 'success' : type;
-
-  if(msg.length !== 0){
-    color = Math.floor((Math.random() * 4) + 1);
-    $.notify({
-      icon: "notifications",
-      message: msg
-    }, {
-      type: type,
-      timer: 3000,
-      placement: {
-        from: 'top',
-        align: 'center'
-      }
-    });
-  }
-});
-
-// function hapus(id){
-//   var j = confirm("Yakin ingin menghapus?");
-//   if(j){
-//     window.location = "<?= site_url('u/hapus_user/'); ?>"+ id;
-//   }
-// }
-</script>

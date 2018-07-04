@@ -115,6 +115,28 @@ $label = $load->row()->total;
   </div>
 </body>
 
+<script>
+$(document).ready(function(){
+  var msg = '<?= $this->session->flashdata('msg') ?>';
+  var type = '<?= $this->session->flashdata('type') ?>';
+  type = type.length == 0 ? 'success' : type;
+
+  if(msg.length !== 0){
+    $.notify({
+      icon: "notifications",
+      message: msg
+    }, {
+      type: type,
+      timer: 3000,
+      placement: {
+        from: 'top',
+        align: 'center'
+      }
+    });
+  }
+});
+</script>
+
 <!--  Dynamic Elements plugin -->
 <script src="<?= base_url('assets');?>/vendor/material/js/arrive.min.js"></script>
 <!--  Sharrre Plugin -->
