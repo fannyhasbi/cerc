@@ -29,20 +29,27 @@ class Pengajuan extends CI_Controller {
 
       $this->load->library('upload', $config);
 
-      if ( ! $this->upload->do_upload('file')){
-        $message = '<p>'. $this->upload->display_errors() .'</p>';
-        $this->session->set_flashdata('msg', $message);
-        $this->session->set_flashdata('type', 'danger');
+      // cek apakah ada tambahan file
+      if(empty($_FILES['file']['name'])){
+        $id_pemohon = $this->pengajuan_model->addPemohon();
+        $this->pengajuan_model->addPengajuan($id_pemohon, null);
       }
       else {
-        $data = $this->upload->data();
+        if ( ! $this->upload->do_upload('file')){
+          $message = '<p>'. $this->upload->display_errors() .'</p>';
+          $this->session->set_flashdata('msg', $message);
+          $this->session->set_flashdata('type', 'danger');
+        }
+        else {
+          $data = $this->upload->data();
 
-        $id_pemohon = $this->pengajuan_model->addPemohon();
-        $this->pengajuan_model->addPengajuan($id_pemohon, $data['file_name']);
-
-        $this->session->set_flashdata('msg', 'Berhasil. Terima kasih telah mengirimkan pengajuan, silahkan tunggu konfirmasi dari kami.');
-        $this->session->set_flashdata('type', 'success');
+          $id_pemohon = $this->pengajuan_model->addPemohon();
+          $this->pengajuan_model->addPengajuan($id_pemohon, $data['file_name']);
+        }
       }
+      
+      $this->session->set_flashdata('msg', 'Berhasil. Terima kasih telah mengirimkan pengajuan, silahkan tunggu konfirmasi dari kami.');
+      $this->session->set_flashdata('type', 'success');
 
       redirect(site_url('pengajuan'));
     }

@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-12">
-    <a href="<?= site_url('u/add_kategori'); ?>" class="btn btn-primary">
+    <a href="<?= site_url('u/add-kategori'); ?>" class="btn btn-primary">
       <i class="material-icons">note_add</i> Tambah
     </a>
 
@@ -24,7 +24,7 @@
                 <td>#<?= $item->id; ?></td>
                 <td><?= $item->nama; ?></td>
                 <td class="td-actions text-right">
-                  <a href="<?= site_url('u/edit_kategori/'.$item->id); ?>" rel="tooltip" title="Edit kategori" class="btn btn-primary btn-simple btn-xs">
+                  <a href="<?= site_url('u/edit-kategori/'.$item->id); ?>" rel="tooltip" title="Edit kategori" class="btn btn-primary btn-simple btn-xs">
                     <i class="material-icons">edit</i>
                   </a>
                 </td>

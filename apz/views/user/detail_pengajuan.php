@@ -51,7 +51,11 @@
               </tr>
               <tr>
                 <th>File Tambahan</th>
-                <td><a href="<?= base_url('uploads/proposals/'.$request->file); ?>" target="_blank">Buka</a></td>
+                <?php if($request->file == null){ ?>  
+                  <td><i>Tidak ada</i></td>
+                <?php } else { ?>
+                  <td><a href="<?= base_url('uploads/proposals/'.$request->file); ?>" target="_blank">Buka</a></td>
+                <?php } // end else ?>
               </tr>
             </table>
           </div>

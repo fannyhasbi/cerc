@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-12">
-    <a href="<?= site_url('u/add_user'); ?>" class="btn btn-primary">
+    <a href="<?= site_url('u/add-user'); ?>" class="btn btn-primary">
       <i class="material-icons">note_add</i> Tambah
     </a>
   </div>
@@ -20,7 +20,7 @@
                 <td><?= $user->nama; ?></td>
                 <td><?= level_definer($user->level); ?></td>
                 <td class="td-actions text-right">
-                  <a href="<?= site_url('u/edit_user/'.$user->id); ?>" rel="tooltip" title="Edit user" class="btn btn-primary btn-simple btn-xs">
+                  <a href="<?= site_url('u/edit-user/'.$user->id); ?>" rel="tooltip" title="Edit user" class="btn btn-primary btn-simple btn-xs">
                     <i class="material-icons">edit</i>
                   </a>
                   <button rel="tooltip" title="Hapus" class="btn btn-danger btn-simple btn-xs" onclick="hapus(<?= $user->id; ?>)">
@@ -41,7 +41,7 @@
 function hapus(id){
   var j = confirm("Yakin ingin menghapus?");
   if(j){
-    window.location = "<?= site_url('u/hapus_user/'); ?>"+ id;
+    window.location = "<?= site_url('u/hapus-user/'); ?>"+ id;
   }
 }
 </script>

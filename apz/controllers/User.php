@@ -299,7 +299,7 @@ class User extends CI_Controller {
       $this->session->set_flashdata('msg', 'Kategori berhasil ditambahkan');
       $this->session->set_flashdata('type', 'success');
       
-      redirect(site_url('u/kategori_project'));
+      redirect(site_url('u/kategori-project'));
     }
     else {
       $data['view_name'] = 'add_kategori';
@@ -316,7 +316,7 @@ class User extends CI_Controller {
       $this->session->set_flashdata('msg', 'Kategori tidak ditemukan');
       $this->session->set_flashdata('type', 'danger');
 
-      redirect(site_url('u/kategori_project'));
+      redirect(site_url('u/kategori-project'));
     }
     else {
       if($this->input->post('simpan')){
@@ -327,7 +327,7 @@ class User extends CI_Controller {
         $this->session->set_flashdata('msg', 'Kategori '. $kategori->nama .' berhasil disimpan');
         $this->session->set_flashdata('type', 'success');
 
-        redirect(site_url('u/kategori_project'));
+        redirect(site_url('u/kategori-project'));
       }
       else {
         $data['view_name'] = 'edit_kategori';
