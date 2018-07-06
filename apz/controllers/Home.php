@@ -18,8 +18,12 @@ class Home extends CI_Controller {
 	}
 
   public function login(){
-    if($this->session->userdata('login'))
+    if($this->session->userdata('login')){
       redirect(site_url('u'));
+    }
+    else if($this->session->userdata('login_club')){
+      redirect(site_url('c'));
+    }
 
     $this->load->model('user_model');
     if($this->input->post('login')){
@@ -32,15 +36,32 @@ class Home extends CI_Controller {
         $data_user = $this->user_model->getData();
 
         if(password_verify($pass, $data_user->password)){
-          $sess_data = array(
-            'login' => true,
-            'username' => $user,
-            'id' => $data_user->id,
-            'level' => $data_user->level
-          );
+          if($data_user->level == 1){
+            // Login admin
+            $sess_data = array(
+              'login' => true,
+              'username' => $data_user->username,
+              'id' => $data_user->id,
+              'level' => $data_user->level
+            );
 
-          $this->session->set_userdata($sess_data);
-          redirect(site_url('u'));
+            $this->session->set_userdata($sess_data);
+            redirect(site_url('u'));
+          }
+          else if($data_user->level > 1 && $data_user->level < 6){
+            // Login club
+            $sess_data = array(
+              'login_club' => true,
+              'username' => $data_user->username,
+              'nama' => $data_user->nama,
+              'id' => $data_user->id,
+              'level' => $data_user->level
+            );
+
+            $this->session->set_userdata($sess_data);
+            redirect(site_url('c'));
+          }
+
         }
         else {
           $this->session->set_flashdata('msg', '<div class="alert alert-danger">Username atau password salah</div>');
