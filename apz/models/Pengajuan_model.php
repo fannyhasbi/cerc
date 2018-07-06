@@ -11,7 +11,6 @@ class Pengajuan_model extends CI_Model {
   }
 
   public function getLastInsertedPemohon(){
-    $this->load->helper('haz_helper');
     $where = array(
       'nama' => purify($this->input->post('nama')),
       'email'=> purify($this->input->post('email')),
@@ -61,7 +60,6 @@ class Pengajuan_model extends CI_Model {
   }
 
   public function addPengajuan($id_pemohon, $alamat_file){
-    $this->load->helper('haz_helper');
     $data = array(
       'nama' => purify($this->input->post('nama_proyek')),
       'tgl_pengajuan' => date('Y-m-d H:i:s'),
@@ -75,7 +73,6 @@ class Pengajuan_model extends CI_Model {
   }
 
   public function addPemohon(){
-    $this->load->helper('haz_helper');
     $data = array(
       'nama' => purify($this->input->post('nama')),
       'email'=> purify($this->input->post('email')),

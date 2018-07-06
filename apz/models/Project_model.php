@@ -50,7 +50,6 @@ class Project_model extends CI_Model {
   }
 
   public function add(){
-    $this->load->helper('haz_helper');
     $data = array(
       'nama'    => purify($this->input->post('nama_proyek')),
       'pemohon' => purify($this->input->post('pemohon')),
@@ -66,7 +65,6 @@ class Project_model extends CI_Model {
   }
 
   public function addKategori(){
-    $this->load->helper('haz_helper');
     $data = array(
       'nama' => purify($this->input->post('nama_kategori'))
     );

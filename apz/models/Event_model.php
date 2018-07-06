@@ -29,8 +29,6 @@ class Event_model extends CI_Model {
   }
 
   public function add(){
-    $this->load->helper('haz_helper');
-
     $foto = $this->input->post('foto');
     $foto = (strlen($foto) < 1) ? base_url('assets') .'/img/portfolio/submarine.png' : purify($foto);
 
@@ -56,8 +54,6 @@ class Event_model extends CI_Model {
   }
 
   public function update($id){
-    $this->load->helper('haz_helper');
-    
     $foto = $this->input->post('foto');
     $foto = (strlen($foto) < 1) ? base_url('assets') .'/img/portfolio/submarine.png' : purify($foto);
 

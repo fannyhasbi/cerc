@@ -20,10 +20,6 @@ function purify($r){
   return $r;
 }
 
-function coba(){
-  return "Hello World!";
-}
-
 function bulan_definer($bulan){
   switch($bulan){
     case 1: return "Januari"; break;
