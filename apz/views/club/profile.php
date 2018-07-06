@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>CERC - Computer Engineering Research Club</title>
+  <title>Club <?= $club->nama; ?> | CERC</title>
 
   <!-- Bootstrap core CSS -->
   <link href="<?= base_url('assets'); ?>/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -45,6 +45,9 @@
             <a class="nav-link js-scroll-trigger" href="<?= site_url(); ?>">About</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="<?= site_url('project'); ?>">Project</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="<?= site_url('event'); ?>">Event</a>
           </li>
           <?php if($this->session->userdata('login')){ ?>
@@ -57,8 +60,55 @@
     </div>
   </nav>
 
-  <!-- Event Section -->
-  <?php $this->load->view('club/'.$view_name); ?>
+  <!-- Profile Section -->
+  <section style="padding-top: 120px;" class="success">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <img src="<?= base_url('assets'); ?>/img/portfolio/submarine.png" class="img-fluid">
+        </div>
+        <div class="col-md-6" style="padding-top: 5%">
+          <h4>Club <?= $club->nama; ?></h4>
+          <p style="text-align: justify; font-size: inherit; line-height: 1.5"><?= $club->ket; ?>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="thumb">
+    <div class="container">
+      <h3 class="text-center">Our Activity</h3>
+      <hr class="small">
+      <div class="row" style="margin-bottom: 20px">
+        <div class="col-xs-6 col-sm-3">
+          <img src="<?= base_url('assets'); ?>/img/portfolio/submarine.png" class="img-thumbnail">
+        </div>
+        <div class="col-xs-6 col-sm-3">
+          <img src="<?= base_url('assets'); ?>/img/portfolio/submarine.png" class="img-thumbnail">
+        </div>
+        <div class="col-xs-6 col-sm-3">
+          <img src="<?= base_url('assets'); ?>/img/portfolio/submarine.png" class="img-thumbnail">
+        </div>
+        <div class="col-xs-6 col-sm-3">
+          <img src="<?= base_url('assets'); ?>/img/portfolio/submarine.png" class="img-thumbnail">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6 col-sm-3">
+          <img src="<?= base_url('assets'); ?>/img/portfolio/submarine.png" class="img-thumbnail">
+        </div>
+        <div class="col-xs-6 col-sm-3">
+          <img src="<?= base_url('assets'); ?>/img/portfolio/submarine.png" class="img-thumbnail">
+        </div>
+        <div class="col-xs-6 col-sm-3">
+          <img src="<?= base_url('assets'); ?>/img/portfolio/submarine.png" class="img-thumbnail">
+        </div>
+        <div class="col-xs-6 col-sm-3">
+          <img src="<?= base_url('assets'); ?>/img/portfolio/submarine.png" class="img-thumbnail">
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Footer -->
   <footer class="text-center">

@@ -12,10 +12,10 @@ $route['event/(:num)/(:any)'] = 'home/event_detail/$1/$2';
 $route['project'] = 'home/project';
 
 // Club
-$route['software'] = 'club';
-$route['jaringan'] = 'club';
-$route['embedded'] = 'club';
-$route['multimedia'] = 'club';
+$route['software'] = 'club/profile/software';
+$route['jaringan'] = 'club/profile/networking';
+$route['embedded'] = 'club/profile/embedded';
+$route['multimedia'] = 'club/profile/multimedia';
 
 // Propose Project
 $route['pengajuan'] = 'pengajuan';
