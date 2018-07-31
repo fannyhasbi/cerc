@@ -21,6 +21,7 @@ $route['multimedia'] = 'club/profile/multimedia';
 $route['c'] = 'club/profile_edit';
 $route['c/request'] = 'club/request';
 $route['c/request/(:num)'] = 'club/request_detail/$1';
+$route['c/materi'] = 'club/materi';
 
 // Propose Project
 $route['pengajuan'] = 'pengajuan';

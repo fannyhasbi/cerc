@@ -47,6 +47,11 @@ $label = $load->row()->total;
               <i class="material-icons">dashboard</i><p>Profile</p>
             </a>
           </li>
+          <li <?= uri_string() == 'c/materi' ? 'class="active"' : '' ?>>
+            <a href="<?= site_url('c/materi'); ?>">
+              <i class="material-icons">dashboard</i><p>Materi</p>
+            </a>
+          </li>
         </ul>
       </div>
     </div>
