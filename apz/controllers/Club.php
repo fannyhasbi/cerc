@@ -13,6 +13,16 @@ class Club extends CI_Controller {
     }
   }
 
+  private function generateAlamat(){
+    $alamat = "";
+    $n = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+    for($i=0;$i<20;$i++){
+      $alamat .= $n[rand(0, strlen($n) - 1)];
+    }
+
+    return 'cerc-club-'.$alamat;
+  }
+
   public function profile($club_slug){
     $data['club'] = $this->club_model->get($club_slug);
 
@@ -23,10 +33,39 @@ class Club extends CI_Controller {
     $this->cekLogin();
 
     if($this->input->post('simpan')){
-      $this->club_model->update($this->session->userdata('club_slug'));
 
-      $this->session->set_flashdata('msg', 'Profil berhasil disimpan');
-      $this->session->set_flashdata('type', 'success');
+      $alamat = $this->generateAlamat();
+
+      $config['upload_path']   = './uploads/clubs/';
+      $config['file_name']     = $alamat;
+      $config['allowed_types'] = 'jpeg|jpg|png';
+      $config['max_size']      = 500;
+
+      $this->load->library('upload', $config);
+
+      // cek apakah ada file upload
+      if(!empty($_FILES['foto']['name'])){
+        if ( ! $this->upload->do_upload('foto')){
+          $message = '<p>'. $this->upload->display_errors() .'</p>';
+          $this->session->set_flashdata('msg', $message);
+          $this->session->set_flashdata('type', 'danger');
+        }
+        else {
+          $data = $this->upload->data();
+
+          $this->club_model->update($this->session->userdata('club_slug'), $data['file_name']);
+
+          $this->session->set_flashdata('msg', 'Profil berhasil disimpan');
+          $this->session->set_flashdata('type', 'success');
+        }
+      }
+      else {
+        $this->club_model->update($this->session->userdata('club_slug'), NULL);
+
+        $this->session->set_flashdata('msg', 'Profil berhasil disimpan');
+        $this->session->set_flashdata('type', 'success');
+      }
+
       redirect(site_url('c'));
     }
     else {

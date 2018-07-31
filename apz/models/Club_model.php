@@ -7,12 +7,20 @@ class Club_model extends CI_Model {
     return $q->row();
   }
   
-  public function update($club_slug){
+  public function update($club_slug, $alamat_foto = NULL){
     $this->db->where('slug', $club_slug);
     
-    $data = array(
-      'ket' => purify($this->input->post('ket'))
-    );
+    if($alamat_foto == NULL){
+      $data = array(
+        'ket' => purify($this->input->post('ket'))
+      );
+    }
+    else {
+      $data = array(
+        'ket'  => purify($this->input->post('ket')),
+        'foto' => $alamat_foto
+      );
+    }
 
     $this->db->update('club', $data);
   }
