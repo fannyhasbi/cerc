@@ -15,6 +15,8 @@ class Club extends CI_Controller {
 
   public function dashboard(){
     $data['view_name'] = 'home_profile';
+    $data['club'] = $this->club_model->get($this->session->userdata('club_slug'));
+
     $this->load->view('club/index_view', $data);
   }
 

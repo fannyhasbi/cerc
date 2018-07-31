@@ -89,7 +89,7 @@
           </div>
           <div class="col-sm-6 text-center">
             <img class="img-fluid" src="<?= base_url('assets'); ?>/img/portfolio/rocket.png" alt="">
-            <h4><a href="<?= site_url('software'); ?>">Jaringan</a></h4>
+            <h4><a href="<?= site_url('jaringan'); ?>">Jaringan</a></h4>
           </div>
         </div>
       </div>

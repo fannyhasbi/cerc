@@ -39,7 +39,7 @@ $label = $load->row()->total;
         <ul class="nav">
           <li <?= uri_string() == 'c' ? 'class="active"' : '' ?>>
             <a href="<?= site_url('c'); ?>">
-              <i class="material-icons">dashboard</i><p>Dashboard</p>
+              <i class="material-icons">dashboard</i><p>Profile</p>
             </a>
           </li>
           <li <?= uri_string() == 'c/request' ? 'class="active"' : '' ?>>

@@ -13,7 +13,7 @@ $route['project'] = 'home/project';
 
 // Club
 $route['software'] = 'club/profile/software';
-$route['jaringan'] = 'club/profile/networking';
+$route['jaringan'] = 'club/profile/jaringan';
 $route['embedded'] = 'club/profile/embedded';
 $route['multimedia'] = 'club/profile/multimedia';
 $route['c'] = 'club/dashboard';

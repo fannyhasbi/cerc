@@ -50,9 +50,9 @@
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="<?= site_url('event'); ?>">Event</a>
           </li>
-          <?php if($this->session->userdata('login')){ ?>
+          <?php if($this->session->userdata('login') || $this->session->userdata('login_club')){ ?>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="<?= site_url('u'); ?>">Dashboard</a>
+            <a class="nav-link js-scroll-trigger" href="<?= $this->session->userdata('login') ? site_url('u') : site_url('c'); ?>">Dashboard</a>
           </li>
           <?php } ?>
         </ul>

@@ -36,7 +36,7 @@ class Home extends CI_Controller {
         $data_user = $this->user_model->getData();
 
         if(password_verify($pass, $data_user->password)){
-          if($data_user->level == 1){
+          if($data_user->level == 1 || $data_user->level == 6){
             // Login admin
             $sess_data = array(
               'login' => true,
@@ -48,14 +48,16 @@ class Home extends CI_Controller {
             $this->session->set_userdata($sess_data);
             redirect(site_url('u'));
           }
-          else if($data_user->level > 1 && $data_user->level < 6){
+          else if($data_user->level > 1 && $data_user->level <= 5){
+            $this->load->helper('haz_helper');
             // Login club
             $sess_data = array(
               'login_club' => true,
               'username' => $data_user->username,
               'nama' => $data_user->nama,
               'id' => $data_user->id,
-              'level' => $data_user->level
+              'level' => $data_user->level,
+              'club_slug' => strtolower(level_definer($data_user->level))
             );
 
             $this->session->set_userdata($sess_data);
