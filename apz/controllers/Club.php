@@ -19,12 +19,21 @@ class Club extends CI_Controller {
     $this->load->view('club/profile', $data);
   }
 
-  public function dashboard(){
+  public function profile_edit(){
     $this->cekLogin();
-    $data['view_name'] = 'home_profile';
-    $data['club'] = $this->club_model->get($this->session->userdata('club_slug'));
 
-    $this->load->view('club/index_view', $data);
+    if($this->input->post('simpan')){
+      $this->club_model->update($this->session->userdata('club_slug'));
+
+      $this->session->set_flashdata('msg', 'Profil berhasil disimpan');
+      $this->session->set_flashdata('type', 'success');
+      redirect(site_url('c'));
+    }
+    else {
+      $data['view_name'] = 'home_profile';
+      $data['club'] = $this->club_model->get($this->session->userdata('club_slug'));
+      $this->load->view('club/index_view', $data);
+    }
   }
 
   public function request(){

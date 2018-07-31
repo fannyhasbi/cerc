@@ -18,7 +18,7 @@ $route['embedded'] = 'club/profile/embedded';
 $route['multimedia'] = 'club/profile/multimedia';
 
 // Club Dashboard
-$route['c'] = 'club/dashboard';
+$route['c'] = 'club/profile_edit';
 $route['c/request'] = 'club/request';
 $route['c/request/(:num)'] = 'club/request_detail/$1';
 
