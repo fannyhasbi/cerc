@@ -22,7 +22,7 @@ class Home extends CI_Controller {
       redirect(site_url('u'));
     }
     else if($this->session->userdata('login_club')){
-      redirect(site_url('c'));
+      redirect(site_url('c/request'));
     }
 
     $this->load->model('user_model');
@@ -61,7 +61,7 @@ class Home extends CI_Controller {
             );
 
             $this->session->set_userdata($sess_data);
-            redirect(site_url('c'));
+            redirect(site_url('c/request'));
           }
 
         }

@@ -37,14 +37,14 @@ $label = $load->row()->total;
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li <?= uri_string() == 'c' ? 'class="active"' : '' ?>>
-            <a href="<?= site_url('c'); ?>">
-              <i class="material-icons">dashboard</i><p>Profile</p>
-            </a>
-          </li>
           <li <?= uri_string() == 'c/request' ? 'class="active"' : '' ?>>
             <a href="<?= site_url('c/request'); ?>">
               <i class="material-icons">shopping_basket</i><p>Request <?= $label != 0 ? '<span class="label label-success">'. $label .'</span>' : '' ?></p>
+            </a>
+          </li>
+          <li <?= uri_string() == 'c' ? 'class="active"' : '' ?>>
+            <a href="<?= site_url('c'); ?>">
+              <i class="material-icons">dashboard</i><p>Profile</p>
             </a>
           </li>
         </ul>
