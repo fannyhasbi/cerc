@@ -16,7 +16,11 @@ $route['software'] = 'club/profile/software';
 $route['jaringan'] = 'club/profile/jaringan';
 $route['embedded'] = 'club/profile/embedded';
 $route['multimedia'] = 'club/profile/multimedia';
+
+// Club Dashboard
 $route['c'] = 'club/dashboard';
+$route['c/request'] = 'club/request';
+$route['c/request/(:num)'] = 'club/request_detail/$1';
 
 // Propose Project
 $route['pengajuan'] = 'pengajuan';
