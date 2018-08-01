@@ -8,7 +8,7 @@ class Club_model extends CI_Model {
   }
 
   public function getMateriByClub($id_club){
-    $q = $this->db->get_where('materi', ['id' => $id_club]);
+    $q = $this->db->get_where('materi', ['id_club' => $id_club]);
     return $q->result();
   }
   
