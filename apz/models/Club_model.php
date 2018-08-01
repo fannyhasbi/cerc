@@ -2,6 +2,10 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Club_model extends CI_Model {
+  public function __construct(){
+    date_default_timezone_set('Asia/Jakarta');
+  }
+  
   public function get($club_slug){
     $q = $this->db->get_where('club', ['slug' => $club_slug]);
     return $q->row();

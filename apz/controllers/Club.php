@@ -112,4 +112,11 @@ class Club extends CI_Controller {
     $this->load->view('club/index_view', $data);
   }
 
+  public function add_materi(){
+    $this->cekLogin();
+
+    $data['view_name'] = 'add_materi';
+    $this->load->view('club/index_view', $data);
+  }
+
 }
