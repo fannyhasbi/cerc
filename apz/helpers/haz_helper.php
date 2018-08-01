@@ -37,6 +37,17 @@ function bulan_definer($bulan){
   }
 }
 
+function tanggal_definer($tanggal){
+  /**
+   * $tanggal = "YYYY-MM-DD"
+   * $tanggal = "2018-07-20"
+  */
+  $tanggal = explode("-", $tanggal);
+  $tanggal[1] = bulan_definer($tanggal[1]);
+  $tanggal = array_reverse($tanggal);
+  return implode(" ", $tanggal);
+}
+
 function status_definer($status){
   switch($status){
     case 'N': return "Belum ditanggapi"; break;
