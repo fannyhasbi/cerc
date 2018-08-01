@@ -49,7 +49,7 @@ $label = $load->row()->total;
           </li>
           <li <?= uri_string() == 'c/materi' ? 'class="active"' : '' ?>>
             <a href="<?= site_url('c/materi'); ?>">
-              <i class="material-icons">dashboard</i><p>Materi</p>
+              <i class="material-icons">description</i><p>Materi</p>
             </a>
           </li>
         </ul>

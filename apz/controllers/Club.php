@@ -107,7 +107,7 @@ class Club extends CI_Controller {
   public function materi(){
     $this->cekLogin();
 
-    $data['materi'] = $this->club_model->getMateri();
+    $data['materi'] = $this->club_model->getMateriByClub($this->session->userdata('level'));
     $data['view_name'] = 'home_materi';
     $this->load->view('club/index_view', $data);
   }

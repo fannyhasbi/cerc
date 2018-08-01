@@ -11,18 +11,22 @@
         <h4 class="title">Daftar Materi</h4>
       </div>
       <div class="card-content table-responsive">
-        <table class="table">
-          <tbody>
+        <?php if(count($materi) == 0){ ?>
+          <blockquote>Materi belum ada. Silahkan tambah <a href="<?= site_url('c/add-materi'); ?>">disini</a>.</blockquote>
+        <?php } else { ?>
+          <table class="table">
+            <tbody>
 
-            <?php foreach($materi as $item): ?>
-              <tr>
-                <td><?= $item->judul; ?></td>
-                <td><?= $item->tgl_kelas; ?>
-              </tr>
-            <?php endforeach; ?>
+              <?php foreach($materi as $item): ?>
+                <tr>
+                  <td><?= $item->judul; ?></td>
+                  <td><?= $item->tgl_kelas; ?>
+                </tr>
+              <?php endforeach; ?>
 
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        <?php } ?>
       </div>
     </div>
   </div>
