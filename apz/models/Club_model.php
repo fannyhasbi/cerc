@@ -79,4 +79,9 @@ class Club_model extends CI_Model {
 
     $this->db->update('materi', $data);
   }
+
+  public function deleteMateri($id_materi){
+    $this->db->where('id', $id_materi);
+    $this->db->delete('materi');
+  }
 }
