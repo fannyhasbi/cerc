@@ -60,4 +60,23 @@ class Club_model extends CI_Model {
 
     $this->db->update('club', $data);
   }
+
+  public function updateMateri($id_materi, $file_name = NULL){
+    $this->db->where('id', $id_materi);
+    
+    if($file_name == NULL)
+      $file_name = $this->input->post('file_url');
+
+    $data = array(
+      'judul' => purify($this->input->post('judul_materi')),
+      'file'  => $file_name,
+      'ket'   => purify($this->input->post('keterangan')),
+      'tgl_kelas' => $this->input->post('tgl_kelas'),
+      'id_club'   => $this->session->userdata('level'),
+      'pemateri'  => purify($this->input->post('pemateri')),
+      'uploaded'  => date('Y-m-d H:i:s')
+    );
+
+    $this->db->update('materi', $data);
+  }
 }

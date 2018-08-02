@@ -51,14 +51,13 @@
             </div>
             <div class="col-md-9">
               <div class="form-group label-floating">
-                <label class="control-label">URL</label>
-                <input id="file_url" type="url" class="form-control" name="file_url" required>
+                <input id="file_url" type="url" class="form-control" name="file_url" value="<?= $materi->file; ?>" required>
                 <input id="file_content" type="file" class="form-control" name="file_content" style="opacity: 1; position: inherit; display: none">
               </div>
             </div>
           </div>
 
-          <input type="submit" class="btn btn-primary pull-right" name="tambah" value="Tambah">
+          <input type="submit" class="btn btn-primary pull-right" name="simpan" value="Simpan">
           <div class="clearfix"></div>
         </form>
       </div>
