@@ -214,7 +214,7 @@ class Club extends CI_Controller {
   public function hapus_materi($id_materi){
     $this->cekLogin();
     
-    $cek_materi = $this->club_model->checkMateriById($id_materi);    
+    $cek_materi = $this->club_model->checkMateriById($id_materi);
     if($cek_materi->num_rows() == 0){
       $this->session->set_flashdata('msg', 'Materi tidak ditemukan');
       $this->session->set_flashdata('type', 'danger');
@@ -235,6 +235,16 @@ class Club extends CI_Controller {
       }
 
       redirect(site_url('c/materi'));
+    }
+  }
+
+  public function materi_detail($slug_materi){
+    $materi = $this->club_model->checkMateriBySlug($slug_materi);
+    if($materi->num_rows() == 0){
+      show_404();
+    }
+    else {
+      var_dump($materi->row()); die();
     }
   }
 

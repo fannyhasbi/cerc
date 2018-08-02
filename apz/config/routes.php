@@ -16,6 +16,7 @@ $route['software'] = 'club/profile/software';
 $route['jaringan'] = 'club/profile/jaringan';
 $route['embedded'] = 'club/profile/embedded';
 $route['multimedia'] = 'club/profile/multimedia';
+$route['materi/(:any)'] = 'club/materi_detail/$1';
 
 // Club Dashboard
 $route['c'] = 'club/profile_edit';
