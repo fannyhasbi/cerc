@@ -44,6 +44,7 @@ function tanggal_definer($tanggal){
   */
   $tanggal = explode("-", $tanggal);
   $tanggal[1] = bulan_definer($tanggal[1]);
+  $tanggal[2] = explode(" ", $tanggal[2])[0];
   $tanggal = array_reverse($tanggal);
   return implode(" ", $tanggal);
 }
