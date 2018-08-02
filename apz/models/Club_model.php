@@ -6,6 +6,15 @@ class Club_model extends CI_Model {
     date_default_timezone_set('Asia/Jakarta');
   }
 
+  private function generateSlug($judul){
+    $judul = purify_slug($judul) . '-';
+    $n = "1234567890";
+    for($i=0;$i<3;$i++){
+      $judul .= $n[rand(0, strlen($n) - 1)];
+    }
+    return $judul;
+  }
+
   public function checkMateriById($id_materi){
     return $this->db->get_where('materi', ['id' => $id_materi]);
   }
@@ -47,7 +56,8 @@ class Club_model extends CI_Model {
       'tgl_kelas' => $this->input->post('tgl_kelas'),
       'id_club'   => $this->session->userdata('level'),
       'pemateri'  => purify($this->input->post('pemateri')),
-      'uploaded'  => date('Y-m-d H:i:s')
+      'uploaded'  => date('Y-m-d H:i:s'),
+      'slug'  => $this->generateSlug($this->input->post('judul_materi'))
     );
 
     $this->db->insert('materi', $data);
@@ -84,7 +94,8 @@ class Club_model extends CI_Model {
       'tgl_kelas' => $this->input->post('tgl_kelas'),
       'id_club'   => $this->session->userdata('level'),
       'pemateri'  => purify($this->input->post('pemateri')),
-      'uploaded'  => date('Y-m-d H:i:s')
+      'uploaded'  => date('Y-m-d H:i:s'),
+      'slug'  => $this->generateSlug($this->input->post('judul_materi'))
     );
 
     $this->db->update('materi', $data);

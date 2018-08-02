@@ -135,7 +135,7 @@
                   <td><?= tanggal_definer($item->tgl_kelas); ?></td>
                   <td><?= $item->pemateri; ?></td>
                   <td><?= tanggal_definer($item->updated); ?></td>
-                  <td><a href="<?= site_url('materi/'.$item->id); ?>">Lihat detail</a></td>
+                  <td><a href="<?= site_url('materi/'.$item->slug); ?>">Lihat detail</a></td>
                 </tr>
               <?php endforeach; ?>
             </tbody>
