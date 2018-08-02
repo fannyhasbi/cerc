@@ -33,18 +33,17 @@ class Club extends CI_Controller {
     $this->cekLogin();
 
     if($this->input->post('simpan')){
-
-      $alamat = $this->generateAlamat();
-
-      $config['upload_path']   = './uploads/clubs/';
-      $config['file_name']     = $alamat;
-      $config['allowed_types'] = 'jpeg|jpg|png';
-      $config['max_size']      = 500;
-
-      $this->load->library('upload', $config);
-
       // cek apakah ada file upload
       if(!empty($_FILES['foto']['name'])){
+        $alamat = $this->generateAlamat();
+
+        $config['upload_path']   = './uploads/clubs/';
+        $config['file_name']     = $alamat;
+        $config['allowed_types'] = 'jpeg|jpg|png';
+        $config['max_size']      = 500;
+
+        $this->load->library('upload', $config);
+
         if ( ! $this->upload->do_upload('foto')){
           $message = '<p>'. $this->upload->display_errors() .'</p>';
           $this->session->set_flashdata('msg', $message);
@@ -115,8 +114,26 @@ class Club extends CI_Controller {
   public function add_materi(){
     $this->cekLogin();
 
-    $data['view_name'] = 'add_materi';
-    $this->load->view('club/index_view', $data);
+    if($this->input->post('tambah')){
+
+      if(!empty($_FILES['file_content']['name'])){
+        // todo
+        die("ada file");
+      }
+      else {
+        $this->club_model->addMateri(NULL);
+
+        $this->session->set_flashdata('msg', 'Materi berhasil diupload');
+        $this->session->set_flashdata('type', 'success');
+      }
+
+      redirect(site_url('c/materi'));
+    }
+    else {
+      $data['view_name'] = 'add_materi';
+      $this->load->view('club/index_view', $data);
+    }
+
   }
 
 }
