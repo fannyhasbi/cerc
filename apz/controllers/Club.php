@@ -25,6 +25,7 @@ class Club extends CI_Controller {
 
   public function profile($club_slug){
     $data['club'] = $this->club_model->get($club_slug);
+    $data['materi'] = $this->club_model->getMateriByClubSlug($club_slug);
 
     $this->load->view('club/profile', $data);
   }
@@ -232,7 +233,7 @@ class Club extends CI_Controller {
         $this->session->set_flashdata('msg', 'Materi berhasil dihapus');
         $this->session->set_flashdata('type', 'success');
       }
-      
+
       redirect(site_url('c/materi'));
     }
   }

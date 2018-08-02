@@ -20,9 +20,19 @@ class Club_model extends CI_Model {
     return $q->row();
   }
 
+  private function getIdClubBySlug($club_slug){
+    $q = $this->db->get_where('club', ['slug' => $club_slug]);
+    return $q->row()->id;
+  }
+
   public function getMateriByClub($id_club){
     $this->db->order_by('tgl_kelas', 'DESC');
     $q = $this->db->get_where('materi', ['id_club' => $id_club]);
+    return $q->result();
+  }
+
+  public function getMateriByClubSlug($club_slug){
+    $q = $this->db->get_where('materi', ['id_club' => $this->getIdClubBySlug($club_slug)]);
     return $q->result();
   }
 
