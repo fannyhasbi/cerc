@@ -13,8 +13,6 @@
   <link href="<?= base_url('assets'); ?>/css/bootstrap_pure.min.css" rel="stylesheet" />
   <!--  Material Dashboard CSS    -->
   <link href="<?= base_url('assets'); ?>/vendor/material/css/material-dashboard.css?v=1.2.0" rel="stylesheet" />
-  <!--  CSS for Demo Purpose, don't include it in your project     -->
-  <link href="<?= base_url('assets'); ?>/vendor/material/css/demo.css" rel="stylesheet" />
   <!-- Datepicker -->
   <link rel="stylesheet" href="<?= base_url('assets'); ?>/vendor/bootstrap/css/bootstrap-datepicker.min.css">
   <!--     Fonts and icons     -->

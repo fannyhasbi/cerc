@@ -18,8 +18,6 @@ $label = $load->row()->total;
   <link href="<?= base_url('assets'); ?>/css/bootstrap_pure.min.css" rel="stylesheet" />
   <!--  Material Dashboard CSS    -->
   <link href="<?= base_url('assets'); ?>/vendor/material/css/material-dashboard.css?v=1.2.0" rel="stylesheet" />
-  <!--  CSS for Demo Purpose, don't include it in your project     -->
-  <link href="<?= base_url('assets'); ?>/vendor/material/css/demo.css" rel="stylesheet" />
   <!--     Fonts and icons     -->
   <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
   <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
