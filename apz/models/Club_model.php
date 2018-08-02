@@ -6,8 +6,17 @@ class Club_model extends CI_Model {
     date_default_timezone_set('Asia/Jakarta');
   }
 
+  public function checkMateriById($id_materi){
+    return $this->db->get_where('materi', ['id' => $id_materi]);
+  }
+
   public function get($club_slug){
     $q = $this->db->get_where('club', ['slug' => $club_slug]);
+    return $q->row();
+  }
+
+  public function getMateriById($id_materi){
+    $q = $this->db->get_where('materi', ['id' => $id_materi]);
     return $q->row();
   }
 

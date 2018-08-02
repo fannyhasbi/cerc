@@ -2,7 +2,7 @@
   <div class="col-md-12">
     <div class="card">
       <div class="card-header" data-background-color="purple">
-        <h4 class="title">Tambah Materi</h4>
+        <h4 class="title">Edit Materi</h4>
         <p class="category">Isikan detail materi</p>
       </div>
       <div class="card-content">
@@ -11,13 +11,13 @@
             <div class="col-md-6">
               <div class="form-group label-floating">
                 <label class="control-label">Judul Materi</label>
-                <input type="text" class="form-control" name="judul_materi" required autofocus>
+                <input type="text" class="form-control" name="judul_materi" value="<?= $materi->judul; ?>" required autofocus>
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group label-floating">
                 <label class="control-label">Tanggal Kelas</label>
-                <input type="text" id="datepicker" class="form-control" name="tgl_kelas" pattern="([0-9]{4})+-+([0-1]{1})+([0-9]{1})+-+([0-3]{1})+([0-9]{1})" autocomplete="off" required>
+                <input type="text" id="datepicker" class="form-control" name="tgl_kelas" pattern="([0-9]{4})+-+([0-1]{1})+([0-9]{1})+-+([0-3]{1})+([0-9]{1})" value="<?= $materi->tgl_kelas; ?>" autocomplete="off" required>
               </div>
             </div>
           </div>
@@ -26,7 +26,7 @@
             <div class="col-md-12">
               <div class="form-group label-floating">
                 <label class="control-label">Pemateri</label>
-                <input type="text" class="form-control" name="pemateri" required>
+                <input type="text" class="form-control" name="pemateri" value="<?= $materi->pemateri; ?>" required>
               </div>
             </div>
           </div>
@@ -36,7 +36,7 @@
               <div class="form-group">
                 <label>Keterangan</label>
                 <div class="form-group label-floating">
-                  <textarea class="form-control" name="keterangan" rows="10" placeholder="Keterangan singkat materi" required></textarea>
+                  <textarea class="form-control" name="keterangan" rows="10" placeholder="Keterangan singkat materi" required><?= $materi->ket; ?></textarea>
                 </div>
               </div>
             </div>

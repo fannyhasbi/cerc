@@ -145,7 +145,36 @@ class Club extends CI_Controller {
       $data['view_name'] = 'add_materi';
       $this->load->view('club/index_view', $data);
     }
+  }
 
+  public function edit_materi($id_materi){
+    $this->cekLogin();
+
+    $cek_materi = $this->club_model->checkMateriById($id_materi);
+    if($cek_materi->num_rows() == 0){
+      $this->session->set_flashdata('msg', 'Materi tidak ditemukan');
+      $this->session->set_flashdata('type', 'danger');
+      redirect(site_url('c/materi'));
+    }
+    else {
+      $materi = $this->club_model->getMateriById($id_materi);
+
+      if($materi->id_club != $this->session->userdata('level')){
+        $this->session->set_flashdata('msg', 'Materi tidak ditemukan 2');
+        $this->session->set_flashdata('type', 'danger');
+        redirect(site_url('c/materi'));
+      }
+      else {
+        /**
+          *
+          * Ada materi
+          *
+          */
+        $data['materi'] = $materi;
+        $data['view_name'] = 'edit_materi';
+        $this->load->view('club/index_view', $data);
+      }
+    }
   }
 
 }

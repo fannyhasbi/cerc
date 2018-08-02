@@ -32,7 +32,7 @@
                   <td><?= tanggal_definer($item->tgl_kelas); ?></td>
                   <td><?= $item->updated; ?></td>
                   <td class="td-actions text-right">
-                    <a href="<?= site_url('c/edit-event/'.$item->id); ?>" rel="tooltip" title="Edit Event" class="btn btn-primary btn-simple btn-xs">
+                    <a href="<?= site_url('c/edit-materi/'.$item->id); ?>" rel="tooltip" title="Edit Event" class="btn btn-primary btn-simple btn-xs">
                       <i class="material-icons">edit</i>
                     </a>
                     <button rel="tooltip" title="Hapus" class="btn btn-danger btn-simple btn-xs" onclick="hapus(<?= $item->id; ?>)">
