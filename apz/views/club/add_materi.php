@@ -52,7 +52,7 @@
             <div class="col-md-9">
               <div class="form-group label-floating">
                 <label class="control-label">File</label>
-                <input id="file_url" type="url" class="form-control" name="file_url" required>
+                <input id="file_url" type="url" class="form-control" name="file_url" placeholder="http://example.com" required>
                 <input id="file_content" type="file" class="form-control" name="file_content" style="opacity: 1; position: inherit; display: none">
               </div>
             </div>
