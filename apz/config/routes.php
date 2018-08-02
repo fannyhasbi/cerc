@@ -12,6 +12,7 @@ $route['event/(:num)/(:any)'] = 'home/event_detail/$1/$2';
 $route['project'] = 'home/project';
 
 // Club
+$route['club'] = 'club';
 $route['software'] = 'club/profile/software';
 $route['jaringan'] = 'club/profile/jaringan';
 $route['embedded'] = 'club/profile/embedded';

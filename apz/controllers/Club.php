@@ -7,6 +7,10 @@ class Club extends CI_Controller {
     $this->load->model('club_model');
   }
 
+  public function index(){
+    redirect(site_url());
+  }
+
   private function cekLogin(){
     if(!$this->session->userdata('login_club')){
       redirect(site_url('login'));
@@ -27,7 +31,8 @@ class Club extends CI_Controller {
     $data['club'] = $this->club_model->get($club_slug);
     $data['materi'] = $this->club_model->getMateriByClubSlug($club_slug);
 
-    $this->load->view('club/profile', $data);
+    $data['view_name'] = 'profile';
+    $this->load->view('club/home_view', $data);
   }
 
   public function profile_edit(){
