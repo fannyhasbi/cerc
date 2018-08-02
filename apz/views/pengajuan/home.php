@@ -21,7 +21,7 @@
             <div class="col-md-12">
               <div class="form-group label-floating">
                 <label class="control-label">Deadline Kebutuhan *</label>
-                <input type="text" id="datepicker" class="form-control" name="selesai" pattern="([0-9]{4})+-+([0-1]{1})+([0-9]{1})+-+([0-3]{1})+([0-9]{1})" required>
+                <input type="text" id="datepicker" class="form-control" name="selesai" pattern="([0-9]{4})+-+([0-1]{1})+([0-9]{1})+-+([0-3]{1})+([0-9]{1})" autocomplete="off" required>
               </div>
             </div>
           </div>
