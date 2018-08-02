@@ -2,14 +2,74 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Club_model extends CI_Model {
+  public function __construct(){
+    date_default_timezone_set('Asia/Jakarta');
+  }
+
+  private function generateSlug($judul){
+    $judul = purify_slug($judul) . '-';
+    $n = "1234567890";
+    for($i=0;$i<3;$i++){
+      $judul .= $n[rand(0, strlen($n) - 1)];
+    }
+    return $judul;
+  }
+
+  public function checkMateriById($id_materi){
+    return $this->db->get_where('materi', ['id' => $id_materi]);
+  }
+
+  public function checkMateriBySlug($slug_materi){
+    // $slug_materi = $this->db->escape($slug_materi);
+    // $slug_materi = htmlentities($slug_materi);
+    return $this->db->get_where('materi', ['slug' => $slug_materi]);
+  }
+
   public function get($club_slug){
     $q = $this->db->get_where('club', ['slug' => $club_slug]);
     return $q->row();
   }
 
+  public function getMateriById($id_materi){
+    $q = $this->db->get_where('materi', ['id' => $id_materi]);
+    return $q->row();
+  }
+
+  private function getIdClubBySlug($club_slug){
+    $q = $this->db->get_where('club', ['slug' => $club_slug]);
+    return $q->row()->id;
+  }
+
   public function getMateriByClub($id_club){
+    $this->db->order_by('tgl_kelas', 'DESC');
     $q = $this->db->get_where('materi', ['id_club' => $id_club]);
     return $q->result();
+  }
+
+  public function getMateriByClubSlug($club_slug){
+    $id_club = $this->getIdClubBySlug($club_slug);
+    $this->db->order_by('tgl_kelas', 'DESC');
+    
+    $q = $this->db->get_where('materi', ['id_club' => $id_club]);
+    return $q->result();
+  }
+
+  public function addMateri($file_name = NULL){
+    if($file_name == NULL)
+      $file_name = $this->input->post('file_url');
+
+    $data = array(
+      'judul' => purify($this->input->post('judul_materi')),
+      'file'  => $file_name,
+      'ket'   => purify($this->input->post('keterangan')),
+      'tgl_kelas' => $this->input->post('tgl_kelas'),
+      'id_club'   => $this->session->userdata('level'),
+      'pemateri'  => purify($this->input->post('pemateri')),
+      'uploaded'  => date('Y-m-d H:i:s'),
+      'slug'  => $this->generateSlug($this->input->post('judul_materi'))
+    );
+
+    $this->db->insert('materi', $data);
   }
   
   public function update($club_slug, $alamat_foto = NULL){
@@ -28,5 +88,30 @@ class Club_model extends CI_Model {
     }
 
     $this->db->update('club', $data);
+  }
+
+  public function updateMateri($id_materi, $file_name = NULL){
+    $this->db->where('id', $id_materi);
+    
+    if($file_name == NULL)
+      $file_name = $this->input->post('file_url');
+
+    $data = array(
+      'judul' => purify($this->input->post('judul_materi')),
+      'file'  => $file_name,
+      'ket'   => purify($this->input->post('keterangan')),
+      'tgl_kelas' => $this->input->post('tgl_kelas'),
+      'id_club'   => $this->session->userdata('level'),
+      'pemateri'  => purify($this->input->post('pemateri')),
+      'uploaded'  => date('Y-m-d H:i:s'),
+      'slug'  => $this->generateSlug($this->input->post('judul_materi'))
+    );
+
+    $this->db->update('materi', $data);
+  }
+
+  public function deleteMateri($id_materi){
+    $this->db->where('id', $id_materi);
+    $this->db->delete('materi');
   }
 }

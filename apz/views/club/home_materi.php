@@ -32,10 +32,13 @@
                   <td><?= tanggal_definer($item->tgl_kelas); ?></td>
                   <td><?= $item->updated; ?></td>
                   <td class="td-actions text-right">
-                    <a href="<?= site_url('c/edit-event/'.$item->id); ?>" rel="tooltip" title="Edit Event" class="btn btn-primary btn-simple btn-xs">
+                    <a href="<?= site_url('materi/'.$item->slug);?>" rel="tooltip" title="Lihat" class="btn btn-success btn-simple btn-xs" target="_blank">
+                      <i class="material-icons">remove_red_eye</i>
+                    </a>
+                    <a href="<?= site_url('c/edit-materi/'.$item->id); ?>" rel="tooltip" title="Edit Materi" class="btn btn-primary btn-simple btn-xs">
                       <i class="material-icons">edit</i>
                     </a>
-                    <button rel="tooltip" title="Hapus" class="btn btn-danger btn-simple btn-xs" onclick="hapus(<?= $item->id; ?>)">
+                    <button rel="tooltip" title="Hapus materi" class="btn btn-danger btn-simple btn-xs" onclick="hapus(<?= $item->id; ?>)">
                       <i class="material-icons">close</i>
                     </button>
                   </td>

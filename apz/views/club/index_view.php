@@ -18,8 +18,8 @@ $label = $load->row()->total;
   <link href="<?= base_url('assets'); ?>/css/bootstrap_pure.min.css" rel="stylesheet" />
   <!--  Material Dashboard CSS    -->
   <link href="<?= base_url('assets'); ?>/vendor/material/css/material-dashboard.css?v=1.2.0" rel="stylesheet" />
-  <!--  CSS for Demo Purpose, don't include it in your project     -->
-  <link href="<?= base_url('assets'); ?>/vendor/material/css/demo.css" rel="stylesheet" />
+  <!-- Datepicker -->
+  <link rel="stylesheet" href="<?= base_url('assets'); ?>/vendor/bootstrap/css/bootstrap-datepicker.min.css">
   <!--     Fonts and icons     -->
   <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
   <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
@@ -27,6 +27,8 @@ $label = $load->row()->total;
   <!--   Core JS Files   -->
   <script src="<?= base_url('assets');?>/vendor/jquery/jquery.min.js" type="text/javascript"></script>
   <script src="<?= base_url('assets');?>/vendor/bootstrap/js/bootstrap_pure.min.js" type="text/javascript"></script>
+  <!-- Bootstrap Date picker -->
+  <script src="<?= base_url('assets'); ?>/vendor/bootstrap/js/bootstrap-datepicker.min.js"></script>
   <script src="<?= base_url('assets');?>/vendor/material/js/material.min.js" type="text/javascript"></script>
 </head>
 <body>
@@ -47,7 +49,7 @@ $label = $load->row()->total;
               <i class="material-icons">dashboard</i><p>Profile</p>
             </a>
           </li>
-          <li <?= uri_string() == 'c/materi' ? 'class="active"' : '' ?>>
+          <li <?= uri_string() == 'c/materi' || uri_string() == 'c/add-materi' ? 'class="active"' : '' ?>>
             <a href="<?= site_url('c/materi'); ?>">
               <i class="material-icons">description</i><p>Materi</p>
             </a>
@@ -127,6 +129,12 @@ $(document).ready(function(){
       }
     });
   }
+});
+$(function () {
+  $('#datepicker').datepicker({
+    autoclose: true,
+    format: "yyyy-mm-dd"
+  });
 });
 </script>
 

@@ -7,6 +7,10 @@ class Club extends CI_Controller {
     $this->load->model('club_model');
   }
 
+  public function index(){
+    redirect(site_url());
+  }
+
   private function cekLogin(){
     if(!$this->session->userdata('login_club')){
       redirect(site_url('login'));
@@ -25,26 +29,27 @@ class Club extends CI_Controller {
 
   public function profile($club_slug){
     $data['club'] = $this->club_model->get($club_slug);
+    $data['materi'] = $this->club_model->getMateriByClubSlug($club_slug);
 
-    $this->load->view('club/profile', $data);
+    $data['view_name'] = 'profile';
+    $this->load->view('club/home_view', $data);
   }
 
   public function profile_edit(){
     $this->cekLogin();
 
     if($this->input->post('simpan')){
-
-      $alamat = $this->generateAlamat();
-
-      $config['upload_path']   = './uploads/clubs/';
-      $config['file_name']     = $alamat;
-      $config['allowed_types'] = 'jpeg|jpg|png';
-      $config['max_size']      = 500;
-
-      $this->load->library('upload', $config);
-
       // cek apakah ada file upload
       if(!empty($_FILES['foto']['name'])){
+        $alamat = $this->generateAlamat();
+
+        $config['upload_path']   = './uploads/club/photo';
+        $config['file_name']     = $alamat;
+        $config['allowed_types'] = 'jpeg|jpg|png';
+        $config['max_size']      = 500;
+
+        $this->load->library('upload', $config);
+
         if ( ! $this->upload->do_upload('foto')){
           $message = '<p>'. $this->upload->display_errors() .'</p>';
           $this->session->set_flashdata('msg', $message);
@@ -110,6 +115,144 @@ class Club extends CI_Controller {
     $data['materi'] = $this->club_model->getMateriByClub($this->session->userdata('level'));
     $data['view_name'] = 'home_materi';
     $this->load->view('club/index_view', $data);
+  }
+
+  public function add_materi(){
+    $this->cekLogin();
+
+    if($this->input->post('tambah')){
+      if(!empty($_FILES['file_content']['name'])){
+        $config['upload_path']   = './uploads/club/materi/';
+        $config['allowed_types'] = 'pdf|docx|doc|xls|xlsx|ppt|pptx|zip|rar';
+        $config['max_size']      = 3000;
+
+        $this->load->library('upload', $config);
+
+        if ( ! $this->upload->do_upload('file_content')){
+          $message = '<p>'. $this->upload->display_errors() .'</p>';
+          $this->session->set_flashdata('msg', $message);
+          $this->session->set_flashdata('type', 'danger');
+
+          redirect(site_url('c/materi'));
+        }
+        else {
+          $data = $this->upload->data();
+          $this->club_model->addMateri($data['file_name']);
+        }
+      }
+      else {
+        $this->club_model->addMateri(NULL);
+      }
+
+      $this->session->set_flashdata('msg', 'Materi berhasil diupload');
+      $this->session->set_flashdata('type', 'success');
+      redirect(site_url('c/materi'));
+    }
+    else {
+      $data['view_name'] = 'add_materi';
+      $this->load->view('club/index_view', $data);
+    }
+  }
+
+  public function edit_materi($id_materi){
+    $this->cekLogin();
+
+    $cek_materi = $this->club_model->checkMateriById($id_materi);
+    if($cek_materi->num_rows() == 0){
+      $this->session->set_flashdata('msg', 'Materi tidak ditemukan');
+      $this->session->set_flashdata('type', 'danger');
+      redirect(site_url('c/materi'));
+    }
+    else {
+      $materi = $this->club_model->getMateriById($id_materi);
+
+      if($materi->id_club != $this->session->userdata('level')){
+        $this->session->set_flashdata('msg', 'Materi tidak ditemukan');
+        $this->session->set_flashdata('type', 'danger');
+        redirect(site_url('c/materi'));
+      }
+      else {
+        /**
+          *
+          * Ada materi
+          *
+          */
+
+        if($this->input->post('simpan')){
+          if(!empty($_FILES['file_content']['name'])){
+            $config['upload_path']   = './uploads/club/materi/';
+            $config['allowed_types'] = 'pdf|docx|doc|xls|xlsx|ppt|pptx|zip|rar';
+            $config['max_size']      = 3000;
+
+            $this->load->library('upload', $config);
+
+            if ( ! $this->upload->do_upload('file_content')){
+              $message = '<p>'. $this->upload->display_errors() .'</p>';
+              $this->session->set_flashdata('msg', $message);
+              $this->session->set_flashdata('type', 'danger');
+
+              redirect(site_url('c/materi'));
+            }
+            else {
+              $data = $this->upload->data();
+              $this->club_model->updateMateri($id_materi, $data['file_name']);
+            }
+          }
+          else {
+            $this->club_model->updateMateri($id_materi, null);
+          }
+
+          $this->session->set_flashdata('msg', 'Materi berhasil disimpan');
+          $this->session->set_flashdata('type', 'success');
+
+          redirect(site_url('c/materi'));
+        }
+        else {
+          $data['materi'] = $materi;
+          $data['view_name'] = 'edit_materi';
+          $this->load->view('club/index_view', $data);
+        }
+      }
+    }
+  }
+
+  public function hapus_materi($id_materi){
+    $this->cekLogin();
+    
+    $cek_materi = $this->club_model->checkMateriById($id_materi);
+    if($cek_materi->num_rows() == 0){
+      $this->session->set_flashdata('msg', 'Materi tidak ditemukan');
+      $this->session->set_flashdata('type', 'danger');
+      redirect(site_url('c/materi'));
+    }
+    else {
+      $materi = $this->club_model->getMateriById($id_materi);
+
+      if($materi->id_club != $this->session->userdata('level')){
+        $this->session->set_flashdata('msg', 'Materi tidak ditemukan');
+        $this->session->set_flashdata('type', 'danger');
+      }
+      else {
+        $this->club_model->deleteMateri($id_materi);
+
+        $this->session->set_flashdata('msg', 'Materi berhasil dihapus');
+        $this->session->set_flashdata('type', 'success');
+      }
+
+      redirect(site_url('c/materi'));
+    }
+  }
+
+  public function materi_detail($slug_materi){
+    $materi = $this->club_model->checkMateriBySlug($slug_materi);
+    if($materi->num_rows() == 0){
+      show_404();
+    }
+    else {
+      $data['materi'] = $materi->row();
+      $data['view_name'] = 'detail_materi';
+      $this->load->view('club/home_view', $data);
+    }
   }
 
 }

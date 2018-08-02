@@ -3,7 +3,7 @@
     <div class="card">
       <div class="card-header" data-background-color="blue">
         <h4 class="title">Pengajuan Proyek</h4>
-        <p class="category">Isi formulir dibawah ini sesuai dengan kebutuhan yang proyek yang ingin Anda ajukan.</p>
+        <p class="category">Isi formulir dibawah ini sesuai dengan kebutuhan proyek yang Anda ajukan.</p>
       </div>
       <div class="card-content table-responsive">
         <form action="" method="post" enctype="multipart/form-data">
@@ -21,7 +21,7 @@
             <div class="col-md-12">
               <div class="form-group label-floating">
                 <label class="control-label">Deadline Kebutuhan *</label>
-                <input type="text" id="datepicker" class="form-control" name="selesai" pattern="([0-9]{4})+-+([0-1]{1})+([0-9]{1})+-+([0-3]{1})+([0-9]{1})" required>
+                <input type="text" id="datepicker" class="form-control" name="selesai" pattern="([0-9]{4})+-+([0-1]{1})+([0-9]{1})+-+([0-3]{1})+([0-9]{1})" autocomplete="off" required>
               </div>
             </div>
           </div>
