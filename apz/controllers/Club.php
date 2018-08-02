@@ -249,7 +249,9 @@ class Club extends CI_Controller {
       show_404();
     }
     else {
-      var_dump($materi->row()); die();
+      $data['materi'] = $materi->row();
+      $data['view_name'] = 'detail_materi';
+      $this->load->view('club/home_view', $data);
     }
   }
 

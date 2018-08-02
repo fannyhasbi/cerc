@@ -47,7 +47,10 @@ class Club_model extends CI_Model {
   }
 
   public function getMateriByClubSlug($club_slug){
-    $q = $this->db->get_where('materi', ['id_club' => $this->getIdClubBySlug($club_slug)]);
+    $id_club = $this->getIdClubBySlug($club_slug);
+    $this->db->order_by('tgl_kelas', 'DESC');
+    
+    $q = $this->db->get_where('materi', ['id_club' => $id_club]);
     return $q->result();
   }
 
