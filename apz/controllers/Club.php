@@ -115,7 +115,6 @@ class Club extends CI_Controller {
     $this->cekLogin();
 
     if($this->input->post('tambah')){
-
       if(!empty($_FILES['file_content']['name'])){
         $config['upload_path']   = './uploads/club/materi/';
         $config['allowed_types'] = 'pdf|docx|doc|xls|xlsx|ppt|pptx|zip|rar';
@@ -127,6 +126,8 @@ class Club extends CI_Controller {
           $message = '<p>'. $this->upload->display_errors() .'</p>';
           $this->session->set_flashdata('msg', $message);
           $this->session->set_flashdata('type', 'danger');
+
+          redirect(site_url('c/materi'));
         }
         else {
           $data = $this->upload->data();
@@ -172,10 +173,32 @@ class Club extends CI_Controller {
           */
 
         if($this->input->post('simpan')){
-          $this->club_model->updateMateri($id_materi, null);
+          if(!empty($_FILES['file_content']['name'])){
+            $config['upload_path']   = './uploads/club/materi/';
+            $config['allowed_types'] = 'pdf|docx|doc|xls|xlsx|ppt|pptx|zip|rar';
+            $config['max_size']      = 3000;
+
+            $this->load->library('upload', $config);
+
+            if ( ! $this->upload->do_upload('file_content')){
+              $message = '<p>'. $this->upload->display_errors() .'</p>';
+              $this->session->set_flashdata('msg', $message);
+              $this->session->set_flashdata('type', 'danger');
+
+              redirect(site_url('c/materi'));
+            }
+            else {
+              $data = $this->upload->data();
+              $this->club_model->updateMateri($id_materi, $data['file_name']);
+            }
+          }
+          else {
+            $this->club_model->updateMateri($id_materi, null);
+          }
 
           $this->session->set_flashdata('msg', 'Materi berhasil disimpan');
           $this->session->set_flashdata('type', 'success');
+
           redirect(site_url('c/materi'));
         }
         else {
