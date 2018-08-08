@@ -255,4 +255,11 @@ class Club extends CI_Controller {
     }
   }
 
+  public function post(){
+    $this->cekLogin();
+
+    $data['view_name'] = 'post_home';
+    $this->load->view('club/index_view', $data);
+  }
+
 }

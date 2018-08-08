@@ -54,6 +54,11 @@ $label = $load->row()->total;
               <i class="material-icons">description</i><p>Materi</p>
             </a>
           </li>
+          <li <?= uri_string() == 'c/post' || uri_string() == 'c/add-post' ? 'class="active"' : '' ?>>
+            <a href="<?= site_url('c/post'); ?>">
+              <i class="material-icons">mms</i><p>Post</p>
+            </a>
+          </li>
         </ul>
       </div>
     </div>
