@@ -262,4 +262,11 @@ class Club extends CI_Controller {
     $this->load->view('club/index_view', $data);
   }
 
+  public function add_post(){
+    $this->cekLogin();
+
+    $data['view_name'] = 'add_post';
+    $this->load->view('club/index_view', $data);
+  }
+
 }
