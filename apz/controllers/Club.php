@@ -258,7 +258,9 @@ class Club extends CI_Controller {
   public function post(){
     $this->cekLogin();
 
-    $data['view_name'] = 'post_home';
+    $data['post'] = $this->club_model->getPost();
+
+    $data['view_name'] = 'home_post';
     $this->load->view('club/index_view', $data);
   }
 

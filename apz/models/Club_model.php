@@ -54,6 +54,13 @@ class Club_model extends CI_Model {
     return $q->result();
   }
 
+  public function getPost(){
+    $this->db->order_by('tgl', 'DESC');
+
+    $q = $this->db->get_where('post', ['id_club' => $this->session->userdata('level')]);
+    return $q->result();
+  }
+
   public function addMateri($file_name = NULL){
     if($file_name == NULL)
       $file_name = $this->input->post('file_url');
