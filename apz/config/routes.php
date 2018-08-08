@@ -32,6 +32,7 @@ $route['c/hapus-materi/(:num)'] = 'club/hapus_materi/$1';
 
 $route['c/post'] = 'club/post';
 $route['c/add-post'] = 'club/add_post';
+$route['c/edit-post/(:num)'] = 'club/edit_post/$1';
 
 // Propose Project
 $route['pengajuan'] = 'pengajuan';

@@ -305,4 +305,32 @@ class Club extends CI_Controller {
     }
   }
 
+  public function edit_post($id_post){
+    $this->cekLogin();
+
+    $data['post'] = $this->club_model->getPostById($id_post);
+
+    if($data['post'] == NULL){
+      $this->session->set_flashdata('msg', 'Post tidak ditemukan');
+      $this->session->set_flashdata('type', 'danger');
+      redirect(site_url('c/post'));
+    }
+    else {
+      /**
+        * Ada post
+        *
+        */
+      if($data['post']->id_club != $this->session->userdata('level')){
+        $this->session->set_flashdata('msg', 'Post tidak ditemukan');
+        $this->session->set_flashdata('type', 'danger');
+        redirect(site_url('c/post'));
+      }
+      else {
+        $data['view_name'] = 'edit_post';
+        $this->load->view('club/index_view', $data);
+      }
+    }
+
+  }
+
 }
