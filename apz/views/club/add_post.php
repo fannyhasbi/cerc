@@ -17,7 +17,7 @@
             <div class="col-md-6">
               <div class="form-group label-floating">
                 <label class="control-label">Tanggal Kegiatan</label>
-                <input type="text" id="datepicker" class="form-control" name="tgl" pattern="([0-9]{4})+-+([0-1]{1})+([0-9]{1})+-+([0-3]{1})+([0-9]{1})" autocomplete="off" required>
+                <input type="text" id="datepicker" class="form-control" name="tgl_kegiatan" pattern="([0-9]{4})+-+([0-1]{1})+([0-9]{1})+-+([0-3]{1})+([0-9]{1})" autocomplete="off" required>
               </div>
             </div>
           </div>
@@ -49,7 +49,7 @@
             </div>
           </div>
 
-          <input type="submit" class="btn btn-primary pull-right" name="tambah" value="Tambah">
+          <input type="submit" class="btn btn-primary pull-right" name="tambah_post" value="Tambah">
           <div class="clearfix"></div>
         </form>
       </div>

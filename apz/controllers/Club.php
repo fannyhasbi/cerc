@@ -267,8 +267,22 @@ class Club extends CI_Controller {
   public function add_post(){
     $this->cekLogin();
 
-    $data['view_name'] = 'add_post';
-    $this->load->view('club/index_view', $data);
+    if($this->input->post('tambah_post')){
+      if(!empty($_FILES['file_content']['name'])){
+        // ada file yang diupload
+      }
+      else {
+        $this->club_model->addPost(NULL);
+      }
+
+      $this->session->set_flashdata('msg', 'Post berhasil diupload');
+      $this->session->set_flashdata('type', 'success');
+      redirect(site_url('c/post'));
+    }
+    else {
+      $data['view_name'] = 'add_post';
+      $this->load->view('club/index_view', $data);
+    }
   }
 
 }
