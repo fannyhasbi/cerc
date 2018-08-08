@@ -269,7 +269,27 @@ class Club extends CI_Controller {
 
     if($this->input->post('tambah_post')){
       if(!empty($_FILES['file_content']['name'])){
-        // ada file yang diupload
+        $alamat = $this->generateAlamat();
+
+        $config['upload_path']   = './uploads/club/post';
+        $config['allowed_types'] = 'jpeg|jpg|png';
+        $config['allowed_types'] = 'jpg';
+        $config['file_name']     = $alamat;
+        $config['max_size']      = 800;
+
+        $this->load->library('upload', $config);
+
+        if ( ! $this->upload->do_upload('file_content')){
+          $message = $this->upload->display_errors();
+          $this->session->set_flashdata('msg', $message);
+          $this->session->set_flashdata('type', 'danger');
+
+          redirect(site_url('c/post'));
+        }
+        else {
+          $data = $this->upload->data();
+          $this->club_model->addPost($data['file_name']);
+        }
       }
       else {
         $this->club_model->addPost(NULL);
