@@ -45,7 +45,7 @@
               <div class="form-group label-floating">
                 <label class="control-label">URL</label>
                 <input id="file_url" type="url" class="form-control" name="file_url" <?= $filter_url ? 'required value="'. $post->foto .'"' : 'style="display:none"'?>>
-                <input id="file_content" type="file" class="form-control" name="file_content" <?= !$filter_url ? 'required style="opacity: 1; position: inherit;' : 'style="opacity: 1; position: inherit; display: none"' ?>>
+                <input id="file_content" type="file" class="form-control" name="file_content" <?= !$filter_url ? 'required style="opacity: 1; position: inherit;"' : 'style="opacity: 1; position: inherit; display: none"' ?>>
               </div>
             </div>
           </div>

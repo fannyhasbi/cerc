@@ -131,13 +131,27 @@ class Club_model extends CI_Model {
       'file'  => $file_name,
       'ket'   => purify($this->input->post('keterangan')),
       'tgl_kelas' => $this->input->post('tgl_kelas'),
-      'id_club'   => $this->session->userdata('level'),
       'pemateri'  => purify($this->input->post('pemateri')),
-      'uploaded'  => date('Y-m-d H:i:s'),
       'slug'  => $this->generateSlug($this->input->post('judul_materi'))
     );
 
     $this->db->update('materi', $data);
+  }
+
+  public function updatePost($id_post, $file_name = NULL){
+    $this->db->where('id', $id_post);
+
+    if($file_name == NULL)
+      $file_name = $this->input->post('file_url');
+
+    $data = array(
+      'judul'  => purify($this->input->post('judul_post')),
+      'tgl'    => $this->input->post('tgl_kegiatan'),
+      'foto'   => $file_name,
+      'ket'    => purify($this->input->post('keterangan'))
+    );
+
+    $this->db->update('post', $data);
   }
 
   public function deleteMateri($id_materi){

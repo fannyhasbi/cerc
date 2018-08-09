@@ -53,7 +53,7 @@
             <div class="col-md-9">
               <div class="form-group label-floating">
                 <input id="file_url" type="url" class="form-control" name="file_url" <?= $filter_url ? 'required value="'. $materi->file .'"' : 'style="display:none"'?>>
-                <input id="file_content" type="file" class="form-control" name="file_content" <?= !$filter_url ? 'required style="opacity: 1; position: inherit;' : 'style="opacity: 1; position: inherit; display: none"' ?>>
+                <input id="file_content" type="file" class="form-control" name="file_content" <?= !$filter_url ? 'required style="opacity: 1; position: inherit;"' : 'style="opacity: 1; position: inherit; display: none"' ?>>
               </div>
             </div>
           </div>

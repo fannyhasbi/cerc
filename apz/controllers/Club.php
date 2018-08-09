@@ -320,14 +320,49 @@ class Club extends CI_Controller {
         * Ada post
         *
         */
+
       if($data['post']->id_club != $this->session->userdata('level')){
         $this->session->set_flashdata('msg', 'Post tidak ditemukan');
         $this->session->set_flashdata('type', 'danger');
         redirect(site_url('c/post'));
       }
       else {
-        $data['view_name'] = 'edit_post';
-        $this->load->view('club/index_view', $data);
+        if($this->input->post('edit_post')){
+          if(!empty($_FILES['file_content']['name'])){
+            $alamat = $this->generateAlamat();
+
+            $config['upload_path']   = './uploads/club/post';
+            $config['allowed_types'] = 'jpeg|jpg|png';
+            $config['allowed_types'] = 'jpg';
+            $config['file_name']     = $alamat;
+            $config['max_size']      = 800;
+
+            $this->load->library('upload', $config);
+
+            if ( ! $this->upload->do_upload('file_content')){
+              $message = $this->upload->display_errors();
+              $this->session->set_flashdata('msg', $message);
+              $this->session->set_flashdata('type', 'danger');
+
+              redirect(site_url('c/post'));
+            }
+            else {
+              $data = $this->upload->data();
+              $this->club_model->updatePost($id_post, $data['file_name']);
+            }
+          }
+          else {
+            $this->club_model->editPost($id_post, NULL);
+          }
+
+          $this->session->set_flashdata('msg', 'Post berhasil disimpan');
+          $this->session->set_flashdata('type', 'success');
+          redirect(site_url('c/post'));
+        }
+        else {
+          $data['view_name'] = 'edit_post';
+          $this->load->view('club/index_view', $data);
+        }
       }
     }
 
