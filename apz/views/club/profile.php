@@ -17,33 +17,18 @@
   <div class="container">
     <h3 class="text-center">Our Activity</h3>
     <hr class="small">
-    <div class="row" style="margin-bottom: 20px">
-      <div class="col-xs-6 col-sm-3">
-        <img src="<?= base_url('assets'); ?>/img/portfolio/submarine.png" class="img-thumbnail">
-      </div>
-      <div class="col-xs-6 col-sm-3">
-        <img src="<?= base_url('assets'); ?>/img/portfolio/submarine.png" class="img-thumbnail">
-      </div>
-      <div class="col-xs-6 col-sm-3">
-        <img src="<?= base_url('assets'); ?>/img/portfolio/submarine.png" class="img-thumbnail">
-      </div>
-      <div class="col-xs-6 col-sm-3">
-        <img src="<?= base_url('assets'); ?>/img/portfolio/submarine.png" class="img-thumbnail">
-      </div>
-    </div>
+
     <div class="row">
-      <div class="col-xs-6 col-sm-3">
-        <img src="<?= base_url('assets'); ?>/img/portfolio/submarine.png" class="img-thumbnail">
-      </div>
-      <div class="col-xs-6 col-sm-3">
-        <img src="<?= base_url('assets'); ?>/img/portfolio/submarine.png" class="img-thumbnail">
-      </div>
-      <div class="col-xs-6 col-sm-3">
-        <img src="<?= base_url('assets'); ?>/img/portfolio/submarine.png" class="img-thumbnail">
-      </div>
-      <div class="col-xs-6 col-sm-3">
-        <img src="<?= base_url('assets'); ?>/img/portfolio/submarine.png" class="img-thumbnail">
-      </div>
+      <?php if(count($post) == 0){ ?>
+        <p>Belum ada aktivitas yang dibagikan.
+      <?php } else { ?>
+        <?php foreach($post as $item): ?>
+          <div class="col-xs-6 col-sm-3">
+            <?php $filter_url = filter_var($item->foto, FILTER_VALIDATE_URL); ?>
+            <img src="<?= $filter_url ? $item->foto : base_url('uploads/club/post/'.$item->foto); ?>" class="img-thumbnail">
+          </div>
+        <?php endforeach; ?>
+      <?php } // end else ?>
     </div>
   </div>
 </section>

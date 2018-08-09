@@ -28,8 +28,9 @@ class Club extends CI_Controller {
   }
 
   public function profile($club_slug){
-    $data['club'] = $this->club_model->get($club_slug);
+    $data['club']   = $this->club_model->get($club_slug);
     $data['materi'] = $this->club_model->getMateriByClubSlug($club_slug);
+    $data['post']   = $this->club_model->getPostByClubSlug($club_slug);
 
     $data['view_name'] = 'profile';
     $this->load->view('club/home_view', $data);
@@ -352,7 +353,7 @@ class Club extends CI_Controller {
             }
           }
           else {
-            $this->club_model->editPost($id_post, NULL);
+            $this->club_model->updatePost($id_post, NULL);
           }
 
           $this->session->set_flashdata('msg', 'Post berhasil disimpan');

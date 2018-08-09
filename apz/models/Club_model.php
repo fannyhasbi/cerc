@@ -68,6 +68,12 @@ class Club_model extends CI_Model {
     return $q->row();
   }
 
+  public function getPostByClubSlug($club_slug){
+    $id_club = $this->getIdClubBySlug($club_slug);
+    $q = $this->db->get_where('post', ['id_club' => $id_club]);
+    return $q->result();
+  }
+
   public function addMateri($file_name = NULL){
     if($file_name == NULL)
       $file_name = $this->input->post('file_url');
