@@ -3,7 +3,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6">
-        <img src="<?= base_url('assets'); ?>/img/portfolio/submarine.png" class="img-fluid">
+        <img src="<?= $club->foto == NULL ? base_url('assets/img/cerc.jpg') : base_url('uploads/club/photo/'.$club->foto); ?>" class="img-fluid">
       </div>
       <div class="col-md-6" style="padding-top: 5%">
         <h4>Club <?= $club->nama; ?></h4>

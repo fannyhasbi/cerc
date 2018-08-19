@@ -25,6 +25,11 @@ class Club_model extends CI_Model {
     return $this->db->get_where('materi', ['slug' => $slug_materi]);
   }
 
+  public function getAllClub(){
+    $q = $this->db->get('club');
+    return $q->result();
+  }
+
   public function get($club_slug){
     $q = $this->db->get_where('club', ['slug' => $club_slug]);
     return $q->row();
