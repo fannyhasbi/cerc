@@ -135,6 +135,16 @@ class Club extends CI_Controller {
     redirect(site_url('c/request/'.$id_pengajuan));
   }
 
+  private function terima_request($id_pengajuan){
+    $this->load->model('pengajuan_model');
+
+    $this->pengajuan_model->updateStatusTerima($id_pengajuan);
+
+    $this->session->set_flashdata('msg', 'Request berhasil diterima');
+    $this->session->set_flashdata('type', 'success');
+    redirect(site_url('c/request/'.$id_pengajuan));
+  }
+
   public function materi(){
     $this->cekLogin();
 

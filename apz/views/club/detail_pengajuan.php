@@ -57,7 +57,7 @@
         <?php if($request->status == 'N'): ?>
           <div class="row">
             <div class="col-sm-12 col-md-6">
-              <button type="button" id="terima" class="btn btn-success btn-lg btn-block" onclick="alert('terima')"><i class="fa fa-check"></i> Terima</button>
+              <button type="button" id="terima" class="btn btn-success btn-lg btn-block" onclick="terima()"><i class="fa fa-check"></i> Terima</button>
             </div>
             <div class="col-sm-12 col-md-6">
               <button type="button" id="tolak" class="btn btn-danger btn-lg btn-block" onclick="tolak()"><i class="fa fa-close"></i> Tolak</button>
@@ -70,9 +70,14 @@
 </div>
 
 <script>
+function terima(){
+  var c = confirm('Dengan melanjutkan, anda sebagai perwakilan club <?= $this->session->userdata('club_slug'); ?> menerima proyek ini.');
+  if(c){
+    window.location = "<?= site_url('c/terima-request/'.$request->id); ?>";
+  }
+}
 function tolak(){
   var c = confirm('Request yang ditolak tidak bisa dikembalikan lagi. Apakah Anda yakin?');
-
   if(c){
     window.location = "<?= site_url('c/tolak-request/'.$request->id); ?>";
   }

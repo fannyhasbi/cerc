@@ -95,4 +95,14 @@ class Pengajuan_model extends CI_Model {
     $this->db->update('pengajuan', $data);
   }
 
+  public function updateStatusTerima($id_pengajuan){
+    $this->db->where('id', $id_pengajuan);
+
+    $data = array(
+      'status' => 'Y'
+    );
+
+    $this->db->update('pengajuan', $data);
+  }
+
 }
