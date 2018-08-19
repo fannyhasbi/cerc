@@ -28,13 +28,13 @@
 </head>
 <body>
   <div class="wrapper">
-    <div class="sidebar" data-color="orange">
+    <div class="sidebar" data-color="blue">
       <div class="logo">
         <a href="<?= site_url(); ?>" class="simple-text">CERC</a>
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li>
+          <li <?= uri_string() == 'pengajuan' ? 'class="active"' : '' ?>>
             <a href="<?= site_url('pengajuan'); ?>">
               <i class="material-icons">create</i><p>Pengajuan</p>
             </a>

@@ -25,6 +25,11 @@ class Club_model extends CI_Model {
     return $this->db->get_where('materi', ['slug' => $slug_materi]);
   }
 
+  public function getAllClub(){
+    $q = $this->db->get('club');
+    return $q->result();
+  }
+
   public function get($club_slug){
     $q = $this->db->get_where('club', ['slug' => $club_slug]);
     return $q->row();
@@ -54,6 +59,26 @@ class Club_model extends CI_Model {
     return $q->result();
   }
 
+  public function getPost(){
+    $this->db->order_by('tgl', 'DESC');
+
+    $q = $this->db->get_where('post', ['id_club' => $this->session->userdata('level')]);
+    return $q->result();
+  }
+
+  public function getPostById($id_post){
+    $id_post = purify($id_post);
+    $q = $this->db->get_where('post', ['id' => $id_post]);
+
+    return $q->row();
+  }
+
+  public function getPostByClubSlug($club_slug){
+    $id_club = $this->getIdClubBySlug($club_slug);
+    $q = $this->db->get_where('post', ['id_club' => $id_club]);
+    return $q->result();
+  }
+
   public function addMateri($file_name = NULL){
     if($file_name == NULL)
       $file_name = $this->input->post('file_url');
@@ -70,6 +95,22 @@ class Club_model extends CI_Model {
     );
 
     $this->db->insert('materi', $data);
+  }
+
+  public function addPost($file_name = NULL){
+    if($file_name == NULL)
+      $file_name = $this->input->post('file_url');
+
+    $data = array(
+      'judul'  => purify($this->input->post('judul_post')),
+      'tgl'    => $this->input->post('tgl_kegiatan'),
+      'uploaded' => date('Y-m-d H:i:s'),
+      'foto'   => $file_name,
+      'id_club'=> $this->session->userdata('level'),
+      'ket'    => purify($this->input->post('keterangan'))
+    );
+
+    $this->db->insert('post', $data);
   }
   
   public function update($club_slug, $alamat_foto = NULL){
@@ -101,13 +142,27 @@ class Club_model extends CI_Model {
       'file'  => $file_name,
       'ket'   => purify($this->input->post('keterangan')),
       'tgl_kelas' => $this->input->post('tgl_kelas'),
-      'id_club'   => $this->session->userdata('level'),
       'pemateri'  => purify($this->input->post('pemateri')),
-      'uploaded'  => date('Y-m-d H:i:s'),
       'slug'  => $this->generateSlug($this->input->post('judul_materi'))
     );
 
     $this->db->update('materi', $data);
+  }
+
+  public function updatePost($id_post, $file_name = NULL){
+    $this->db->where('id', $id_post);
+
+    if($file_name == NULL)
+      $file_name = $this->input->post('file_url');
+
+    $data = array(
+      'judul'  => purify($this->input->post('judul_post')),
+      'tgl'    => $this->input->post('tgl_kegiatan'),
+      'foto'   => $file_name,
+      'ket'    => purify($this->input->post('keterangan'))
+    );
+
+    $this->db->update('post', $data);
   }
 
   public function deleteMateri($id_materi){

@@ -28,8 +28,9 @@ class Club extends CI_Controller {
   }
 
   public function profile($club_slug){
-    $data['club'] = $this->club_model->get($club_slug);
+    $data['club']   = $this->club_model->get($club_slug);
     $data['materi'] = $this->club_model->getMateriByClubSlug($club_slug);
+    $data['post']   = $this->club_model->getPostByClubSlug($club_slug);
 
     $data['view_name'] = 'profile';
     $this->load->view('club/home_view', $data);
@@ -253,6 +254,119 @@ class Club extends CI_Controller {
       $data['view_name'] = 'detail_materi';
       $this->load->view('club/home_view', $data);
     }
+  }
+
+  public function post(){
+    $this->cekLogin();
+
+    $data['post'] = $this->club_model->getPost();
+
+    $data['view_name'] = 'home_post';
+    $this->load->view('club/index_view', $data);
+  }
+
+  public function add_post(){
+    $this->cekLogin();
+
+    if($this->input->post('tambah_post')){
+      if(!empty($_FILES['file_content']['name'])){
+        $alamat = $this->generateAlamat();
+
+        $config['upload_path']   = './uploads/club/post';
+        $config['allowed_types'] = 'jpeg|jpg|png';
+        $config['allowed_types'] = 'jpg';
+        $config['file_name']     = $alamat;
+        $config['max_size']      = 800;
+
+        $this->load->library('upload', $config);
+
+        if ( ! $this->upload->do_upload('file_content')){
+          $message = $this->upload->display_errors();
+          $this->session->set_flashdata('msg', $message);
+          $this->session->set_flashdata('type', 'danger');
+
+          redirect(site_url('c/post'));
+        }
+        else {
+          $data = $this->upload->data();
+          $this->club_model->addPost($data['file_name']);
+        }
+      }
+      else {
+        $this->club_model->addPost(NULL);
+      }
+
+      $this->session->set_flashdata('msg', 'Post berhasil diupload');
+      $this->session->set_flashdata('type', 'success');
+      redirect(site_url('c/post'));
+    }
+    else {
+      $data['view_name'] = 'add_post';
+      $this->load->view('club/index_view', $data);
+    }
+  }
+
+  public function edit_post($id_post){
+    $this->cekLogin();
+
+    $data['post'] = $this->club_model->getPostById($id_post);
+
+    if($data['post'] == NULL){
+      $this->session->set_flashdata('msg', 'Post tidak ditemukan');
+      $this->session->set_flashdata('type', 'danger');
+      redirect(site_url('c/post'));
+    }
+    else {
+      /**
+        * Ada post
+        *
+        */
+
+      if($data['post']->id_club != $this->session->userdata('level')){
+        $this->session->set_flashdata('msg', 'Post tidak ditemukan');
+        $this->session->set_flashdata('type', 'danger');
+        redirect(site_url('c/post'));
+      }
+      else {
+        if($this->input->post('edit_post')){
+          if(!empty($_FILES['file_content']['name'])){
+            $alamat = $this->generateAlamat();
+
+            $config['upload_path']   = './uploads/club/post';
+            $config['allowed_types'] = 'jpeg|jpg|png';
+            $config['allowed_types'] = 'jpg';
+            $config['file_name']     = $alamat;
+            $config['max_size']      = 800;
+
+            $this->load->library('upload', $config);
+
+            if ( ! $this->upload->do_upload('file_content')){
+              $message = $this->upload->display_errors();
+              $this->session->set_flashdata('msg', $message);
+              $this->session->set_flashdata('type', 'danger');
+
+              redirect(site_url('c/post'));
+            }
+            else {
+              $data = $this->upload->data();
+              $this->club_model->updatePost($id_post, $data['file_name']);
+            }
+          }
+          else {
+            $this->club_model->updatePost($id_post, NULL);
+          }
+
+          $this->session->set_flashdata('msg', 'Post berhasil disimpan');
+          $this->session->set_flashdata('type', 'success');
+          redirect(site_url('c/post'));
+        }
+        else {
+          $data['view_name'] = 'edit_post';
+          $this->load->view('club/index_view', $data);
+        }
+      }
+    }
+
   }
 
 }

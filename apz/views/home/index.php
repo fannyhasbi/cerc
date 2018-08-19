@@ -75,22 +75,12 @@
         <h2 class="text-center">Club</h2>
         <hr class="dark">
         <div class="row">
-          <div class="col-sm-6 text-center">
-            <img class="img-fluid" src="<?= base_url('assets'); ?>/img/portfolio/submarine.png" alt="">
-            <h4><a href="<?= site_url('embedded'); ?>">Embedded</a></h4>
-          </div>
-          <div class="col-sm-6 text-center">
-            <img class="img-fluid" src="<?= base_url('assets'); ?>/img/portfolio/game.png" alt="">
-            <h4><a href="<?= site_url('software'); ?>">Software</a></h4>
-          </div>
-          <div class="col-sm-6 text-center">
-            <img class="img-fluid" src="<?= base_url('assets'); ?>/img/portfolio/gene.png" alt="">
-            <h4><a href="<?= site_url('multimedia'); ?>">Multimedia</a></h4>
-          </div>
-          <div class="col-sm-6 text-center">
-            <img class="img-fluid" src="<?= base_url('assets'); ?>/img/portfolio/rocket.png" alt="">
-            <h4><a href="<?= site_url('jaringan'); ?>">Jaringan</a></h4>
-          </div>
+          <?php foreach($club as $item): ?>
+            <div class="col-sm-3 text-center">
+              <img class="img-fluid" src="<?= $item->foto == NULL ? base_url('assets/img/cerc.jpg') : base_url('uploads/club/photo/'.$item->foto); ?>" alt="CERC Undip <?= $item->nama; ?>">
+              <h4><a href="<?= site_url($item->slug); ?>"><?= $item->nama; ?></a></h4>
+            </div>
+          <?php endforeach; ?>
         </div>
       </div>
     </section>
@@ -164,7 +154,7 @@
             <h5><?= $event->nama ?></h5>
             
             <div class="event-info">
-              <p class="event-date"><i class="fa fa-calendar fa-fw"></i> <?= $event->tgl ?></p>
+              <p class="event-date"><i class="fa fa-calendar fa-fw"></i> <?= tanggal_definer($event->tgl) ?></p>
               <p class="event-place"><i class="fa fa-map-marker fa-fw"></i> <?= $event->tempat ?></p>
             </div>
 

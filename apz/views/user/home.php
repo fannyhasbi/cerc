@@ -18,7 +18,7 @@
             <?php foreach($events as $event): ?>
               <tr>
                 <td><?= $event->nama; ?></td>
-                <td><?= $event->tgl; ?>
+                <td><?= tanggal_definer($event->tgl); ?>
                 <td class="td-actions text-right">
                   <a href="<?= site_url('event/'.$event->id."/".$event->slug);?>" rel="tooltip" title="Lihat" class="btn btn-success btn-simple btn-xs" target="_blank">
                     <i class="material-icons">remove_red_eye</i>
