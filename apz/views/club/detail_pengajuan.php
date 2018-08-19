@@ -64,6 +64,14 @@
             </div>
           </div>
         <?php endif; ?>
+
+        <?php if($request->status == 'Y'): ?>
+          <div class="row">
+            <div class="col-sm-12">
+              <button type="button" id="selesai" class="btn btn-success btn-lg btn-block" onclick="selesai()"><i class="fa fa-check"></i> Tandai Sudah Selesai</button>
+            </div>
+          </div>
+        <?php endif; ?>
       </div>
     </div>
   </div>
@@ -80,6 +88,12 @@ function tolak(){
   var c = confirm('Request yang ditolak tidak bisa dikembalikan lagi. Apakah Anda yakin?');
   if(c){
     window.location = "<?= site_url('c/tolak-request/'.$request->id); ?>";
+  }
+}
+function selesai(){
+  var c = confirm('Tandai sebagai SELESAI?');
+  if(c){
+    window.location = "<?= site_url('c/selesai-request/'.$request->id); ?>";
   }
 }
 </script>
