@@ -72,7 +72,7 @@ $label = $load->row()->total;
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="<?= site_url('u'); ?>"> CERC </a>
+            <a class="navbar-brand" href="<?= site_url('c'); ?>"> CERC </a>
           </div>
           <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">

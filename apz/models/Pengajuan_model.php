@@ -85,4 +85,14 @@ class Pengajuan_model extends CI_Model {
     return $this->getLastInsertedPemohon()->id;
   }
 
+  public function updateStatusTolak($id_pengajuan){
+    $this->db->where('id', $id_pengajuan);
+
+    $data = array(
+      'status' => 'T'
+    );
+
+    $this->db->update('pengajuan', $data);
+  }
+
 }

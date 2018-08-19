@@ -110,6 +110,31 @@ class Club extends CI_Controller {
     }
   }
 
+  public function konfirmasi_request($action, $id_pengajuan){
+    $this->cekLogin();
+
+    if(isset($_SERVER['HTTP_REFERER']) && $_SERVER['HTTP_REFERER'] == site_url('c/request/'.$id_pengajuan)){
+      switch($action){
+        case 'tolak_request': $this->tolak_request($id_pengajuan); break;
+        case 'terima_request': $this->terima_request($id_pengajuan); break;
+      }
+    }
+    
+    $this->session->set_flashdata('msg', 'Request tidak ditemukan');
+    $this->session->set_flashdata('type', 'danger');
+    redirect(site_url('c/request'));
+  }
+
+  private function tolak_request($id_pengajuan){
+    $this->load->model('pengajuan_model');
+
+    $this->pengajuan_model->updateStatusTolak($id_pengajuan);
+
+    $this->session->set_flashdata('msg', 'Request berhasil ditolak');
+    $this->session->set_flashdata('type', 'success');
+    redirect(site_url('c/request/'.$id_pengajuan));
+  }
+
   public function materi(){
     $this->cekLogin();
 

@@ -17,20 +17,7 @@
               <tr>
                 <th>Pengajuan - Deadline</th>
                 <td>
-                  <?
-                  $d1 = date_create($request->tgl_pengajuan);
-                  $d1 = date_format($d1, 'd-m-Y');
-                  $d1 = explode("-", $d1);
-                  $d1[1] = bulan_definer($d1[1]);
-                  $d1 = implode(" ", $d1);
-
-                  $d2 = date_create($request->est_selesai);
-                  $d2 = date_format($d2, 'd-m-Y');
-                  $d2 = explode("-", $d2);
-                  $d2[1] = bulan_definer($d2[1]);
-                  $d2 = implode(" ", $d2);
-                  echo $d1 .' - <strong>'. $d2 .'</strong>';
-                  ?>
+                  <?= tanggal_definer($request->tgl_pengajuan) .' - <strong>'. tanggal_definer($request->est_selesai) .'</strong>' ?>
                 </td>
               </tr>
               <tr>
@@ -61,10 +48,33 @@
           </div>
 
           <div class="col-md-6">
-            <blockquote><?= $request->ket == '' ? '<i>Keterangan kosong</i>' : $request->ket; ?></blockquote>
+            <blockquote style="text-align: justify;"><?= $request->ket == '' ? '<i>Keterangan kosong</i>' : $request->ket; ?></blockquote>
           </div>
         </div>
+
+        <div class="clearfix"></div>
+
+        <?php if($request->status == 'N'): ?>
+          <div class="row">
+            <div class="col-sm-12 col-md-6">
+              <button type="button" id="terima" class="btn btn-success btn-lg btn-block" onclick="alert('terima')"><i class="fa fa-check"></i> Terima</button>
+            </div>
+            <div class="col-sm-12 col-md-6">
+              <button type="button" id="tolak" class="btn btn-danger btn-lg btn-block" onclick="tolak()"><i class="fa fa-close"></i> Tolak</button>
+            </div>
+          </div>
+        <?php endif; ?>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+function tolak(){
+  var c = confirm('Request yang ditolak tidak bisa dikembalikan lagi. Apakah Anda yakin?');
+
+  if(c){
+    window.location = "<?= site_url('c/tolak-request/'.$request->id); ?>";
+  }
+}
+</script>
