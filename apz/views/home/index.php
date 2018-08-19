@@ -164,7 +164,7 @@
             <h5><?= $event->nama ?></h5>
             
             <div class="event-info">
-              <p class="event-date"><i class="fa fa-calendar fa-fw"></i> <?= $event->tgl ?></p>
+              <p class="event-date"><i class="fa fa-calendar fa-fw"></i> <?= tanggal_definer($event->tgl) ?></p>
               <p class="event-place"><i class="fa fa-map-marker fa-fw"></i> <?= $event->tempat ?></p>
             </div>
 
