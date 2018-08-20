@@ -53,6 +53,23 @@
         </div>
 
         <div class="clearfix"></div>
+        <hr>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <h4 class="lead">Riwayat Tanggapan</h4>
+            <table class="table table-striped">
+              <tr>
+                <td>15 Juli 2018</td>
+                <td>Selesai</td>
+              </tr>
+              <tr>
+                <td>2 Juni 2018</td>
+                <td>Diterima oleh club Software</td>
+              </tr>
+            </table>
+          </div>
+        </div>
 
         <?php if($request->status == 'N'): ?>
           <div class="row">
