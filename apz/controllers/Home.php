@@ -10,7 +10,9 @@ class Home extends CI_Controller {
 	public function index(){
     $this->load->model('event_model');
     $this->load->model('project_model');
+    $this->load->model('club_model');
 
+    $data['club'] = $this->club_model->getAllClub();
     $data['events']   = $this->event_model->getEventHome();
     $data['projects'] = $this->project_model->getProjectHome();
 
@@ -18,8 +20,12 @@ class Home extends CI_Controller {
 	}
 
   public function login(){
-    if($this->session->userdata('login'))
+    if($this->session->userdata('login')){
       redirect(site_url('u'));
+    }
+    else if($this->session->userdata('login_club')){
+      redirect(site_url('c/request'));
+    }
 
     $this->load->model('user_model');
     if($this->input->post('login')){
@@ -32,15 +38,34 @@ class Home extends CI_Controller {
         $data_user = $this->user_model->getData();
 
         if(password_verify($pass, $data_user->password)){
-          $sess_data = array(
-            'login' => true,
-            'username' => $user,
-            'id' => $data_user->id,
-            'level' => $data_user->level
-          );
+          if($data_user->level == 1 || $data_user->level == 6){
+            // Login admin
+            $sess_data = array(
+              'login' => true,
+              'username' => $data_user->username,
+              'id' => $data_user->id,
+              'level' => $data_user->level
+            );
 
-          $this->session->set_userdata($sess_data);
-          redirect(site_url('u'));
+            $this->session->set_userdata($sess_data);
+            redirect(site_url('u'));
+          }
+          else if($data_user->level > 1 && $data_user->level <= 5){
+            $this->load->helper('haz_helper');
+            // Login club
+            $sess_data = array(
+              'login_club' => true,
+              'username' => $data_user->username,
+              'nama' => $data_user->nama,
+              'id' => $data_user->id,
+              'level' => $data_user->level,
+              'club_slug' => strtolower(level_definer($data_user->level))
+            );
+
+            $this->session->set_userdata($sess_data);
+            redirect(site_url('c/request'));
+          }
+
         }
         else {
           $this->session->set_flashdata('msg', '<div class="alert alert-danger">Username atau password salah</div>');

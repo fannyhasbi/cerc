@@ -10,8 +10,11 @@ class Pengajuan_model extends CI_Model {
     return $this->db->get_where('pengajuan', ['id' => $id_pengajuan]);
   }
 
+  public function checkKode($kode){
+    return $this->db->get_where('pengajuan', ['kode' => $kode]);
+  }
+
   public function getLastInsertedPemohon(){
-    $this->load->helper('haz_helper');
     $where = array(
       'nama' => purify($this->input->post('nama')),
       'email'=> purify($this->input->post('email')),
@@ -60,14 +63,30 @@ class Pengajuan_model extends CI_Model {
     return $q->row();
   }
 
-  public function addPengajuan($id_pemohon, $alamat_file){
-    $this->load->helper('haz_helper');
+  public function getRiwayatById($id_pengajuan){
+    $q = $this->db->query("
+      SELECT log.*,
+        club.nama AS nama_club,
+        user.level AS level_user,
+        user.nama AS nama_user
+      FROM log_pengajuan log
+      INNER JOIN user
+        ON log.id_user = user.id
+      INNER JOIN club
+        ON user.level = club.id
+      WHERE log.id_pengajuan = ". $this->db->escape($id_pengajuan) ." ORDER BY tgl DESC");
+
+    return $q->result();
+  }
+
+  public function addPengajuan($id_pemohon, $kode, $alamat_file){
     $data = array(
       'nama' => purify($this->input->post('nama_proyek')),
       'tgl_pengajuan' => date('Y-m-d H:i:s'),
       'est_selesai' => purify($this->input->post('selesai')),
       'ket' => purify($this->input->post('keterangan')),
       'file' => $alamat_file,
+      'kode' => $kode,
       'id_pemohon' => $id_pemohon
     );
 
@@ -75,7 +94,6 @@ class Pengajuan_model extends CI_Model {
   }
 
   public function addPemohon(){
-    $this->load->helper('haz_helper');
     $data = array(
       'nama' => purify($this->input->post('nama')),
       'email'=> purify($this->input->post('email')),
@@ -86,6 +104,75 @@ class Pengajuan_model extends CI_Model {
     $this->db->insert('pemohon', $data);
 
     return $this->getLastInsertedPemohon()->id;
+  }
+
+  private function addLogTolak($id_pengajuan){
+    $data = array(
+      'dari_status' => 'N',
+      'ke_status'   => 'T', // status = tolak
+      'id_user'     => $this->session->userdata('id'),
+      'id_pengajuan'=> $id_pengajuan
+    );
+
+    $this->db->insert('log_pengajuan', $data);
+  }
+
+  private function addLogTerima($id_pengajuan){
+    $data = array(
+      'dari_status' => 'N',
+      'ke_status'   => 'Y', // status = proses
+      'id_user'     => $this->session->userdata('id'),
+      'id_pengajuan'=> $id_pengajuan
+    );
+
+    $this->db->insert('log_pengajuan', $data);
+  }
+
+  private function addLogSelesai($id_pengajuan){
+    $data = array(
+      'dari_status' => 'Y',
+      'ke_status'   => 'D', // status = selesai
+      'id_user'     => $this->session->userdata('id'),
+      'id_pengajuan'=> $id_pengajuan
+    );
+
+    $this->db->insert('log_pengajuan', $data);
+  }
+
+  public function updateStatusTolak($id_pengajuan){
+    $this->db->where('id', $id_pengajuan);
+
+    $data = array(
+      'status' => 'T'
+    );
+
+    $this->db->update('pengajuan', $data);
+    
+    $this->addLogTolak($id_pengajuan);
+  }
+
+  public function updateStatusTerima($id_pengajuan){
+    $this->db->where('id', $id_pengajuan);
+
+    $data = array(
+      'status' => 'Y'
+    );
+
+    $this->db->update('pengajuan', $data);
+
+    $this->addLogTerima($id_pengajuan);
+  }
+
+  public function updateStatusSelesai($id_pengajuan){
+    $this->db->where('id', $id_pengajuan);
+
+    $data = array(
+      'status' => 'D'
+    );
+
+    $this->db->update('pengajuan', $data);
+
+    $this->addLogSelesai($id_pengajuan);
   }
 
 }

@@ -29,8 +29,6 @@ class Event_model extends CI_Model {
   }
 
   public function add(){
-    $this->load->helper('haz_helper');
-
     $foto = $this->input->post('foto');
     $foto = (strlen($foto) < 1) ? base_url('assets') .'/img/portfolio/submarine.png' : purify($foto);
 
@@ -44,9 +42,10 @@ class Event_model extends CI_Model {
       'nama'    => purify($this->input->post('nama')),
       'tgl'     => purify($this->input->post('tanggal')),
       'tempat'  => purify($this->input->post('tempat')),
-      'ket'     => htmlspecialchars($this->input->post('keterangan')),
+      'ket'     => nl2br(htmlspecialchars($this->input->post('keterangan'))),
       'slug'    => purify_slug($this->input->post('nama')) ."-". $x,
-      'img'     => $foto
+      'img'     => $foto,
+      'id_user' => $this->session->userdata('id')
     );    
 
     if($this->db->insert('event', $data)){
@@ -56,8 +55,6 @@ class Event_model extends CI_Model {
   }
 
   public function update($id){
-    $this->load->helper('haz_helper');
-    
     $foto = $this->input->post('foto');
     $foto = (strlen($foto) < 1) ? base_url('assets') .'/img/portfolio/submarine.png' : purify($foto);
 
@@ -70,10 +67,10 @@ class Event_model extends CI_Model {
       'nama'    => purify($this->input->post('nama')),
       'tgl'     => purify($this->input->post('tanggal')),
       'tempat'  => purify($this->input->post('tempat')),
-      'ket'     => htmlspecialchars($this->input->post('keterangan')),
+      'ket'     => nl2br(htmlspecialchars($this->input->post('keterangan'))),
       'slug'    => purify_slug($this->input->post('nama')) ."-". $x,
       'img'     => $foto
-    );    
+    );
 
     $this->db->where('id', $id);
 

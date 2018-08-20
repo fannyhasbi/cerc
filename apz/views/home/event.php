@@ -7,7 +7,7 @@
     <h5><?= $event->nama ?></h5>
     
     <div class="event-info">
-      <p style="margin-bottom: 0; font-size: inherit"><i class="fa fa-calendar fa-fw"></i> <?= $event->tgl ?></p>
+      <p style="margin-bottom: 0; font-size: inherit"><i class="fa fa-calendar fa-fw"></i> <?= tanggal_definer($event->tgl) ?></p>
       <p style="margin-bottom: 0; font-size: inherit"><i class="fa fa-map-marker fa-fw"></i> <?= $event->tempat ?></p>
     </div>
 

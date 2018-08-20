@@ -8,7 +8,7 @@
     <hr>
 
     <div>
-      <h5><i class="fa fa-calendar fa-fw"></i> <?= $event->tgl; ?></h5>
+      <h5><i class="fa fa-calendar fa-fw"></i> <?= tanggal_definer($event->tgl); ?></h5>
       <h5><i class="fa fa-map-marker fa-fw"></i> <?= $event->tempat; ?></h5>
     </div>
 

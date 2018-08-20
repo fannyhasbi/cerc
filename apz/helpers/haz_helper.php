@@ -1,6 +1,6 @@
 <?php
 function purify_slug($r){
-  $tags = ['.',',','/','\'','"','?','!','\\','=','+','*','&','^','%','$','@'];
+  $tags = ['.',',','/','\'','"','?','!','\\','=','+','*','&','^','%','$','@','<','>'];
   
   $r = str_replace($tags, '', $r);
   $r = str_replace(' ', '-', $r);
@@ -20,10 +20,6 @@ function purify($r){
   return $r;
 }
 
-function coba(){
-  return "Hello World!";
-}
-
 function bulan_definer($bulan){
   switch($bulan){
     case 1: return "Januari"; break;
@@ -41,10 +37,23 @@ function bulan_definer($bulan){
   }
 }
 
+function tanggal_definer($tanggal){
+  /**
+   * $tanggal = "YYYY-MM-DD"
+   * $tanggal = "2018-07-20"
+  */
+  $tanggal = explode("-", $tanggal);
+  $tanggal[1] = bulan_definer($tanggal[1]);
+  $tanggal[2] = explode(" ", $tanggal[2])[0];
+  $tanggal = array_reverse($tanggal);
+  return implode(" ", $tanggal);
+}
+
 function status_definer($status){
   switch($status){
     case 'N': return "Belum ditanggapi"; break;
     case 'Y': return "Proses"; break;
+    case 'T': return "Ditolak"; break;
     case 'D': return "Selesai"; break;
     default: return "Status tidak diketahui"; break;
   }

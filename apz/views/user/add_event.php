@@ -20,7 +20,7 @@
             <div class="col-md-6">
               <div class="form-group label-floating">
                 <label class="control-label">Tanggal</label>
-                <input type="text" class="form-control" name="tanggal" pattern="([0-9]{4})+-+([0-1]{1})+([0-9]{1})+-+([0-3]{1})+([0-9]{1})" required>
+                <input type="text" id="datepicker" class="form-control" name="tanggal" pattern="([0-9]{4})+-+([0-1]{1})+([0-9]{1})+-+([0-3]{1})+([0-9]{1})" required>
               </div>
             </div>
             <div class="col-md-6">

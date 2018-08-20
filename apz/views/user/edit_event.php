@@ -36,7 +36,7 @@
               <div class="form-group">
                 <label>Keterangan</label>
                 <div class="form-group label-floating">
-                  <textarea class="form-control" name="keterangan" rows="10" placeholder="Keterangan lengkap (pendaftaran, penyelenggara, biaya, dll)" required><?= $event->ket; ?></textarea>
+                  <textarea class="form-control" name="keterangan" rows="10" placeholder="Keterangan lengkap (pendaftaran, penyelenggara, biaya, dll)" required><?= str_replace("<br />", "", $event->ket); ?></textarea>
                 </div>
               </div>
             </div>

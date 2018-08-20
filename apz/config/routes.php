@@ -12,10 +12,30 @@ $route['event/(:num)/(:any)'] = 'home/event_detail/$1/$2';
 $route['project'] = 'home/project';
 
 // Club
-$route['software'] = 'club';
-$route['jaringan'] = 'club';
-$route['embedded'] = 'club';
-$route['multimedia'] = 'club';
+$route['club'] = 'club';
+$route['software'] = 'club/profile/software';
+$route['jaringan'] = 'club/profile/jaringan';
+$route['embedded'] = 'club/profile/embedded';
+$route['multimedia'] = 'club/profile/multimedia';
+$route['materi/(:any)'] = 'club/materi_detail/$1';
+
+// Club Dashboard
+$route['c'] = 'club/profile_edit';
+
+$route['c/request'] = 'club/request';
+$route['c/request/(:num)'] = 'club/request_detail/$1';
+$route['c/tolak-request/(:num)'] = 'club/konfirmasi_request/tolak_request/$1';
+$route['c/terima-request/(:num)'] = 'club/konfirmasi_request/terima_request/$1';
+$route['c/selesai-request/(:num)'] = 'club/konfirmasi_request/selesai_request/$1';
+
+$route['c/materi'] = 'club/materi';
+$route['c/add-materi'] = 'club/add_materi';
+$route['c/edit-materi/(:num)'] = 'club/edit_materi/$1';
+$route['c/hapus-materi/(:num)'] = 'club/hapus_materi/$1';
+
+$route['c/post'] = 'club/post';
+$route['c/add-post'] = 'club/add_post';
+$route['c/edit-post/(:num)'] = 'club/edit_post/$1';
 
 // Propose Project
 $route['pengajuan'] = 'pengajuan';
