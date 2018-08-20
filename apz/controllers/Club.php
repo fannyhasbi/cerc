@@ -104,9 +104,61 @@ class Club extends CI_Controller {
     }
     else {
       $data['request'] = $this->pengajuan_model->getPengajuanById($id_pengajuan);
+      $data['riwayat'] = $this->pengajuan_model->getRiwayatById($id_pengajuan);
 
       $data['view_name'] = 'detail_pengajuan';
       $this->load->view('club/index_view', $data);
+    }
+  }
+
+  public function konfirmasi_request($action, $id_pengajuan){
+    $this->cekLogin();
+
+    if(isset($_SERVER['HTTP_REFERER']) && $_SERVER['HTTP_REFERER'] == site_url('c/request/'.$id_pengajuan)){
+      $this->load->model('pengajuan_model');
+      $cek = $this->pengajuan_model->check($id_pengajuan);
+      if($cek > 0){
+        switch($action){
+          case 'tolak_request': $this->tolak_request($id_pengajuan); break;
+          case 'terima_request': $this->terima_request($id_pengajuan); break;
+          case 'selesai_request': $this->selesai_request($id_pengajuan); break;
+        }
+      }
+    }
+    
+    $this->session->set_flashdata('msg', 'Request tidak ditemukan');
+    $this->session->set_flashdata('type', 'danger');
+    redirect(site_url('c/request'));
+  }
+
+  private function tolak_request($id_pengajuan){
+    $this->pengajuan_model->updateStatusTolak($id_pengajuan);
+
+    $this->session->set_flashdata('msg', 'Request berhasil ditolak');
+    $this->session->set_flashdata('type', 'success');
+    redirect(site_url('c/request/'.$id_pengajuan));
+  }
+
+  private function terima_request($id_pengajuan){
+    $this->pengajuan_model->updateStatusTerima($id_pengajuan);
+
+    $this->session->set_flashdata('msg', 'Request berhasil diterima');
+    $this->session->set_flashdata('type', 'success');
+    redirect(site_url('c/request/'.$id_pengajuan));
+  }
+
+  private function selesai_request($id_pengajuan){
+    $req = $this->pengajuan_model->getPengajuanById($id_pengajuan);
+    if($req->status == 'Y'){
+      $this->pengajuan_model->updateStatusSelesai($id_pengajuan);
+      $this->session->set_flashdata('msg', 'Request ditandai selesai');
+      $this->session->set_flashdata('type', 'success');
+      redirect(site_url('c/request'));
+    }
+    else {
+      $this->session->set_flashdata('msg', 'Request tidak ditemukan');
+      $this->session->set_flashdata('type', 'danger');
+      redirect(site_url('c/request'));
     }
   }
 

@@ -24,6 +24,9 @@ $route['c'] = 'club/profile_edit';
 
 $route['c/request'] = 'club/request';
 $route['c/request/(:num)'] = 'club/request_detail/$1';
+$route['c/tolak-request/(:num)'] = 'club/konfirmasi_request/tolak_request/$1';
+$route['c/terima-request/(:num)'] = 'club/konfirmasi_request/terima_request/$1';
+$route['c/selesai-request/(:num)'] = 'club/konfirmasi_request/selesai_request/$1';
 
 $route['c/materi'] = 'club/materi';
 $route['c/add-materi'] = 'club/add_materi';

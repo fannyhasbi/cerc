@@ -53,6 +53,7 @@ function status_definer($status){
   switch($status){
     case 'N': return "Belum ditanggapi"; break;
     case 'Y': return "Proses"; break;
+    case 'T': return "Ditolak"; break;
     case 'D': return "Selesai"; break;
     default: return "Status tidak diketahui"; break;
   }
