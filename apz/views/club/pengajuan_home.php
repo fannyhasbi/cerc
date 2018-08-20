@@ -16,8 +16,8 @@
           <tbody>
 
             <?php foreach($requests as $request): ?>
-              <tr style="<?php if($request->status == 'T'){ echo 'color: #fff; background-color: #f55a4e;';} else if($request->status == 'D'){ echo 'color: #fff; background-color: #5cb85c;'; } ?>">
-                <td><a href="<?= site_url('c/request/'.$request->id); ?>" <?= in_array($request->status, array('T', 'D')) ? 'style="color:#fff"' : '' ?>><?= $request->nama; ?></a></td>
+              <tr style="<?php if($request->status == 'T'){ echo 'color: #fff; background-color: #f55a4e;';} else if($request->status == 'Y'){ echo 'color: #fff; background-color: #999;'; } else if($request->status == 'D'){ echo 'color: #fff; background-color: #5cb85c;'; } ?>">
+                <td><a href="<?= site_url('c/request/'.$request->id); ?>" <?= in_array($request->status, array('T', 'Y', 'D')) ? 'style="color:#fff"' : '' ?>><?= $request->nama; ?></a></td>
                 <td>
                   <?
                   $d1 = date_create($request->tgl_pengajuan);
