@@ -10,6 +10,10 @@ class Pengajuan_model extends CI_Model {
     return $this->db->get_where('pengajuan', ['id' => $id_pengajuan]);
   }
 
+  public function checkKode($kode){
+    return $this->db->get_where('pengajuan', ['kode' => $kode]);
+  }
+
   public function getLastInsertedPemohon(){
     $where = array(
       'nama' => purify($this->input->post('nama')),
@@ -75,13 +79,14 @@ class Pengajuan_model extends CI_Model {
     return $q->result();
   }
 
-  public function addPengajuan($id_pemohon, $alamat_file){
+  public function addPengajuan($id_pemohon, $kode, $alamat_file){
     $data = array(
       'nama' => purify($this->input->post('nama_proyek')),
       'tgl_pengajuan' => date('Y-m-d H:i:s'),
       'est_selesai' => purify($this->input->post('selesai')),
       'ket' => purify($this->input->post('keterangan')),
       'file' => $alamat_file,
+      'kode' => $kode,
       'id_pemohon' => $id_pemohon
     );
 
