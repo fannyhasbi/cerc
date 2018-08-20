@@ -55,21 +55,31 @@
         <div class="clearfix"></div>
         <hr>
 
-        <div class="row">
-          <div class="col-sm-12">
-            <h4 class="lead">Riwayat Tanggapan</h4>
-            <table class="table table-striped">
-              <tr>
-                <td>15 Juli 2018</td>
-                <td>Selesai</td>
-              </tr>
-              <tr>
-                <td>2 Juni 2018</td>
-                <td>Diterima oleh club Software</td>
-              </tr>
-            </table>
+        <?php if($riwayat != NULL): ?>
+          <div class="row">
+            <div class="col-sm-12">
+              <h4 class="lead">Riwayat Tanggapan</h4>
+              <table class="table table-striped">
+                <thead>
+                  <tr class="text-danger">
+                    <th>Tanggal</th>
+                    <th>Tanggapan</th>
+                    <th>Club</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php foreach($riwayat as $item): ?>
+                    <tr>
+                      <td><?= tanggal_definer($item->tgl); ?></td>
+                      <td><?= status_definer($item->dari_status) .' -> <strong>'. status_definer($item->ke_status) .'</strong>' ; ?></td>
+                      <td><?= $item->nama_club .' ('. $item->nama_user .')' ; ?></td>
+                    </tr>
+                  <?php endforeach; ?>
+                </tbody>
+              </table>
+            </div>
           </div>
-        </div>
+        <?php endif; ?>
 
         <?php if($request->status == 'N'): ?>
           <div class="row">

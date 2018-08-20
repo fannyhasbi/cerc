@@ -59,6 +59,21 @@ class Pengajuan_model extends CI_Model {
     return $q->row();
   }
 
+  public function getRiwayatById($id_pengajuan){
+    $q = $this->db->query("
+      SELECT log.*,
+        club.nama AS nama_club,
+        user.nama AS nama_user
+      FROM log_pengajuan log
+      INNER JOIN user
+        ON log.id_user = user.id
+      INNER JOIN club
+        ON user.level = club.id
+      WHERE log.id_pengajuan = ". $this->db->escape($id_pengajuan) ." ORDER BY tgl DESC");
+
+    return $q->result();
+  }
+
   public function addPengajuan($id_pemohon, $alamat_file){
     $data = array(
       'nama' => purify($this->input->post('nama_proyek')),

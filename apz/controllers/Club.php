@@ -104,6 +104,7 @@ class Club extends CI_Controller {
     }
     else {
       $data['request'] = $this->pengajuan_model->getPengajuanById($id_pengajuan);
+      $data['riwayat'] = $this->pengajuan_model->getRiwayatById($id_pengajuan);
 
       $data['view_name'] = 'detail_pengajuan';
       $this->load->view('club/index_view', $data);
