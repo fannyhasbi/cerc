@@ -63,6 +63,7 @@ class Pengajuan_model extends CI_Model {
     $q = $this->db->query("
       SELECT log.*,
         club.nama AS nama_club,
+        user.level AS level_user,
         user.nama AS nama_user
       FROM log_pengajuan log
       INNER JOIN user

@@ -95,7 +95,11 @@
         <?php if($request->status == 'Y'): ?>
           <div class="row">
             <div class="col-sm-12">
-              <button type="button" id="selesai" class="btn btn-success btn-lg btn-block" onclick="selesai()"><i class="fa fa-check"></i> Tandai Sudah Selesai</button>
+              <?php if($item->level_user == $this->session->userdata('level')){ ?>
+                <button type="button" id="selesai" class="btn btn-success btn-lg btn-block" onclick="selesai()"><i class="fa fa-check"></i> Tandai Sudah Selesai</button>
+              <?php } else { ?>
+                <button type="button" id="selesai" class="btn btn-default btn-lg btn-block" disabled><i class="fa fa-ban"></i> Tidak bisa menandai selesai</button>
+              <?php } ?>
             </div>
           </div>
         <?php endif; ?>
@@ -105,6 +109,7 @@
 </div>
 
 <script>
+<?php if($request->status == 'N'): ?>
 function terima(){
   var c = confirm('Dengan melanjutkan, anda sebagai perwakilan club <?= $this->session->userdata('club_slug'); ?> menerima proyek ini.');
   if(c){
@@ -117,10 +122,13 @@ function tolak(){
     window.location = "<?= site_url('c/tolak-request/'.$request->id); ?>";
   }
 }
+<?php endif; ?>
+<?php if($request->status == 'Y' && $item->level_user == $this->session->userdata('level')): // mengurangi kecurigaan wkwk ?>
 function selesai(){
   var c = confirm('Tandai sebagai SELESAI?');
   if(c){
     window.location = "<?= site_url('c/selesai-request/'.$request->id); ?>";
   }
 }
+<?php endif; ?>
 </script>
